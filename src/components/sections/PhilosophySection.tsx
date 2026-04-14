@@ -81,13 +81,13 @@ export function PhilosophySection() {
             variants={fadeInUp}
             className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
-            <p className="font-sans text-sm text-warm-400 leading-relaxed">
+            <p className="font-sans text-sm text-warm-300 leading-relaxed">
               L'approche de Sarah s'inscrit dans le champ du bien-être et de l'accompagnement
               énergétique contemporain. Elle n'oppose pas le rationnel et le sensible — elle les
               invite à coexister, à se compléter. Ce qui se passe en séance n'a pas besoin d'être
               expliqué pour être ressenti.
             </p>
-            <p className="font-sans text-sm text-warm-400 leading-relaxed">
+            <p className="font-sans text-sm text-warm-300 leading-relaxed">
               Les soins énergétiques constituent un accompagnement complémentaire, jamais un
               substitut à un suivi médical ou psychologique. Ils s'adressent à celles et ceux
               qui souhaitent prendre soin d'eux-mêmes autrement — avec curiosité et ouverture.
