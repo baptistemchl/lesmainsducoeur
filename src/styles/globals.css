@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base styles ─── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivory text-warm-900 font-sans;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-cormorant;
+  }
+
+  ::selection {
+    @apply bg-blush/60 text-warm-900;
+  }
+
+  /* Scrollbar discrète */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-ivory; }
+  ::-webkit-scrollbar-thumb { @apply bg-rose/40 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-rose/70; }
+}
+
+/* ─── Component utilities ─── */
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+
+  /* Bouton primaire */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-rose-deep text-white font-sans font-medium text-sm
+           px-8 py-3.5 rounded-full
+           hover:bg-rose-deep/90 hover:shadow-soft
+           active:scale-[0.98]
+           transition-all duration-300 ease-out;
+  }
+
+  /* Bouton fantôme */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           border border-rose-deep text-rose-deep font-sans font-medium text-sm
+           px-8 py-3.5 rounded-full
+           hover:bg-rose-deep hover:text-white
+           active:scale-[0.98]
+           transition-all duration-300 ease-out;
+  }
+
+  /* Bouton discret */
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2
+           bg-blush/40 text-rose-deep font-sans font-medium text-sm
+           px-8 py-3.5 rounded-full
+           hover:bg-blush/70
+           active:scale-[0.98]
+           transition-all duration-300 ease-out;
+  }
+
+  /* Label de section */
+  .section-label {
+    @apply font-sans text-xs font-medium tracking-widest uppercase text-rose;
+  }
+
+  /* Titre de section */
+  .section-title {
+    @apply font-cormorant text-4xl lg:text-5xl font-light text-warm-900 leading-tight;
+  }
+
+  /* Sous-titre de section */
+  .section-subtitle {
+    @apply font-sans text-warm-700 leading-relaxed text-base lg:text-lg;
+  }
+
+  /* Card de base */
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-blush/20
+           transition-all duration-500 ease-out;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover -translate-y-1;
+  }
+
+  /* Séparateur ornemental */
+  .ornament {
+    @apply flex items-center justify-center gap-3 text-rose/40 text-xs;
+  }
+
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    @apply block h-px w-12 bg-rose/25;
+  }
+}
+
+/* ─── Animations CSS ─── */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #C9948A 0%, #A8B5A2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-blush-gradient {
+    background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #FAF0EE 100%);
+  }
+
+  .bg-sage-gradient {
+    background: linear-gradient(135deg, #ECF0EA 0%, #D4DDD0 100%);
+  }
+
+  .noise-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+}
