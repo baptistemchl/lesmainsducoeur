@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { staggerContainer, fadeInUp, slideInLeft } from "../../lib/animations"
+import { staggerContainer, fadeInUp, slideInLeft, popIn } from "../../lib/animations"
 
 export function AboutSection() {
   return (
@@ -15,11 +15,18 @@ export function AboutSection() {
             className="flex justify-center lg:justify-start"
           >
             <div className="relative w-72 h-72 lg:w-[380px] lg:h-[380px] flex-shrink-0">
-              {/* Fond halo */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blush/60 via-rose-muted/30 to-sage-light/40 blur-2xl scale-110" />
+              {/* Fond halo animé */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-blush/60 via-rose-muted/30 to-sage-light/40 blur-2xl scale-110"
+                animate={{ scale: [1.1, 1.2, 1.1], rotate: [0, 5, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
 
               {/* Cercle principal */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-blush/40 shadow-soft">
+              <motion.div
+                className="relative w-full h-full rounded-full overflow-hidden border-2 border-rose-light/50 shadow-soft"
+                whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 200 } }}
+              >
                 <div className="w-full h-full bg-gradient-to-br from-blush/50 via-cream to-sage-pale/60 flex items-center justify-center">
                   <svg
                     viewBox="0 0 300 300"
@@ -38,16 +45,20 @@ export function AboutSection() {
                     <path d="M155 190 Q140 182 133 170" stroke="#A8B5A2" strokeWidth="1" fill="none" strokeOpacity="0.4" />
                   </svg>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Badge flottant */}
               <motion.div
+                variants={popIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 animate={{ y: [-4, 4, -4] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-card px-4 py-3 border border-blush/30"
+                className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-card-hover px-4 py-3 border border-rose-light/40"
               >
                 <p className="font-cormorant text-sm font-medium text-warm-900">Sarah Gueuné</p>
-                <p className="font-sans text-xs text-warm-500">Praticienne en soins énergétiques</p>
+                <p className="font-sans text-xs text-rose-deep">Praticienne en soins énergétiques</p>
               </motion.div>
             </div>
           </motion.div>
@@ -89,11 +100,15 @@ export function AboutSection() {
             </motion.p>
 
             {/* Citation */}
-            <motion.blockquote variants={fadeInUp} className="border-l-2 border-rose/40 pl-5 mt-2">
+            <motion.blockquote
+              variants={fadeInUp}
+              className="border-l-3 border-rose-deep/50 pl-5 mt-2"
+              style={{ borderLeftWidth: "3px" }}
+            >
               <p className="font-cormorant text-xl italic font-light text-warm-800 leading-relaxed">
                 "J'offre des instants de lumière et de douceur, où l'âme et le corps se rencontrent."
               </p>
-              <footer className="font-sans text-xs text-warm-500 mt-2">— Sarah Gueuné</footer>
+              <footer className="font-sans text-xs text-rose-deep mt-2">— Sarah Gueuné</footer>
             </motion.blockquote>
           </motion.div>
         </div>

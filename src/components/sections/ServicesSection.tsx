@@ -7,9 +7,17 @@ import { staggerContainer } from "../../lib/animations"
 export function ServicesSection() {
   return (
     <section id="soins" className="section-padding bg-ivory relative overflow-hidden">
-      <div
+      <motion.div
         className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-20 blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/4"
         style={{ background: "radial-gradient(circle, #D4DDD0 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15 blur-3xl pointer-events-none translate-y-1/3 -translate-x-1/4"
+        style={{ background: "radial-gradient(circle, #F2D6D3 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 3 }}
       />
 
       <div className="section-container relative">
@@ -38,11 +46,16 @@ export function ServicesSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 80 }}
         >
-          <a href="#contact" className="btn-primary">
+          <motion.a
+            href="#contact"
+            className="btn-primary"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+          >
             Réserver une séance
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

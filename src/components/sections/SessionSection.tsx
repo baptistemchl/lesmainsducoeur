@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { SectionHeading } from "../ui/SectionHeading"
-import { staggerContainer, fadeInUp } from "../../lib/animations"
+import { staggerContainer, fadeInUp, popIn } from "../../lib/animations"
 
 const steps = [
   {
@@ -45,7 +45,7 @@ export function SessionSection() {
           viewport={{ once: true, margin: "-60px" }}
         >
           {/* Ligne de connexion desktop */}
-          <div className="hidden lg:block absolute top-10 left-[calc(16.66%)] right-[calc(16.66%)] h-px bg-gradient-to-r from-blush via-rose-light to-blush opacity-40 z-0" />
+          <div className="hidden lg:block absolute top-10 left-[calc(16.66%)] right-[calc(16.66%)] h-px bg-gradient-to-r from-rose-light via-rose to-rose-light opacity-50 z-0" />
 
           {steps.map((step, i) => (
             <motion.div
@@ -53,12 +53,19 @@ export function SessionSection() {
               variants={fadeInUp}
               className="relative flex-1 flex flex-col items-center lg:items-start text-center lg:text-left px-4 lg:px-6 gap-4"
             >
-              {/* Numéro */}
-              <div className="relative z-10 w-20 h-20 rounded-full bg-ivory border border-blush/50 shadow-card flex items-center justify-center flex-shrink-0">
-                <span className="font-cormorant text-2xl font-light text-rose-deep">
+              {/* Numéro — gradient + glow */}
+              <motion.div
+                variants={popIn}
+                className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0 shadow-soft"
+                style={{
+                  background: "linear-gradient(135deg, #FAF7F2 0%, #F2D6D3 50%, #DDB8B4 100%)",
+                }}
+                whileHover={{ scale: 1.1, transition: { type: "spring", stiffness: 300 } }}
+              >
+                <span className="font-cormorant text-2xl font-semibold text-rose-deep">
                   {step.number}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Contenu */}
               <div className="flex flex-col gap-2">
@@ -68,12 +75,12 @@ export function SessionSection() {
                 <p className="font-sans text-sm text-warm-700 leading-relaxed">
                   {step.description}
                 </p>
-                <p className="font-sans text-xs text-rose/80 mt-1">{step.detail}</p>
+                <p className="font-sans text-xs text-rose-deep font-medium mt-1">{step.detail}</p>
               </div>
 
               {/* Séparateur mobile */}
               {i < steps.length - 1 && (
-                <div className="lg:hidden w-px h-8 bg-blush/40 mx-auto" />
+                <div className="lg:hidden w-8 h-px bg-gradient-to-r from-transparent via-rose/50 to-transparent mx-auto" />
               )}
             </motion.div>
           ))}
@@ -81,13 +88,16 @@ export function SessionSection() {
 
         {/* Note rassurante */}
         <motion.div
-          className="mt-14 p-6 lg:p-8 bg-blush/20 rounded-2xl border border-blush/30 max-w-2xl mx-auto text-center"
+          className="mt-14 p-6 lg:p-8 rounded-2xl border border-rose-light/40 max-w-2xl mx-auto text-center relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
+          style={{
+            background: "linear-gradient(135deg, rgba(242,214,211,0.3) 0%, rgba(212,221,208,0.2) 100%)",
+          }}
         >
-          <p className="font-cormorant text-xl font-light text-warm-800 italic">
+          <p className="font-cormorant text-xl font-light text-warm-800 italic relative">
             "Vous n'avez pas besoin de tout comprendre avant de venir. Vous avez juste besoin
             d'un peu d'espace pour vous."
           </p>

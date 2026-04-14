@@ -45,7 +45,7 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="font-sans text-sm text-warm-700 hover:text-rose-deep transition-colors duration-200"
+                className="font-sans text-sm text-warm-700 hover:text-rose-deep transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rose-deep hover:after:w-full after:transition-all after:duration-300"
               >
                 {item.label}
               </a>
@@ -54,12 +54,17 @@ export function Header() {
 
           {/* CTA + burger */}
           <div className="flex items-center gap-3">
-            <a href="#contact" className="hidden lg:inline-flex btn-primary text-sm">
+            <motion.a
+              href="#contact"
+              className="hidden lg:inline-flex btn-primary text-sm"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+            >
               Rendez-vous
-            </a>
+            </motion.a>
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden w-10 h-10 rounded-full border border-blush/60 flex items-center justify-center text-warm-800 hover:bg-blush/20 transition-colors"
+              className="lg:hidden w-10 h-10 rounded-full border border-rose-light/60 flex items-center justify-center text-warm-800 hover:bg-blush/30 active:bg-blush/50 transition-colors"
               aria-label="Ouvrir le menu"
             >
               <Menu size={18} />

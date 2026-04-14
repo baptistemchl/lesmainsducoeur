@@ -6,35 +6,43 @@ const pillars = [
     icon: "✦",
     title: "Douceur",
     text: "Aucune violence, aucune contrainte. Les soins s'invitent avec légèreté, au rythme qui est le vôtre.",
+    gradient: "from-rose-light/30 to-blush/20",
   },
   {
     icon: "◈",
     title: "Intuition",
     text: "Chaque séance est guidée par une écoute fine et une présence sensible, non par un protocole rigide.",
+    gradient: "from-sage-light/30 to-sage-pale/20",
   },
   {
     icon: "❋",
     title: "Intégrité",
     text: "Pas de promesses excessives, pas de discours dogmatique — seulement une pratique sincère et éthique.",
+    gradient: "from-gold-soft/30 to-gold-pale/20",
   },
   {
     icon: "⟡",
     title: "Ancrage",
     text: "Le spirituel et le concret marchent ensemble. L'énergie se vit dans le corps, dans le quotidien.",
+    gradient: "from-rose-light/30 to-sage-light/20",
   },
 ]
 
 export function PhilosophySection() {
   return (
     <section id="approche" className="section-padding bg-warm-900 relative overflow-hidden">
-      {/* Halos décoratifs inversés */}
-      <div
-        className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
+      {/* Halos décoratifs animés */}
+      <motion.div
+        className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-12 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #F2D6D3 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
-      <div
-        className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
+      <motion.div
+        className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-12 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #D4DDD0 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.15, 1], y: [0, -20, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
 
       <div className="section-container relative">
@@ -47,7 +55,7 @@ export function PhilosophySection() {
         >
           {/* Grande citation centrale */}
           <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto">
-            <p className="section-label text-rose-light/70 mb-6">Notre philosophie</p>
+            <p className="section-label text-rose-light/80 mb-6">Notre philosophie</p>
             <blockquote>
               <p className="font-cormorant text-4xl lg:text-5xl font-light text-warm-100 italic leading-[1.2] tracking-tight">
                 "Le soin énergétique n'est pas une magie mystérieuse — c'est une présence
@@ -65,13 +73,22 @@ export function PhilosophySection() {
               <motion.div
                 key={pillar.title}
                 variants={scaleIn}
-                className="flex flex-col gap-3 p-6 rounded-2xl border border-warm-700/40 hover:border-rose/30 bg-warm-800/30 transition-all duration-300"
+                whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
+                whileTap={{ scale: 0.97 }}
+                className="relative flex flex-col gap-3 p-6 rounded-2xl border border-warm-700/40 hover:border-rose/40 bg-warm-800/30 hover:bg-warm-800/50 transition-all duration-300 group overflow-hidden"
               >
-                <span className="text-xl text-rose/60">{pillar.icon}</span>
-                <h3 className="font-cormorant text-xl font-medium text-warm-100">
+                {/* Gradient de fond au hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
+
+                <motion.span
+                  className="relative text-xl text-rose/60 group-hover:text-rose-light group-hover:scale-125 transition-all duration-300 origin-left"
+                >
+                  {pillar.icon}
+                </motion.span>
+                <h3 className="relative font-cormorant text-xl font-medium text-warm-100">
                   {pillar.title}
                 </h3>
-                <p className="font-sans text-sm text-warm-500 leading-relaxed">{pillar.text}</p>
+                <p className="relative font-sans text-sm text-warm-300 leading-relaxed">{pillar.text}</p>
               </motion.div>
             ))}
           </motion.div>

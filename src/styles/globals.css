@@ -20,7 +20,7 @@
   }
 
   ::selection {
-    @apply bg-blush/60 text-warm-900;
+    @apply bg-rose-vibrant/30 text-warm-900;
   }
 
   /* Scrollbar discrète */
@@ -40,39 +40,57 @@
     @apply py-20 lg:py-32;
   }
 
-  /* Bouton primaire */
+  /* Bouton primaire — gradient animé */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           bg-rose-deep text-white font-sans font-medium text-sm
+           text-white font-sans font-medium text-sm
            px-8 py-3.5 rounded-full
-           hover:bg-rose-deep/90 hover:shadow-soft
-           active:scale-[0.98]
-           transition-all duration-300 ease-out;
+           active:scale-[0.96]
+           transition-all duration-300 ease-out
+           shadow-soft;
+    background: linear-gradient(135deg, #B5726A 0%, #D4736A 50%, #C9948A 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .btn-primary:hover {
+    @apply shadow-glow;
+    transform: translateY(-2px);
+    filter: brightness(1.08);
   }
 
   /* Bouton fantôme */
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2
-           border border-rose-deep text-rose-deep font-sans font-medium text-sm
+           border-2 border-rose-deep text-rose-deep font-sans font-medium text-sm
            px-8 py-3.5 rounded-full
-           hover:bg-rose-deep hover:text-white
-           active:scale-[0.98]
+           hover:bg-rose-deep hover:text-white hover:shadow-glow
+           active:scale-[0.96]
            transition-all duration-300 ease-out;
+  }
+
+  .btn-ghost:hover {
+    transform: translateY(-2px);
   }
 
   /* Bouton discret */
   .btn-soft {
     @apply inline-flex items-center justify-center gap-2
-           bg-blush/40 text-rose-deep font-sans font-medium text-sm
+           bg-blush/50 text-rose-deep font-sans font-medium text-sm
            px-8 py-3.5 rounded-full
-           hover:bg-blush/70
-           active:scale-[0.98]
+           hover:bg-blush
+           active:scale-[0.96]
            transition-all duration-300 ease-out;
+  }
+
+  .btn-soft:hover {
+    transform: translateY(-2px);
+    @apply shadow-soft;
   }
 
   /* Label de section */
   .section-label {
-    @apply font-sans text-xs font-medium tracking-widest uppercase text-rose;
+    @apply font-sans text-xs font-semibold tracking-widest uppercase text-rose-deep;
   }
 
   /* Titre de section */
@@ -92,25 +110,27 @@
   }
 
   .card:hover {
-    @apply shadow-card-hover -translate-y-1;
+    @apply shadow-card-hover -translate-y-2;
   }
 
   /* Séparateur ornemental */
   .ornament {
-    @apply flex items-center justify-center gap-3 text-rose/40 text-xs;
+    @apply flex items-center justify-center gap-3 text-rose/50 text-xs;
   }
 
   .ornament::before,
   .ornament::after {
     content: '';
-    @apply block h-px w-12 bg-rose/25;
+    @apply block h-px w-12 bg-rose/30;
   }
 }
 
 /* ─── Animations CSS ─── */
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #C9948A 0%, #A8B5A2 100%);
+    background: linear-gradient(135deg, #B5726A 0%, #D4736A 40%, #6E9464 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -127,4 +147,20 @@
   .noise-texture {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   }
+
+  /* Glow hover effect for interactive elements */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-glow;
+  }
+}
+
+/* ─── Gradient shift keyframes (referenced by Tailwind) ─── */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

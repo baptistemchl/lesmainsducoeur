@@ -7,9 +7,11 @@ import { staggerContainer } from "../../lib/animations"
 export function TestimonialsSection() {
   return (
     <section id="temoignages" className="section-padding bg-ivory relative overflow-hidden">
-      <div
+      <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full opacity-15 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(ellipse, #F2D6D3 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.1, 1], rotate: [0, 3, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="section-container relative">
@@ -35,10 +37,10 @@ export function TestimonialsSection() {
 
         <motion.div
           className="ornament mt-14"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
         >
           ✦
         </motion.div>

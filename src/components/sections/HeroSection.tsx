@@ -1,19 +1,30 @@
 import { motion } from "framer-motion"
 import { ArrowDown, Sparkles } from "lucide-react"
 import { HeroComposition } from "../decorative/HeroComposition"
-import { staggerContainer, fadeInUp, slideInLeft, slideInRight } from "../../lib/animations"
+import { staggerContainer, fadeInUp, slideInLeft, slideInRight, popIn } from "../../lib/animations"
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-blush-gradient pt-24 pb-16">
-      {/* Halos de fond */}
-      <div
+      {/* Halos de fond animés */}
+      <motion.div
         className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #F2D6D3 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.4, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <div
+      <motion.div
         className="absolute -bottom-24 right-0 w-[500px] h-[500px] rounded-full opacity-25 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #D4DDD0 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.35, 0.25] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+      {/* Halo accent */}
+      <motion.div
+        className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full opacity-15 blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, #D4736A 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.3, 1], x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="section-container w-full">
@@ -27,7 +38,12 @@ export function HeroSection() {
           >
             {/* Label */}
             <motion.div variants={fadeInUp} className="flex items-center gap-2">
-              <Sparkles size={12} className="text-rose" />
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Sparkles size={14} className="text-rose-vibrant" />
+              </motion.span>
               <span className="section-label">Soins énergétiques · Accompagnement intuitif</span>
             </motion.div>
 
@@ -35,7 +51,7 @@ export function HeroSection() {
             <motion.div variants={slideInLeft}>
               <h1 className="font-cormorant text-5xl sm:text-6xl lg:text-7xl font-light text-warm-900 leading-[1.08] tracking-tight">
                 Les Mains<br />
-                <em className="not-italic text-gradient">du Coeur</em>
+                <em className="not-italic text-gradient font-medium">du Coeur</em>
               </h1>
             </motion.div>
 
@@ -57,27 +73,42 @@ export function HeroSection() {
 
             {/* CTAs */}
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
-              <a href="#contact" className="btn-primary">
+              <motion.a
+                href="#contact"
+                className="btn-primary"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+              >
                 Prendre rendez-vous
-              </a>
-              <a href="#soins" className="btn-ghost">
+              </motion.a>
+              <motion.a
+                href="#soins"
+                className="btn-ghost"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+              >
                 Découvrir les soins
-              </a>
+              </motion.a>
             </motion.div>
 
             {/* Indicateurs */}
-            <motion.div variants={fadeInUp} className="flex items-center gap-5 pt-2">
+            <motion.div variants={fadeInUp} className="flex items-center gap-6 pt-2">
               {[
                 { value: "+ 200", label: "personnes accompagnées" },
                 { value: "6", label: "soins proposés" },
                 { value: "∞", label: "bienveillance" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <span className="font-cormorant text-2xl font-medium text-rose-deep">
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  className="flex flex-col"
+                  variants={popIn}
+                  custom={i}
+                >
+                  <span className="font-cormorant text-3xl font-semibold text-rose-deep">
                     {stat.value}
                   </span>
                   <span className="font-sans text-xs text-warm-500">{stat.label}</span>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
@@ -102,10 +133,10 @@ export function HeroSection() {
         transition={{ delay: 1.4, duration: 0.7 }}
       >
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown size={16} className="text-rose/50" />
+          <ArrowDown size={18} className="text-rose-deep/60" />
         </motion.div>
       </motion.div>
     </section>
