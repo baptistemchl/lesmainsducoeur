@@ -2,11 +2,19 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "../ui/SectionHeading"
 import { FaqItem } from "../ui/FaqItem"
 import { faqEntries } from "../../data/faq"
-import { staggerContainer, fadeInUp } from "../../lib/animations"
+import { staggerContainer, glowReveal } from "../../lib/animations"
 
 export function FaqSection() {
   return (
-    <section id="faq" className="section-padding bg-cream">
+    <section id="faq" className="section-padding bg-cream relative overflow-hidden">
+      {/* Orbe décoratif */}
+      <motion.div
+        className="absolute bottom-0 right-0 w-80 h-80 rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(232,67,147,0.1) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.15, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+
       <div className="section-container">
         <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-20 items-start">
           {/* En-tête à gauche */}
@@ -24,7 +32,7 @@ export function FaqSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-8"
             >
-              <p className="font-sans text-sm text-warm-600 leading-relaxed mb-4">
+              <p className="font-hand text-lg text-warm-600 leading-snug mb-4">
                 Une question non listée ? Sarah se fera un plaisir de vous répondre directement.
               </p>
               <a href="#contact" className="btn-soft text-sm">
@@ -33,7 +41,7 @@ export function FaqSection() {
             </motion.div>
           </div>
 
-          {/* Accordéon à droite */}
+          {/* Accordéon à droite — glow reveal */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -41,8 +49,13 @@ export function FaqSection() {
             viewport={{ once: true, margin: "-60px" }}
           >
             <motion.div
-              variants={fadeInUp}
-              className="bg-white rounded-2xl shadow-card border border-blush/20 overflow-hidden"
+              variants={glowReveal}
+              className="rounded-2xl shadow-card overflow-hidden"
+              style={{
+                background: "rgba(255, 255, 255, 0.6)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.5)",
+              }}
             >
               <div className="px-6 lg:px-8">
                 {faqEntries.map((entry) => (

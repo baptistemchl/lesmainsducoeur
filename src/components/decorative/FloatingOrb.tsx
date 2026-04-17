@@ -6,9 +6,9 @@ interface FloatingOrbProps {
 }
 
 const colorMap = {
-  rose: ['#F2D6D3', '#C9948A'],
-  sage: ['#D4DDD0', '#A8B5A2'],
-  gold: ['#E8D5BD', '#D4B896'],
+  rose: ['#FBCFE8', '#E84393'],
+  sage: ['#C4B5FD', '#8B5CF6'],
+  gold: ['#FDE68A', '#F59E0B'],
 }
 
 export function FloatingOrb({

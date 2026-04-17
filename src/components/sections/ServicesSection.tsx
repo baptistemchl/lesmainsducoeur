@@ -2,22 +2,30 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "../ui/SectionHeading"
 import { ServiceCard } from "../ui/ServiceCard"
 import { services } from "../../data/services"
-import { staggerContainer } from "../../lib/animations"
+import { waveStagger } from "../../lib/animations"
 
 export function ServicesSection() {
   return (
     <section id="soins" className="section-padding bg-ivory relative overflow-hidden">
+      {/* Orbes décoratifs */}
       <motion.div
-        className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-20 blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/4"
-        style={{ background: "radial-gradient(circle, #D4DDD0 0%, transparent 70%)" }}
+        className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none -translate-y-1/2 translate-x-1/4 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(196,181,253,0.3) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15 blur-3xl pointer-events-none translate-y-1/3 -translate-x-1/4"
-        style={{ background: "radial-gradient(circle, #F2D6D3 0%, transparent 70%)" }}
+        className="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none translate-y-1/3 -translate-x-1/4 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(251,207,232,0.3) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+      />
+      {/* Orbe doré */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
 
       <div className="section-container relative">
@@ -31,7 +39,7 @@ export function ServicesSection() {
 
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-          variants={staggerContainer}
+          variants={waveStagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -42,16 +50,17 @@ export function ServicesSection() {
         </motion.div>
 
         <motion.div
-          className="flex justify-center mt-12"
+          className="flex flex-col items-center gap-3 mt-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, type: "spring", stiffness: 80 }}
         >
+          <p className="font-hand text-lg text-warm-500">un soin pensé pour vous</p>
           <motion.a
             href="#contact"
             className="btn-primary"
-            whileHover={{ scale: 1.04 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
           >
             Réserver une séance

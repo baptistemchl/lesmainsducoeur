@@ -5,26 +5,33 @@ import { staggerContainer, fadeInUp, slideInLeft, slideInRight, popIn } from "..
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-blush-gradient pt-24 pb-16">
-      {/* Halos de fond animés */}
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-yoga pt-24 pb-16">
+      {/* Halos de fond animés — fuchsia, violet, doré */}
       <motion.div
-        className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #F2D6D3 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.4, 0.3] }}
+        className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(251,207,232,0.5) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.6, 0.4] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -bottom-24 right-0 w-[500px] h-[500px] rounded-full opacity-25 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #D4DDD0 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.35, 0.25] }}
+        className="absolute -bottom-24 right-0 w-[500px] h-[500px] rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(196,181,253,0.4) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
-      {/* Halo accent */}
+      {/* Halo accent fuchsia */}
       <motion.div
-        className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full opacity-15 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, #D4736A 0%, transparent 70%)" }}
+        className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(232,67,147,0.2) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.3, 1], x: [0, 30, 0], y: [0, -20, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+      {/* Halo doré subtil */}
+      <motion.div
+        className="absolute bottom-1/4 left-1/4 w-[250px] h-[250px] rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 4 }}
       />
 
       <div className="section-container w-full">
@@ -39,7 +46,7 @@ export function HeroSection() {
             {/* Label */}
             <motion.div variants={fadeInUp} className="flex items-center gap-2">
               <motion.span
-                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.3, 1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Sparkles size={14} className="text-rose-vibrant" />
@@ -51,14 +58,14 @@ export function HeroSection() {
             <motion.div variants={slideInLeft}>
               <h1 className="font-cormorant text-5xl sm:text-6xl lg:text-7xl font-light text-warm-900 leading-[1.08] tracking-tight">
                 Les Mains<br />
-                <em className="not-italic text-gradient font-medium">du Coeur</em>
+                <em className="not-italic text-rose font-medium">du Coeur</em>
               </h1>
             </motion.div>
 
-            {/* Phrase signature */}
+            {/* Phrase signature — manuscrite */}
             <motion.p
               variants={fadeInUp}
-              className="font-cormorant text-xl lg:text-2xl text-warm-700 italic font-light leading-relaxed"
+              className="font-hand text-2xl lg:text-3xl text-warm-700 leading-snug"
             >
               "Là où la lumière rencontre l'âme,<br />
               et où le corps retrouve sa douceur."
@@ -76,7 +83,7 @@ export function HeroSection() {
               <motion.a
                 href="#contact"
                 className="btn-primary"
-                whileHover={{ scale: 1.04 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
               >
                 Prendre rendez-vous
@@ -84,15 +91,23 @@ export function HeroSection() {
               <motion.a
                 href="#soins"
                 className="btn-ghost"
-                whileHover={{ scale: 1.04 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
               >
                 Découvrir les soins
               </motion.a>
             </motion.div>
 
-            {/* Indicateurs */}
-            <motion.div variants={fadeInUp} className="flex items-center gap-6 pt-2">
+            {/* Indicateurs — glass panel */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex items-center gap-6 pt-2 px-5 py-4 rounded-2xl w-fit"
+              style={{
+                background: "rgba(255, 255, 255, 0.4)",
+                backdropFilter: "blur(16px)",
+                border: "1px solid rgba(255, 255, 255, 0.5)",
+              }}
+            >
               {[
                 { value: "+ 200", label: "personnes accompagnées" },
                 { value: "6", label: "soins proposés" },
@@ -113,7 +128,7 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Composition visuelle */}
+          {/* Composition visuelle — mandala/lotus */}
           <motion.div
             variants={slideInRight}
             initial="hidden"
@@ -136,7 +151,7 @@ export function HeroSection() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown size={18} className="text-rose-deep/60" />
+          <ArrowDown size={18} className="text-rose/60" />
         </motion.div>
       </motion.div>
     </section>

@@ -25,7 +25,11 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 bg-warm-900/20 backdrop-blur-sm z-40"
+            className="fixed inset-0 z-40"
+            style={{
+              background: "rgba(45, 27, 78, 0.2)",
+              backdropFilter: "blur(4px)",
+            }}
             onClick={onClose}
           />
 
@@ -34,13 +38,18 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed top-0 right-0 h-full w-72 bg-ivory shadow-2xl z-50 flex flex-col"
+            className="fixed top-0 right-0 h-full w-72 shadow-2xl z-50 flex flex-col"
+            style={{
+              background: "rgba(253, 242, 248, 0.95)",
+              backdropFilter: "blur(24px)",
+            }}
           >
-            <div className="flex items-center justify-between p-6 border-b border-blush/30">
+            <div className="flex items-center justify-between p-6" style={{ borderBottom: "1px solid rgba(251, 207, 232, 0.4)" }}>
               <span className="font-cormorant text-xl font-medium text-warm-900">Menu</span>
               <button
                 onClick={onClose}
-                className="w-9 h-9 rounded-full border border-blush/50 flex items-center justify-center text-warm-700 hover:bg-blush/20 transition-colors"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-warm-700 hover:bg-blush/20 transition-colors"
+                style={{ border: "1px solid rgba(251, 207, 232, 0.5)" }}
                 aria-label="Fermer le menu"
               >
                 <X size={16} />
@@ -55,14 +64,14 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 + 0.1 }}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-left font-cormorant text-2xl font-light text-warm-800 hover:text-rose-deep py-2 transition-colors duration-200"
+                  className="text-left font-cormorant text-2xl font-light text-warm-800 hover:text-rose py-2 transition-colors duration-200"
                 >
                   {item.label}
                 </motion.button>
               ))}
             </nav>
 
-            <div className="p-6 border-t border-blush/30">
+            <div className="p-6" style={{ borderTop: "1px solid rgba(251, 207, 232, 0.4)" }}>
               <button
                 onClick={() => handleNavClick("#contact")}
                 className="btn-primary w-full justify-center"

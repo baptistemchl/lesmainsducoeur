@@ -23,7 +23,7 @@
     @apply bg-rose-vibrant/30 text-warm-900;
   }
 
-  /* Scrollbar discrète */
+  /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { @apply bg-ivory; }
   ::-webkit-scrollbar-thumb { @apply bg-rose/40 rounded-full; }
@@ -40,43 +40,41 @@
     @apply py-20 lg:py-32;
   }
 
-  /* Bouton primaire — gradient animé */
+  /* Bouton primaire — couleur unie fuchsia */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           text-white font-sans font-medium text-sm
+           text-white font-sans font-semibold text-sm
            px-8 py-3.5 rounded-full
            active:scale-[0.96]
            transition-all duration-300 ease-out
            shadow-soft;
-    background: linear-gradient(135deg, #B5726A 0%, #D4736A 50%, #C9948A 100%);
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
+    background-color: #E84393;
   }
 
   .btn-primary:hover {
     @apply shadow-glow;
     transform: translateY(-2px);
-    filter: brightness(1.08);
+    background-color: #C2185B;
   }
 
   /* Bouton fantôme */
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2
-           border-2 border-rose-deep text-rose-deep font-sans font-medium text-sm
+           border-2 border-rose text-rose font-sans font-semibold text-sm
            px-8 py-3.5 rounded-full
-           hover:bg-rose-deep hover:text-white hover:shadow-glow
            active:scale-[0.96]
            transition-all duration-300 ease-out;
   }
 
   .btn-ghost:hover {
     transform: translateY(-2px);
+    @apply bg-rose text-white shadow-glow;
   }
 
   /* Bouton discret */
   .btn-soft {
     @apply inline-flex items-center justify-center gap-2
-           bg-blush/50 text-rose-deep font-sans font-medium text-sm
+           bg-blush/50 text-rose-deep font-sans font-semibold text-sm
            px-8 py-3.5 rounded-full
            hover:bg-blush
            active:scale-[0.96]
@@ -90,7 +88,7 @@
 
   /* Label de section */
   .section-label {
-    @apply font-sans text-xs font-semibold tracking-widest uppercase text-rose-deep;
+    @apply font-sans text-xs font-bold tracking-widest uppercase text-rose;
   }
 
   /* Titre de section */
@@ -103,32 +101,47 @@
     @apply font-sans text-warm-700 leading-relaxed text-base lg:text-lg;
   }
 
-  /* Card de base */
+  /* Card glassmorphism */
   .card {
-    @apply bg-white rounded-2xl shadow-card border border-blush/20
+    @apply rounded-2xl shadow-card
            transition-all duration-500 ease-out;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
 
   .card:hover {
     @apply shadow-card-hover -translate-y-2;
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(232, 67, 147, 0.2);
   }
 
   /* Séparateur ornemental */
   .ornament {
-    @apply flex items-center justify-center gap-3 text-rose/50 text-xs;
+    @apply flex items-center justify-center gap-3 text-xs;
+    color: rgba(232, 67, 147, 0.5);
   }
 
   .ornament::before,
   .ornament::after {
     content: '';
-    @apply block h-px w-12 bg-rose/30;
+    @apply block h-px w-12 bg-rose/25;
+  }
+
+  /* Glass panel effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
   }
 }
 
-/* ─── Animations CSS ─── */
+/* ─── Utility classes ─── */
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #B5726A 0%, #D4736A 40%, #6E9464 100%);
+    background: linear-gradient(135deg, #E84393 0%, #8B5CF6 40%, #F59E0B 100%);
     background-size: 200% 200%;
     animation: gradient-shift 5s ease infinite;
     -webkit-background-clip: text;
@@ -136,19 +149,38 @@
     background-clip: text;
   }
 
+  .text-gradient-pink {
+    background: linear-gradient(135deg, #FF1493 0%, #E84393 50%, #FD79A8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .bg-blush-gradient {
-    background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #FAF0EE 100%);
+    background: linear-gradient(135deg, #FDF2F8 0%, #FAF5FF 50%, #FCE7F3 100%);
   }
 
   .bg-sage-gradient {
-    background: linear-gradient(135deg, #ECF0EA 0%, #D4DDD0 100%);
+    background: linear-gradient(135deg, #EDE9FE 0%, #C4B5FD 100%);
+  }
+
+  .bg-aurora {
+    background: linear-gradient(-45deg, #FF1493, #8B5CF6, #F59E0B, #E84393, #7C3AED, #FD79A8);
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+  }
+
+  .bg-yoga {
+    background: linear-gradient(135deg, #FDF2F8 0%, #EDE9FE 25%, #FDF2F8 50%, #FEF3C7 75%, #FDF2F8 100%);
+    background-size: 400% 400%;
+    animation: aurora 20s ease infinite;
   }
 
   .noise-texture {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   }
 
-  /* Glow hover effect for interactive elements */
+  /* Glow hover effect */
   .hover-glow {
     @apply transition-all duration-300;
   }
@@ -156,11 +188,37 @@
   .hover-glow:hover {
     @apply shadow-glow;
   }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #E84393, #8B5CF6, #F59E0B);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 
-/* ─── Gradient shift keyframes (referenced by Tailwind) ─── */
+/* ─── Keyframes ─── */
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
   100% { background-position: 0% 50%; }
 }

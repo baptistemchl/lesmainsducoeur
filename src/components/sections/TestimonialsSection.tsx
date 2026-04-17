@@ -2,16 +2,24 @@ import { motion } from "framer-motion"
 import { SectionHeading } from "../ui/SectionHeading"
 import { TestimonialCard } from "../ui/TestimonialCard"
 import { testimonials } from "../../data/testimonials"
-import { staggerContainer } from "../../lib/animations"
+import { waveStagger } from "../../lib/animations"
 
 export function TestimonialsSection() {
   return (
     <section id="temoignages" className="section-padding bg-ivory relative overflow-hidden">
+      {/* Orbe central */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full opacity-15 blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, #F2D6D3 0%, transparent 70%)" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(ellipse, rgba(251,207,232,0.2) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.1, 1], rotate: [0, 3, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      {/* Orbe violet */}
+      <motion.div
+        className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(196,181,253,0.15) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 3 }}
       />
 
       <div className="section-container relative">
@@ -25,7 +33,7 @@ export function TestimonialsSection() {
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
-          variants={staggerContainer}
+          variants={waveStagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -36,13 +44,13 @@ export function TestimonialsSection() {
         </motion.div>
 
         <motion.div
-          className="ornament mt-14"
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          className="mt-14 text-center"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          ✦
+          <p className="font-hand text-xl text-rose/60">merci pour votre confiance ✦</p>
         </motion.div>
       </div>
     </section>

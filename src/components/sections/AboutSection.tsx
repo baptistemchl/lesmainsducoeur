@@ -1,65 +1,109 @@
 import { motion } from "framer-motion"
-import { staggerContainer, fadeInUp, slideInLeft, popIn } from "../../lib/animations"
+import { staggerContainer, fadeInUp, scaleIn } from "../../lib/animations"
 
 export function AboutSection() {
   return (
     <section id="a-propos" className="section-padding bg-cream">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Visuel portrait stylisé */}
+          {/* Panneau zen — présentation Sarah */}
           <motion.div
-            variants={slideInLeft}
+            variants={scaleIn}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             className="flex justify-center lg:justify-start"
           >
-            <div className="relative w-72 h-72 lg:w-[380px] lg:h-[380px] flex-shrink-0">
-              {/* Fond halo animé */}
+            <div
+              className="relative w-72 lg:w-[340px] rounded-3xl overflow-hidden shadow-card p-8 lg:p-10 flex flex-col items-center gap-6"
+              style={{
+                background: "rgba(255, 255, 255, 0.55)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.5)",
+              }}
+            >
+              {/* Halo subtil derrière le panneau */}
               <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-blush/60 via-rose-muted/30 to-sage-light/40 blur-2xl scale-110"
-                animate={{ scale: [1.1, 1.2, 1.1], rotate: [0, 5, 0] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(251,207,232,0.35) 0%, transparent 70%)" }}
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(196,181,253,0.25) 0%, transparent 70%)" }}
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
               />
 
-              {/* Cercle principal */}
+              {/* Mandala lotus miniature */}
               <motion.div
-                className="relative w-full h-full rounded-full overflow-hidden border-2 border-rose-light/50 shadow-soft"
-                whileHover={{ scale: 1.03, transition: { type: "spring", stiffness: 200 } }}
+                className="relative w-32 h-32"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
               >
-                <div className="w-full h-full bg-gradient-to-br from-blush/50 via-cream to-sage-pale/60 flex items-center justify-center">
-                  <svg
-                    viewBox="0 0 300 300"
-                    className="w-48 h-48 opacity-50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="150" cy="105" r="42" fill="#C9948A" fillOpacity="0.35" />
-                    <path
-                      d="M82 240 C82 195 110 172 150 172 C190 172 218 195 218 240"
-                      fill="#C9948A"
-                      fillOpacity="0.25"
+                <svg viewBox="0 0 200 200" fill="none" className="w-full h-full" aria-hidden="true">
+                  {/* Pétales externes */}
+                  {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                    <ellipse
+                      key={angle}
+                      cx="100"
+                      cy="42"
+                      rx="10"
+                      ry="30"
+                      fill="#E84393"
+                      fillOpacity="0.12"
+                      transform={`rotate(${angle} 100 100)`}
                     />
-                    <path d="M150 155 Q160 175 155 195" stroke="#A8B5A2" strokeWidth="1.5" fill="none" strokeOpacity="0.5" />
-                    <path d="M155 185 Q170 178 178 165" stroke="#A8B5A2" strokeWidth="1" fill="none" strokeOpacity="0.4" />
-                    <path d="M155 190 Q140 182 133 170" stroke="#A8B5A2" strokeWidth="1" fill="none" strokeOpacity="0.4" />
-                  </svg>
-                </div>
+                  ))}
+                  {/* Pétales internes */}
+                  {[0, 60, 120, 180, 240, 300].map((angle) => (
+                    <ellipse
+                      key={`inner-${angle}`}
+                      cx="100"
+                      cy="58"
+                      rx="8"
+                      ry="22"
+                      fill="#8B5CF6"
+                      fillOpacity="0.1"
+                      transform={`rotate(${angle} 100 100)`}
+                    />
+                  ))}
+                  {/* Centre */}
+                  <circle cx="100" cy="100" r="16" fill="#E84393" fillOpacity="0.08" />
+                  <circle cx="100" cy="100" r="8" fill="#E84393" fillOpacity="0.15" />
+                  {/* Anneau */}
+                  <circle cx="100" cy="100" r="70" stroke="#E84393" strokeWidth="0.5" strokeOpacity="0.15" fill="none" strokeDasharray="3 6" />
+                </svg>
               </motion.div>
 
-              {/* Badge flottant */}
-              <motion.div
-                variants={popIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                animate={{ y: [-4, 4, -4] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-card-hover px-4 py-3 border border-rose-light/40"
-              >
-                <p className="font-cormorant text-sm font-medium text-warm-900">Sarah Gueuné</p>
-                <p className="font-sans text-xs text-rose-deep">Praticienne en soins énergétiques</p>
-              </motion.div>
+              {/* Identité */}
+              <div className="relative flex flex-col items-center gap-1 text-center">
+                <h3 className="font-cormorant text-3xl font-light text-warm-900 tracking-wide">
+                  Sarah Gueuné
+                </h3>
+                <div className="w-10 h-px bg-rose/30 my-2" />
+                <p className="font-sans text-xs text-rose font-semibold tracking-widest uppercase">
+                  Praticienne en soins énergétiques
+                </p>
+              </div>
+
+              {/* Mini citation — manuscrite */}
+              <p className="relative font-hand text-lg text-warm-600 text-center leading-snug">
+                "L'énergie ne ment pas,<br />elle se ressent."
+              </p>
+
+              {/* Points d'expertise */}
+              <div className="relative flex flex-wrap justify-center gap-2">
+                {["Magnétisme", "Lahochi", "Guidance"].map((skill) => (
+                  <span
+                    key={skill}
+                    className="font-sans text-[10px] font-semibold tracking-wider uppercase text-warm-500 px-3 py-1.5 rounded-full border border-rose-muted/30 bg-white/50"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -77,7 +121,7 @@ export function AboutSection() {
 
             <motion.h2 variants={fadeInUp} className="section-title">
               Un chemin de lumière<br />
-              <em className="not-italic text-gradient">hérité et sincère</em>
+              <em className="not-italic text-rose font-medium">hérité et sincère</em>
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="section-subtitle">
@@ -87,7 +131,7 @@ export function AboutSection() {
             </motion.p>
 
             <motion.p variants={fadeInUp} className="font-sans text-warm-700 leading-relaxed text-sm">
-              Avec <strong className="font-medium text-warm-900">Les Mains du Coeur</strong>, elle
+              Avec <strong className="font-semibold text-warm-900">Les Mains du Coeur</strong>, elle
               offre des instants de lumière et de douceur, des espaces où l'âme et le corps se
               rencontrent, loin de l'agitation du monde. Chaque séance est unique, chaque personne
               est accueillie dans sa singularité, sans jugement et sans protocole figé.
@@ -102,13 +146,13 @@ export function AboutSection() {
             {/* Citation */}
             <motion.blockquote
               variants={fadeInUp}
-              className="border-l-3 border-rose-deep/50 pl-5 mt-2"
-              style={{ borderLeftWidth: "3px" }}
+              className="pl-5 mt-2"
+              style={{ borderLeft: "3px solid #E84393" }}
             >
               <p className="font-cormorant text-xl italic font-light text-warm-800 leading-relaxed">
                 "J'offre des instants de lumière et de douceur, où l'âme et le corps se rencontrent."
               </p>
-              <footer className="font-sans text-xs text-rose-deep mt-2">— Sarah Gueuné</footer>
+              <footer className="font-hand text-base mt-2 text-rose">— Sarah</footer>
             </motion.blockquote>
           </motion.div>
         </div>

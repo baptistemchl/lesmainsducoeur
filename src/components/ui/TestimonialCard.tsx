@@ -1,43 +1,59 @@
 import { motion } from "framer-motion"
+import { Star } from "lucide-react"
 import type { Testimonial } from "../../data/testimonials"
 import { fadeInUp } from "../../lib/animations"
+
+const accentColors = ["#E84393", "#8B5CF6", "#F59E0B", "#FB7185"]
 
 interface TestimonialCardProps {
   testimonial: Testimonial
 }
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
+  const color = accentColors[(parseInt(testimonial.id) - 1) % accentColors.length]
+
   return (
     <motion.article
       variants={fadeInUp}
-      whileHover={{ y: -4, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
-      whileTap={{ scale: 0.98 }}
-      className="bg-white rounded-2xl p-7 lg:p-8 shadow-card border border-blush/20 flex flex-col gap-5 group hover:shadow-card-hover hover:border-rose-light/40 transition-all duration-300"
+      whileHover={{ y: -5, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
+      className="rounded-2xl p-7 lg:p-8 flex flex-col gap-5 group transition-all duration-300 relative overflow-hidden"
+      style={{
+        background: "rgba(255, 255, 255, 0.5)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(255, 255, 255, 0.5)",
+      }}
     >
-      <span className="font-cormorant text-6xl text-rose/50 group-hover:text-rose-deep/60 leading-none select-none transition-colors duration-300" aria-hidden="true">
-        "
-      </span>
+      {/* Accent bar en haut */}
+      <div
+        className="absolute top-0 left-8 right-8 h-[2px] rounded-full"
+        style={{ background: color, opacity: 0.4 }}
+      />
 
-      <p className="font-sans text-warm-700 text-sm leading-relaxed italic flex-1 -mt-4">
+      {/* Petites étoiles */}
+      <div className="flex gap-1">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} size={13} fill={color} stroke="none" style={{ opacity: 0.6 }} />
+        ))}
+      </div>
+
+      {/* Contenu — manuscrit, personnel */}
+      <p className="font-hand text-lg lg:text-xl text-warm-800 leading-snug flex-1">
         {testimonial.content}
       </p>
 
-      <div className="flex items-center gap-3 pt-3 border-t border-blush/25">
-        <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg, #DDB8B4 0%, #B5726A 100%)" }}>
-          <span className="font-cormorant text-white font-medium text-sm">
-            {testimonial.author.charAt(0)}
-          </span>
-        </div>
-        <div>
-          <p className="font-sans text-sm font-medium text-warm-900">{testimonial.author}</p>
-          {testimonial.role && (
-            <p className="font-sans text-xs text-warm-500">{testimonial.role}</p>
-          )}
-        </div>
-        {testimonial.service && (
-          <span className="ml-auto font-sans text-xs text-rose-deep font-medium bg-blush/40 px-3 py-1 rounded-full">
-            {testimonial.service}
-          </span>
+      {/* Auteur — une ligne, moderne */}
+      <div className="flex items-center gap-2.5">
+        <div
+          className="w-2 h-2 rounded-full flex-shrink-0"
+          style={{ background: color }}
+        />
+        <p className="font-sans text-sm text-warm-900 font-semibold">
+          {testimonial.author}
+        </p>
+        {(testimonial.role || testimonial.service) && (
+          <p className="font-sans text-xs text-warm-500">
+            {[testimonial.role, testimonial.service].filter(Boolean).join(" · ")}
+          </p>
         )}
       </div>
     </motion.article>
