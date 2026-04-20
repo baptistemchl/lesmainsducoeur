@@ -9,7 +9,7 @@ const steps = [
     description:
       "Avant tout soin, un échange doux s'installe. Sarah vous accueille sans agenda, sans précipitation. Vous partagez ce qui vous amène, ce que vous portez, ce dont vous avez besoin — ou simplement vous arrivez, et c'est suffisant.",
     detail: "En présentiel ou à distance · 10 à 15 min",
-    color: "#E84393",
+    color: "#D36969",
   },
   {
     number: "02",

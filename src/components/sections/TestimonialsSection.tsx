@@ -10,7 +10,7 @@ export function TestimonialsSection() {
       {/* Orbe central */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(ellipse, rgba(251,207,232,0.2) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse, rgba(239,184,184,0.25) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.1, 1], rotate: [0, 3, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />

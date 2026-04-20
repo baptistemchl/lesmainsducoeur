@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import type { Service } from "../../data/services"
 import { floatUpRotate } from "../../lib/animations"
 
-const iconColors = ["#E84393", "#8B5CF6", "#F59E0B", "#FB7185", "#7C3AED", "#F97316"]
+const iconColors = ["#D36969", "#8B5CF6", "#F59E0B", "#FB7185", "#7C3AED", "#F97316"]
 
 interface ServiceCardProps {
   service: Service

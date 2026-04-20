@@ -9,9 +9,9 @@ const differentiators = [
     title: "Écoute sans jugement",
     text: "Chaque personne arrive avec son histoire unique. Sarah reçoit sans catégoriser, sans interpréter — juste avec une présence sincère et ouverte.",
     accent: "from-rose-light/50 to-blush/30",
-    iconColor: "#E84393",
-    iconBg: "rgba(232, 67, 147, 0.12)",
-    iconBgHover: "rgba(232, 67, 147, 0.25)",
+    iconColor: "#D36969",
+    iconBg: "rgba(211, 105, 105, 0.14)",
+    iconBgHover: "rgba(211, 105, 105, 0.28)",
   },
   {
     Icon: Compass,
@@ -45,9 +45,9 @@ const differentiators = [
     title: "Expérience sensible",
     text: "Chaque séance est pensée comme un moment à part entière — un espace de soin, de beauté intérieure et de retrouvailles avec soi.",
     accent: "from-rose-light/50 to-blush/30",
-    iconColor: "#E84393",
-    iconBg: "rgba(232, 67, 147, 0.12)",
-    iconBgHover: "rgba(232, 67, 147, 0.25)",
+    iconColor: "#D36969",
+    iconBg: "rgba(211, 105, 105, 0.14)",
+    iconBgHover: "rgba(211, 105, 105, 0.28)",
   },
   {
     Icon: Clock,
@@ -66,7 +66,7 @@ export function WhyUsSection() {
       {/* Halo décoratif */}
       <motion.div
         className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(251,207,232,0.4) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(239,184,184,0.42) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />

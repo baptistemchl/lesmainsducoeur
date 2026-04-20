@@ -18,9 +18,9 @@ export function HeroComposition() {
         >
           <defs>
             <radialGradient id="halo-fuchsia" cx="45%" cy="42%" r="55%">
-              <stop offset="0%" stopColor="#FBCFE8" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#F9A8D4" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#E84393" stopOpacity="0" />
+              <stop offset="0%" stopColor="#F9E7E7" stopOpacity="0.85" />
+              <stop offset="50%" stopColor="#EFB8B8" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#D36969" stopOpacity="0" />
             </radialGradient>
             <radialGradient id="halo-orchid" cx="60%" cy="55%" r="50%">
               <stop offset="0%" stopColor="#C4B5FD" stopOpacity="0.6" />
@@ -31,8 +31,8 @@ export function HeroComposition() {
               <stop offset="100%" stopColor="#F59E0B" stopOpacity="0" />
             </radialGradient>
             <linearGradient id="petal-pink" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF1493" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#E84393" stopOpacity="0.15" />
+              <stop offset="0%" stopColor="#C23D3D" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#D36969" stopOpacity="0.15" />
             </linearGradient>
             <linearGradient id="petal-purple" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.35" />
@@ -85,7 +85,7 @@ export function HeroComposition() {
               cy="160"
               rx="14"
               ry="38"
-              fill={i % 2 === 0 ? '#E84393' : '#8B5CF6'}
+              fill={i % 2 === 0 ? '#D36969' : '#8B5CF6'}
               fillOpacity="0.25"
               transform={`rotate(${angle} 240 240)`}
             />
@@ -99,7 +99,7 @@ export function HeroComposition() {
           <g transform="translate(225, 225)" opacity="0.6">
             <path
               d="M15 18c-5 0-8-3-8-7s3-7 8-7c3 0 5 1 7 3"
-              stroke="#E84393"
+              stroke="#D36969"
               strokeWidth="1.8"
               fill="none"
               strokeLinecap="round"
@@ -115,7 +115,7 @@ export function HeroComposition() {
           </g>
 
           {/* Sparkle points */}
-          <g fill="#E84393" fillOpacity="0.6">
+          <g fill="#D36969" fillOpacity="0.6">
             <circle cx="95" cy="140" r="3" />
             <circle cx="380" cy="165" r="2.5" />
             <circle cx="360" cy="340" r="3.5" />
@@ -139,7 +139,7 @@ export function HeroComposition() {
           {/* Lignes de flux énergétique */}
           <path
             d="M150 150 Q200 180 240 195 Q280 210 330 180"
-            stroke="#E84393"
+            stroke="#D36969"
             strokeWidth="0.8"
             strokeOpacity="0.25"
             fill="none"
@@ -173,7 +173,7 @@ export function HeroComposition() {
         transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
       >
         <svg viewBox="0 0 480 480" className="w-full max-w-[480px] h-auto opacity-30" fill="none">
-          <circle cx="240" cy="240" r="195" stroke="#E84393" strokeWidth="0.8" strokeDasharray="6 12 2 8" />
+          <circle cx="240" cy="240" r="195" stroke="#D36969" strokeWidth="0.8" strokeDasharray="6 12 2 8" />
           {/* Petits diamants sur l'orbite */}
           {[0, 72, 144, 216, 288].map((angle) => (
             <circle
@@ -181,7 +181,7 @@ export function HeroComposition() {
               cx="240"
               cy="45"
               r="3"
-              fill="#E84393"
+              fill="#D36969"
               fillOpacity="0.5"
               transform={`rotate(${angle} 240 240)`}
             />
@@ -214,7 +214,7 @@ export function HeroComposition() {
       {/* Orbe fuchsia flottant */}
       <motion.div
         className="absolute -top-8 -right-8 w-44 h-44 rounded-full blur-2xl"
-        style={{ background: 'radial-gradient(circle, rgba(232,67,147,0.3) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(211,105,105,0.32) 0%, transparent 70%)' }}
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       />

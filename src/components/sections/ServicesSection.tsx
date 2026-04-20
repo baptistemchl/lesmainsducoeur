@@ -16,7 +16,7 @@ export function ServicesSection() {
       />
       <motion.div
         className="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none translate-y-1/3 -translate-x-1/4 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(251,207,232,0.3) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(239,184,184,0.32) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 3 }}
       />

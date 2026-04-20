@@ -25,7 +25,7 @@ export function AboutSection() {
               {/* Halo subtil derrière le panneau */}
               <motion.div
                 className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(251,207,232,0.35) 0%, transparent 70%)" }}
+                style={{ background: "radial-gradient(circle, rgba(239,184,184,0.38) 0%, transparent 70%)" }}
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -51,7 +51,7 @@ export function AboutSection() {
                       cy="42"
                       rx="10"
                       ry="30"
-                      fill="#E84393"
+                      fill="#D36969"
                       fillOpacity="0.12"
                       transform={`rotate(${angle} 100 100)`}
                     />
@@ -70,10 +70,10 @@ export function AboutSection() {
                     />
                   ))}
                   {/* Centre */}
-                  <circle cx="100" cy="100" r="16" fill="#E84393" fillOpacity="0.08" />
-                  <circle cx="100" cy="100" r="8" fill="#E84393" fillOpacity="0.15" />
+                  <circle cx="100" cy="100" r="16" fill="#D36969" fillOpacity="0.08" />
+                  <circle cx="100" cy="100" r="8" fill="#D36969" fillOpacity="0.15" />
                   {/* Anneau */}
-                  <circle cx="100" cy="100" r="70" stroke="#E84393" strokeWidth="0.5" strokeOpacity="0.15" fill="none" strokeDasharray="3 6" />
+                  <circle cx="100" cy="100" r="70" stroke="#D36969" strokeWidth="0.5" strokeOpacity="0.15" fill="none" strokeDasharray="3 6" />
                 </svg>
               </motion.div>
 
@@ -147,7 +147,7 @@ export function AboutSection() {
             <motion.blockquote
               variants={fadeInUp}
               className="pl-5 mt-2"
-              style={{ borderLeft: "3px solid #E84393" }}
+              style={{ borderLeft: "3px solid #D36969" }}
             >
               <p className="font-cormorant text-xl italic font-light text-warm-800 leading-relaxed">
                 "J'offre des instants de lumière et de douceur, où l'âme et le corps se rencontrent."

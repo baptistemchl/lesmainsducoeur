@@ -3,7 +3,7 @@ import { Star } from "lucide-react"
 import type { Testimonial } from "../../data/testimonials"
 import { fadeInUp } from "../../lib/animations"
 
-const accentColors = ["#E84393", "#8B5CF6", "#F59E0B", "#FB7185"]
+const accentColors = ["#D36969", "#8B5CF6", "#F59E0B", "#FB7185"]
 
 interface TestimonialCardProps {
   testimonial: Testimonial

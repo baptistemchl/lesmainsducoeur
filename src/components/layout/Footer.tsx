@@ -67,7 +67,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-sans text-sm transition-colors duration-200 mt-1"
               style={{ color: "rgba(196,181,253,0.6)" }}
-              onMouseEnter={(e) => e.currentTarget.style.color = "#FD79A8"}
+              onMouseEnter={(e) => e.currentTarget.style.color = "#EFB8B8"}
               onMouseLeave={(e) => e.currentTarget.style.color = "rgba(196,181,253,0.6)"}
             >
               <Instagram size={14} />
@@ -87,7 +87,7 @@ export function Footer() {
           </p>
           <p className="font-sans text-xs flex items-center gap-1.5" style={{ color: "rgba(168,139,250,0.4)" }}>
             © {year} Les Mains du Coeur — Sarah Gueuné.{" "}
-            <span className="font-hand text-sm" style={{ color: "rgba(232, 67, 147, 0.6)" }}>
+            <span className="font-hand text-sm" style={{ color: "rgba(211, 105, 105, 0.6)" }}>
               Fait avec <Heart size={11} className="inline" /> en France
             </span>
           </p>

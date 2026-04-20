@@ -44,12 +44,12 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
               backdropFilter: "blur(24px)",
             }}
           >
-            <div className="flex items-center justify-between p-6" style={{ borderBottom: "1px solid rgba(251, 207, 232, 0.4)" }}>
+            <div className="flex items-center justify-between p-6" style={{ borderBottom: "1px solid rgba(239, 184, 184, 0.45)" }}>
               <span className="font-cormorant text-xl font-medium text-warm-900">Menu</span>
               <button
                 onClick={onClose}
                 className="w-9 h-9 rounded-full flex items-center justify-center text-warm-700 hover:bg-blush/20 transition-colors"
-                style={{ border: "1px solid rgba(251, 207, 232, 0.5)" }}
+                style={{ border: "1px solid rgba(239, 184, 184, 0.55)" }}
                 aria-label="Fermer le menu"
               >
                 <X size={16} />
@@ -71,7 +71,7 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
               ))}
             </nav>
 
-            <div className="p-6" style={{ borderTop: "1px solid rgba(251, 207, 232, 0.4)" }}>
+            <div className="p-6" style={{ borderTop: "1px solid rgba(239, 184, 184, 0.45)" }}>
               <button
                 onClick={() => handleNavClick("#contact")}
                 className="btn-primary w-full justify-center"

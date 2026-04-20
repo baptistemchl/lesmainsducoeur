@@ -11,7 +11,7 @@ export function FaqItem({ entry }: FaqItemProps) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div style={{ borderBottom: "1px solid rgba(251, 207, 232, 0.4)" }} className="last:border-0">
+    <div style={{ borderBottom: "1px solid rgba(239, 184, 184, 0.45)" }} className="last:border-0">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between gap-4 py-5 text-left group"
@@ -23,9 +23,9 @@ export function FaqItem({ entry }: FaqItemProps) {
         <span
           className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
           style={{
-            border: open ? "1px solid rgba(232, 67, 147, 0.5)" : "1px solid rgba(251, 207, 232, 0.6)",
-            background: open ? "rgba(232, 67, 147, 0.1)" : "transparent",
-            color: "#E84393",
+            border: open ? "1px solid rgba(211, 105, 105, 0.5)" : "1px solid rgba(239, 184, 184, 0.6)",
+            background: open ? "rgba(211, 105, 105, 0.1)" : "transparent",
+            color: "#D36969",
           }}
         >
           {open ? <Minus size={14} /> : <Plus size={14} />}

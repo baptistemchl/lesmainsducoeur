@@ -9,7 +9,7 @@ export function HeroSection() {
       {/* Halos de fond animés — fuchsia, violet, doré */}
       <motion.div
         className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(251,207,232,0.5) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(239,184,184,0.5) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.6, 0.4] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -22,7 +22,7 @@ export function HeroSection() {
       {/* Halo accent fuchsia */}
       <motion.div
         className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(232,67,147,0.2) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(211,105,105,0.22) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.3, 1], x: [0, 30, 0], y: [0, -20, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />

@@ -10,13 +10,24 @@ const config: Config = {
         sans: ['"Quicksand"', 'system-ui', 'sans-serif'],
       },
       colors: {
-        /* ── Girly Pinks / Fuchsia ── */
+        /* ── Rose (palette autour de Valspar Camille Pink 2002-4B) ── */
         rose: {
-          DEFAULT: '#E84393',
-          deep: '#C2185B',
-          light: '#FD79A8',
-          muted: '#FDCFE8',
-          vibrant: '#FF1493',
+          50: '#FCF3F3',
+          100: '#F9E7E7',
+          200: '#F4D2D2',
+          300: '#EFB8B8',
+          400: '#E39696',
+          500: '#D36969',
+          600: '#C23D3D',
+          700: '#9E2E2E',
+          800: '#7A1F1F',
+          900: '#5D1414',
+          DEFAULT: '#EFB8B8',
+          pale: '#FCF3F3',
+          muted: '#F9E7E7',
+          light: '#F4D2D2',
+          vibrant: '#D36969',
+          deep: '#9E2E2E',
         },
         /* ── Meditation Purples ── */
         sage: {
@@ -69,14 +80,14 @@ const config: Config = {
       },
       boxShadow: {
         card: '0 4px 24px rgba(168, 85, 247, 0.08), 0 1px 4px rgba(168, 85, 247, 0.04)',
-        'card-hover': '0 20px 60px rgba(232, 67, 147, 0.15), 0 8px 16px rgba(139, 92, 246, 0.1)',
-        soft: '0 8px 40px rgba(232, 67, 147, 0.18)',
-        halo: '0 0 80px rgba(251, 207, 232, 0.6)',
+        'card-hover': '0 20px 60px rgba(211, 105, 105, 0.18), 0 8px 16px rgba(139, 92, 246, 0.08)',
+        soft: '0 8px 40px rgba(211, 105, 105, 0.20)',
+        halo: '0 0 80px rgba(239, 184, 184, 0.55)',
         header: '0 1px 24px rgba(124, 58, 237, 0.08)',
-        glow: '0 0 40px rgba(232, 67, 147, 0.35)',
+        glow: '0 0 40px rgba(211, 105, 105, 0.35)',
         'glow-sage': '0 0 40px rgba(139, 92, 246, 0.25)',
         'glow-gold': '0 0 30px rgba(245, 158, 11, 0.25)',
-        neon: '0 0 15px rgba(255, 20, 147, 0.4), 0 0 45px rgba(139, 92, 246, 0.2)',
+        neon: '0 0 15px rgba(194, 61, 61, 0.4), 0 0 45px rgba(139, 92, 246, 0.2)',
         glass: '0 8px 32px rgba(31, 38, 135, 0.15)',
       },
       borderRadius: {
@@ -132,8 +143,8 @@ const config: Config = {
           '50%': { opacity: '1', transform: 'scale(1.2)' },
         },
         'glow-pulse': {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(232,67,147,0.2)' },
-          '50%': { boxShadow: '0 0 40px rgba(232,67,147,0.5), 0 0 80px rgba(139,92,246,0.2)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(211,105,105,0.22)' },
+          '50%': { boxShadow: '0 0 40px rgba(211,105,105,0.5), 0 0 80px rgba(139,92,246,0.2)' },
         },
       },
       animation: {

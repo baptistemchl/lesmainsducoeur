@@ -70,7 +70,7 @@ export function Header() {
             <button
               onClick={() => setMobileOpen(true)}
               className="lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-warm-800 hover:bg-blush/30 active:bg-blush/50 transition-colors"
-              style={{ border: "1px solid rgba(253, 121, 168, 0.4)" }}
+              style={{ border: "1px solid rgba(239, 184, 184, 0.55)" }}
               aria-label="Ouvrir le menu"
             >
               <Menu size={18} />

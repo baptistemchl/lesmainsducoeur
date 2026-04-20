@@ -7,7 +7,7 @@ const pillars = [
     title: "Douceur",
     text: "Aucune violence, aucune contrainte. Les soins s'invitent avec légèreté, au rythme qui est le vôtre.",
     gradient: "from-rose-light/40 to-rose-muted/20",
-    glow: "rgba(232, 67, 147, 0.15)",
+    glow: "rgba(211, 105, 105, 0.2)",
   },
   {
     icon: "◈",
@@ -38,7 +38,7 @@ export function PhilosophySection() {
       {/* Halos décoratifs animés */}
       <motion.div
         className="absolute top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(232,67,147,0.15) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(211,105,105,0.2) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.2, 1], x: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -110,7 +110,7 @@ export function PhilosophySection() {
 
                 <motion.span
                   className="relative text-xl transition-all duration-300 origin-left"
-                  style={{ color: "rgba(232, 67, 147, 0.6)" }}
+                  style={{ color: "rgba(211, 105, 105, 0.6)" }}
                 >
                   <span className="group-hover:hidden">{pillar.icon}</span>
                   <span className="hidden group-hover:inline text-rose-light group-hover:scale-125">{pillar.icon}</span>

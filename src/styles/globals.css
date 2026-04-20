@@ -4,6 +4,10 @@
 
 /* ─── Base styles ─── */
 @layer base {
+  :root {
+    color-scheme: only light;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -40,7 +44,7 @@
     @apply py-20 lg:py-32;
   }
 
-  /* Bouton primaire — couleur unie fuchsia */
+  /* Bouton primaire — rose Camille (Valspar 2002-4B) */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
            text-white font-sans font-semibold text-sm
@@ -48,13 +52,13 @@
            active:scale-[0.96]
            transition-all duration-300 ease-out
            shadow-soft;
-    background-color: #E84393;
+    background-color: #D36969;
   }
 
   .btn-primary:hover {
     @apply shadow-glow;
     transform: translateY(-2px);
-    background-color: #C2185B;
+    background-color: #9E2E2E;
   }
 
   /* Bouton fantôme */
@@ -114,13 +118,13 @@
   .card:hover {
     @apply shadow-card-hover -translate-y-2;
     background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(232, 67, 147, 0.2);
+    border-color: rgba(211, 105, 105, 0.22);
   }
 
   /* Séparateur ornemental */
   .ornament {
     @apply flex items-center justify-center gap-3 text-xs;
-    color: rgba(232, 67, 147, 0.5);
+    color: rgba(211, 105, 105, 0.55);
   }
 
   .ornament::before,
@@ -141,7 +145,7 @@
 /* ─── Utility classes ─── */
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #E84393 0%, #8B5CF6 40%, #F59E0B 100%);
+    background: linear-gradient(135deg, #D36969 0%, #8B5CF6 40%, #F59E0B 100%);
     background-size: 200% 200%;
     animation: gradient-shift 5s ease infinite;
     -webkit-background-clip: text;
@@ -150,7 +154,7 @@
   }
 
   .text-gradient-pink {
-    background: linear-gradient(135deg, #FF1493 0%, #E84393 50%, #FD79A8 100%);
+    background: linear-gradient(135deg, #C23D3D 0%, #D36969 50%, #EFB8B8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -165,7 +169,7 @@
   }
 
   .bg-aurora {
-    background: linear-gradient(-45deg, #FF1493, #8B5CF6, #F59E0B, #E84393, #7C3AED, #FD79A8);
+    background: linear-gradient(-45deg, #C23D3D, #8B5CF6, #F59E0B, #D36969, #7C3AED, #EFB8B8);
     background-size: 400% 400%;
     animation: aurora 15s ease infinite;
   }
@@ -200,7 +204,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #E84393, #8B5CF6, #F59E0B);
+    background: linear-gradient(135deg, #D36969, #8B5CF6, #F59E0B);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;

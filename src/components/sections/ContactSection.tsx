@@ -19,7 +19,7 @@ export function ContactSection() {
       />
       <motion.div
         className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(251,207,232,0.2) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(239,184,184,0.25) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
@@ -54,7 +54,7 @@ export function ContactSection() {
                   label: "Email",
                   value: "contact@lesmainsdocoeur.fr",
                   href: "mailto:contact@lesmainsdocoeur.fr",
-                  color: "#E84393",
+                  color: "#D36969",
                 },
                 {
                   Icon: Phone,

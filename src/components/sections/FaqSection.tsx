@@ -10,7 +10,7 @@ export function FaqSection() {
       {/* Orbe décoratif */}
       <motion.div
         className="absolute bottom-0 right-0 w-80 h-80 rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(232,67,147,0.1) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(211,105,105,0.12) 0%, transparent 70%)" }}
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
