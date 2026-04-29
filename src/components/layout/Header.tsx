@@ -30,18 +30,25 @@ export function Header() {
           {/* Logo */}
           <a
             href="#"
-            className="flex flex-col leading-none group"
+            className="flex items-center gap-3 group"
             onClick={(e) => {
               e.preventDefault()
               window.scrollTo({ top: 0, behavior: "smooth" })
             }}
           >
-            <span className="font-cormorant text-xl font-medium text-warm-900 group-hover:text-rose transition-colors duration-200">
-              Les Mains du Coeur
-            </span>
-            <span className="font-sans text-[10px] tracking-widest text-warm-500 uppercase">
-              Sarah Gueuné
-            </span>
+            <img
+              src="/images/logo-dark.svg"
+              alt="Les Mains du Coeur"
+              className="h-11 w-auto flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="flex flex-col leading-none">
+              <span className="font-cormorant text-xl font-medium text-warm-900 group-hover:text-rose transition-colors duration-200">
+                Les Mains du Coeur
+              </span>
+              <span className="font-sans text-[10px] tracking-widest text-warm-500 uppercase mt-0.5">
+                Sarah
+              </span>
+            </div>
           </a>
 
           {/* Navigation desktop */}

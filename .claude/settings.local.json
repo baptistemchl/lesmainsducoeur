@@ -8,7 +8,13 @@
       "Bash(git push:*)",
       "WebSearch",
       "WebFetch(domain:www.colorxs.com)",
-      "WebFetch(domain:hextoral.com)"
+      "WebFetch(domain:hextoral.com)",
+      "Bash(npm run *)",
+      "Bash(node scripts/generate-og-image.mjs)",
+      "Bash(node scripts/generate-icons.mjs)",
+      "Bash(node scripts/trim-images.mjs)",
+      "Bash(node scripts/create-logo-variants.mjs)",
+      "Bash(node scripts/debug-logo.mjs)"
     ]
   }
 }

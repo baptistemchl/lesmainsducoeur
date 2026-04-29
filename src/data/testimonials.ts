@@ -35,7 +35,7 @@ export const testimonials: Testimonial[] = [
     id: "4",
     author: "Isabelle F.",
     role: "Directrice artistique, 50 ans",
-    service: "Guidance + Déblocage",
+    service: "Massage Abhyanga",
     content:
       "Sarah m'a accompagnée lors d'une période difficile avec une écoute rare et une bienveillance sincère. Je me suis sentie comprise et soutenue à chaque étape, sans que rien ne soit imposé. Un vrai cadeau que de rencontrer quelqu'un qui travaille avec autant d'intégrité.",
   },

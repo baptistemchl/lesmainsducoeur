@@ -9,14 +9,24 @@ export function Footer() {
       <div className="section-container py-14 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10" style={{ borderBottom: "1px solid rgba(196, 181, 253, 0.15)" }}>
           {/* Identité */}
-          <div className="flex flex-col gap-3">
-            <p className="font-cormorant text-2xl font-light leading-tight" style={{ color: "rgba(237,233,254,0.95)" }}>
-              Les Mains<br />du Coeur
-            </p>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <img
+                src="/images/logo-dark.svg"
+                alt="Les Mains du Coeur"
+                className="h-16 w-auto flex-shrink-0"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+              <div className="flex flex-col leading-tight">
+                <p className="font-cormorant text-2xl font-light" style={{ color: "rgba(237,233,254,0.95)" }}>
+                  Les Mains<br />du Coeur
+                </p>
+              </div>
+            </div>
             <p className="font-sans text-xs tracking-widest uppercase" style={{ color: "rgba(168,139,250,0.5)" }}>
-              Sarah Gueuné
+              Sarah
             </p>
-            <p className="font-sans text-sm leading-relaxed mt-1" style={{ color: "rgba(168,139,250,0.5)" }}>
+            <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(168,139,250,0.5)" }}>
               Soins énergétiques et accompagnement intuitif, avec douceur et bienveillance.
             </p>
           </div>
@@ -86,7 +96,7 @@ export function Footer() {
             un professionnel de santé qualifié.
           </p>
           <p className="font-sans text-xs flex items-center gap-1.5" style={{ color: "rgba(168,139,250,0.4)" }}>
-            © {year} Les Mains du Coeur — Sarah Gueuné.{" "}
+            © {year} Les Mains du Coeur — Sarah.{" "}
             <span className="font-hand text-sm" style={{ color: "rgba(211, 105, 105, 0.6)" }}>
               Fait avec <Heart size={11} className="inline" /> en France
             </span>

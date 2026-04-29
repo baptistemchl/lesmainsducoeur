@@ -6,7 +6,7 @@ export function AboutSection() {
     <section id="a-propos" className="section-padding bg-cream">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Panneau zen — présentation Sarah */}
+          {/* Portrait Sarah — encadré doux avec halos */}
           <motion.div
             variants={scaleIn}
             initial="hidden"
@@ -14,96 +14,58 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             className="flex justify-center lg:justify-start"
           >
-            <div
-              className="relative w-72 lg:w-[340px] rounded-3xl overflow-hidden shadow-card p-8 lg:p-10 flex flex-col items-center gap-6"
-              style={{
-                background: "rgba(255, 255, 255, 0.55)",
-                backdropFilter: "blur(20px)",
-                border: "1px solid rgba(255, 255, 255, 0.5)",
-              }}
-            >
-              {/* Halo subtil derrière le panneau */}
+            <div className="relative w-72 lg:w-[360px]">
+              {/* Halos derrière l'image */}
               <motion.div
-                className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-3xl pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(239,184,184,0.38) 0%, transparent 70%)" }}
+                className="absolute -top-10 -left-10 w-60 h-60 rounded-full blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(239,184,184,0.45) 0%, transparent 70%)" }}
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div
-                className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full blur-3xl pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(196,181,253,0.25) 0%, transparent 70%)" }}
+                className="absolute -bottom-10 -right-10 w-56 h-56 rounded-full blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(196,181,253,0.3) 0%, transparent 70%)" }}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
               />
 
-              {/* Mandala lotus miniature */}
-              <motion.div
-                className="relative w-32 h-32"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              {/* Portrait */}
+              <div
+                className="relative rounded-3xl overflow-hidden shadow-card aspect-[3/4]"
+                style={{
+                  border: "1px solid rgba(255, 255, 255, 0.6)",
+                }}
               >
-                <svg viewBox="0 0 200 200" fill="none" className="w-full h-full" aria-hidden="true">
-                  {/* Pétales externes */}
-                  {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
-                    <ellipse
-                      key={angle}
-                      cx="100"
-                      cy="42"
-                      rx="10"
-                      ry="30"
-                      fill="#D36969"
-                      fillOpacity="0.12"
-                      transform={`rotate(${angle} 100 100)`}
-                    />
-                  ))}
-                  {/* Pétales internes */}
-                  {[0, 60, 120, 180, 240, 300].map((angle) => (
-                    <ellipse
-                      key={`inner-${angle}`}
-                      cx="100"
-                      cy="58"
-                      rx="8"
-                      ry="22"
-                      fill="#8B5CF6"
-                      fillOpacity="0.1"
-                      transform={`rotate(${angle} 100 100)`}
-                    />
-                  ))}
-                  {/* Centre */}
-                  <circle cx="100" cy="100" r="16" fill="#D36969" fillOpacity="0.08" />
-                  <circle cx="100" cy="100" r="8" fill="#D36969" fillOpacity="0.15" />
-                  {/* Anneau */}
-                  <circle cx="100" cy="100" r="70" stroke="#D36969" strokeWidth="0.5" strokeOpacity="0.15" fill="none" strokeDasharray="3 6" />
-                </svg>
-              </motion.div>
+                <img
+                  src="/images/Screenshot_20260210_213325_Gallery.jpg"
+                  alt="Sarah, praticienne en soins énergétiques"
+                  className="w-full h-full object-cover"
+                />
+                {/* Voile doux pour ancrer le texte */}
+                <div className="absolute inset-0 bg-gradient-to-t from-warm-900/40 via-transparent to-transparent pointer-events-none" />
 
-              {/* Identité */}
-              <div className="relative flex flex-col items-center gap-1 text-center">
-                <h3 className="font-cormorant text-3xl font-light text-warm-900 tracking-wide">
-                  Sarah Gueuné
-                </h3>
-                <div className="w-10 h-px bg-rose/30 my-2" />
-                <p className="font-sans text-xs text-rose font-semibold tracking-widest uppercase">
-                  Praticienne en soins énergétiques
-                </p>
+                {/* Carte signature en bas */}
+                <div
+                  className="absolute bottom-4 left-4 right-4 px-5 py-3 rounded-2xl flex flex-col gap-0.5"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.75)",
+                    backdropFilter: "blur(16px)",
+                    border: "1px solid rgba(255, 255, 255, 0.6)",
+                  }}
+                >
+                  <h3 className="font-cormorant text-2xl font-light text-warm-900 leading-none">
+                    Sarah
+                  </h3>
+                  <p className="font-sans text-[10px] text-rose font-semibold tracking-widest uppercase">
+                    Praticienne en soins énergétiques
+                  </p>
+                </div>
               </div>
 
-              {/* Mini citation — manuscrite */}
-              <p className="relative font-hand text-lg text-warm-600 text-center leading-snug">
+              {/* Mini citation manuscrite — sous le portrait */}
+              <p className="relative font-hand text-lg text-warm-600 text-center leading-snug mt-6">
                 "L'énergie ne ment pas,<br />elle se ressent."
               </p>
-
-              {/* Points d'expertise */}
-              <div className="relative flex flex-wrap justify-center gap-2">
-                {["Magnétisme", "Lahochi", "Guidance"].map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-sans text-[10px] font-semibold tracking-wider uppercase text-warm-500 px-3 py-1.5 rounded-full border border-rose-muted/30 bg-white/50"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </div>
           </motion.div>
 
@@ -116,31 +78,35 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
           >
             <motion.p variants={fadeInUp} className="section-label">
-              À propos
+              Qui suis-je ?
             </motion.p>
 
             <motion.h2 variants={fadeInUp} className="section-title">
-              Un chemin de lumière<br />
-              <em className="not-italic text-rose font-medium">hérité et sincère</em>
+              Bercée par le magnétisme,<br />
+              <em className="not-italic text-rose font-medium">guidée par le cœur</em>
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="section-subtitle">
-              Portée depuis toujours par la magie des mains et de l'énergie — un héritage précieux
-              reçu de son père magnétiseur — Sarah marche aujourd'hui sur son propre chemin, avec
-              humilité et profonde conviction.
+              Je m'appelle Sarah. J'ai été bercée par le magnétisme, l'énergie et le subtil
+              grâce à mon papa. Je l'ai vu écouter, soulager, apaiser. Il m'a transmis ses
+              valeurs, ses convictions, (un peu) de son savoir-faire, mais surtout, beaucoup
+              d'amour et cette façon de faire tout ça avec le cœur.
             </motion.p>
 
             <motion.p variants={fadeInUp} className="font-sans text-warm-700 leading-relaxed text-sm">
-              Avec <strong className="font-semibold text-warm-900">Les Mains du Coeur</strong>, elle
-              offre des instants de lumière et de douceur, des espaces où l'âme et le corps se
-              rencontrent, loin de l'agitation du monde. Chaque séance est unique, chaque personne
-              est accueillie dans sa singularité, sans jugement et sans protocole figé.
+              Petite, je posais déjà les mains, sans vraiment savoir, sur mon papa et mes
+              nombreux animaux — c'était instinctif, simple, comme une évidence. Puis la vie
+              m'a amenée à traverser sa perte. Un moment difficile, mais aussi un tournant.
+              C'est là que tout a pris encore plus de sens, comme une continuité, une
+              transmission.
             </motion.p>
 
             <motion.p variants={fadeInUp} className="font-sans text-warm-700 leading-relaxed text-sm">
-              Sa pratique s'enracine dans une approche intuitive, douce et contemporaine du soin
-              énergétique — loin des clichés, ancrée dans le réel, ouverte à toutes et à tous.
-              Ce qui guide Sarah avant tout : la sincérité du lien et l'intention de bien.
+              J'ai donc créé <strong className="font-semibold text-warm-900">Les Mains du Cœur</strong>,
+              simplement pour continuer à donner, à ma manière, ce que lui m'avait transmis.
+              Aujourd'hui, j'ai à cœur d'offrir un espace simple et bienveillant — une vraie
+              bulle de douceur, où chacun peut se déposer, se reconnecter à soi, retrouver un
+              peu plus de lumière.
             </motion.p>
 
             {/* Citation */}
@@ -150,7 +116,7 @@ export function AboutSection() {
               style={{ borderLeft: "3px solid #D36969" }}
             >
               <p className="font-cormorant text-xl italic font-light text-warm-800 leading-relaxed">
-                "J'offre des instants de lumière et de douceur, où l'âme et le corps se rencontrent."
+                "Une parenthèse de sérénité dans votre quotidien."
               </p>
               <footer className="font-hand text-base mt-2 text-rose">— Sarah</footer>
             </motion.blockquote>

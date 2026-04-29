@@ -73,7 +73,7 @@ export function HeroSection() {
 
             {/* Corps */}
             <motion.p variants={fadeInUp} className="section-subtitle max-w-md">
-              Portée par l'héritage de son père magnétiseur, Sarah Gueuné accompagne chaque
+              Portée par l'héritage de son père magnétiseur, Sarah accompagne chaque
               personne avec une présence douce et une intuition sincère — pour retrouver
               équilibre, légèreté et ancrage intérieur.
             </motion.p>
@@ -110,7 +110,7 @@ export function HeroSection() {
             >
               {[
                 { value: "+ 200", label: "personnes accompagnées" },
-                { value: "6", label: "soins proposés" },
+                { value: "4", label: "soins proposés" },
                 { value: "∞", label: "bienveillance" },
               ].map((stat, i) => (
                 <motion.div

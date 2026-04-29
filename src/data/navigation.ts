@@ -7,6 +7,7 @@ export const navItems: NavItem[] = [
   { label: "À propos", href: "#a-propos" },
   { label: "Soins", href: "#soins" },
   { label: "Approche", href: "#approche" },
+  { label: "Ayurvéda", href: "#ayurveda" },
   { label: "Témoignages", href: "#temoignages" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },

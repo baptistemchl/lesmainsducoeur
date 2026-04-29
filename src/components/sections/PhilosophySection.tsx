@@ -5,30 +5,23 @@ const pillars = [
   {
     icon: "✦",
     title: "Douceur",
-    text: "Aucune violence, aucune contrainte. Les soins s'invitent avec légèreté, au rythme qui est le vôtre.",
+    text: "Un accompagnement respectueux et bienveillant où chacun peut avancer à son propre rythme.",
     gradient: "from-rose-light/40 to-rose-muted/20",
     glow: "rgba(211, 105, 105, 0.2)",
   },
   {
     icon: "◈",
     title: "Intuition",
-    text: "Chaque séance est guidée par une écoute fine et une présence sensible, non par un protocole rigide.",
+    text: "Une écoute fine de ce qui se joue au-delà des mots, pour ajuster au plus juste le soin.",
     gradient: "from-sage-light/40 to-sage-pale/20",
     glow: "rgba(139, 92, 246, 0.15)",
   },
   {
     icon: "❋",
-    title: "Intégrité",
-    text: "Pas de promesses excessives, pas de discours dogmatique — seulement une pratique sincère et éthique.",
+    title: "Authenticité",
+    text: "Une pratique sincère, vivante, guidée par le ressenti et la justesse de l'instant.",
     gradient: "from-gold-soft/40 to-gold-pale/20",
     glow: "rgba(245, 158, 11, 0.15)",
-  },
-  {
-    icon: "⟡",
-    title: "Ancrage",
-    text: "Le spirituel et le concret marchent ensemble. L'énergie se vit dans le corps, dans le quotidien.",
-    gradient: "from-coral-light/40 to-rose-muted/20",
-    glow: "rgba(251, 113, 133, 0.15)",
   },
 ]
 
@@ -66,7 +59,7 @@ export function PhilosophySection() {
         >
           {/* Grande citation centrale — zen reveal */}
           <motion.div variants={zenReveal} className="text-center max-w-3xl mx-auto">
-            <p className="section-label mb-6" style={{ opacity: 0.8 }}>Notre philosophie</p>
+            <p className="section-label mb-6" style={{ opacity: 0.8 }}>Mon approche</p>
             <blockquote
               className="rounded-3xl px-8 py-6 lg:px-12 lg:py-8"
               style={{
@@ -76,15 +69,16 @@ export function PhilosophySection() {
               }}
             >
               <p className="font-hand text-3xl lg:text-4xl leading-snug" style={{ color: "rgba(237,233,254,0.9)" }}>
-                "Le soin énergétique n'est pas une magie mystérieuse — c'est une présence
-                offerte, un espace créé, une écoute qui va au-delà des mots."
+                "À travers les épreuves et les ouvertures de la vie, j'ai compris que le soin
+                commence dans une présence sincère — là où l'on apprend à écouter au-delà
+                de ce qui se dit."
               </p>
             </blockquote>
           </motion.div>
 
           {/* Piliers — wave stagger */}
           <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto w-full"
             variants={waveStagger}
           >
             {pillars.map((pillar) => (
@@ -93,7 +87,7 @@ export function PhilosophySection() {
                 variants={zenReveal}
                 whileHover={{ y: -8, scale: 1.03, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
                 whileTap={{ scale: 0.97 }}
-                className="relative flex flex-col gap-3 p-6 rounded-2xl border border-white/10 hover:border-rose/30 transition-all duration-300 group overflow-hidden"
+                className="relative flex flex-col gap-3 p-7 rounded-2xl border border-white/10 hover:border-rose/30 transition-all duration-300 group overflow-hidden"
                 style={{
                   background: "rgba(255, 255, 255, 0.06)",
                   backdropFilter: "blur(12px)",
@@ -109,16 +103,16 @@ export function PhilosophySection() {
                 />
 
                 <motion.span
-                  className="relative text-xl transition-all duration-300 origin-left"
+                  className="relative text-2xl transition-all duration-300 origin-left"
                   style={{ color: "rgba(211, 105, 105, 0.6)" }}
                 >
                   <span className="group-hover:hidden">{pillar.icon}</span>
                   <span className="hidden group-hover:inline text-rose-light group-hover:scale-125">{pillar.icon}</span>
                 </motion.span>
-                <h3 className="relative font-cormorant text-xl font-medium" style={{ color: "rgba(237,233,254,0.95)" }}>
+                <h3 className="relative font-cormorant text-2xl font-medium" style={{ color: "rgba(237,233,254,0.95)" }}>
                   {pillar.title}
                 </h3>
-                <p className="relative font-sans text-sm leading-relaxed" style={{ color: "rgba(196,181,253,0.7)" }}>{pillar.text}</p>
+                <p className="relative font-sans text-sm leading-relaxed" style={{ color: "rgba(196,181,253,0.75)" }}>{pillar.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -129,10 +123,10 @@ export function PhilosophySection() {
             className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
             <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(196,181,253,0.65)" }}>
-              L'approche de Sarah s'inscrit dans le champ du bien-être et de l'accompagnement
-              énergétique contemporain. Elle n'oppose pas le rationnel et le sensible — elle les
-              invite à coexister, à se compléter. Ce qui se passe en séance n'a pas besoin d'être
-              expliqué pour être ressenti.
+              Mon approche s'inscrit dans le champ du bien-être et de l'accompagnement
+              énergétique contemporain. Je n'oppose pas le rationnel et le sensible — je les
+              invite à coexister, à se compléter. Ce qui se passe en séance n'a pas besoin
+              d'être expliqué pour être ressenti.
             </p>
             <p className="font-sans text-sm leading-relaxed" style={{ color: "rgba(196,181,253,0.65)" }}>
               Les soins énergétiques constituent un accompagnement complémentaire, jamais un

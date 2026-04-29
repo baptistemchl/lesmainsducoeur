@@ -1,0 +1,31 @@
+{
+  "name": "Les Mains du Cœur",
+  "short_name": "Les Mains du Cœur",
+  "description": "Soins énergétiques et massage ayurvédique avec Sarah",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF2F8",
+  "theme_color": "#FDF2F8",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/images/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

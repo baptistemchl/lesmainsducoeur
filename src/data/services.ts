@@ -2,64 +2,90 @@ export interface Service {
   id: string
   name: string
   description: string
-  benefit: string
-  duration?: string
+  benefits: string[]
+  duration: string
+  price: string
+  modality: string
   icon: string
+  image: string
+  color: string
 }
 
 export const services: Service[] = [
   {
-    id: "magnetisme",
-    name: "Magnétisme",
-    icon: "✦",
-    description:
-      "Un soin énergétique profond qui rééquilibre les flux vitaux du corps et apaise les tensions physiques et émotionnelles. Par l'imposition des mains et la circulation de l'énergie, le corps retrouve sa capacité naturelle à s'harmoniser.",
-    benefit: "Apaisement, regain de vitalité, équilibre intérieur",
-    duration: "60 min",
-  },
-  {
-    id: "lahochi",
-    name: "Soin Lahochi",
-    icon: "◈",
-    description:
-      "Issue de la tradition hawaïenne, cette technique de guérison par imposition des mains invite à un lâcher-prise total et une reconnexion profonde à soi. Les fréquences transmises agissent avec douceur sur les plans physique, émotionnel et spirituel.",
-    benefit: "Lâcher-prise, paix intérieure, reconnexion à soi",
-    duration: "75 min",
-  },
-  {
     id: "nettoyage-energetique",
     name: "Nettoyage énergétique",
     icon: "❋",
+    image: "/images/Screenshot_20251129_182735_Gallery.jpg",
+    color: "#D36969",
     description:
-      "Un accompagnement délicat pour libérer les énergies stagnantes et alléger le champ vibratoire. Ce soin invite à retrouver légèreté, clarté intérieure et un sentiment renouvelé de liberté émotionnelle.",
-    benefit: "Légèreté, clarté, libération émotionnelle",
-    duration: "60 min",
+      "Le nettoyage énergétique consiste à nettoyer les corps énergétiques et à les rééquilibrer. Il vous délivre des énergies stagnantes dont vous n'avez plus l'utilité, pour retrouver une sensation de légèreté et de clarté.",
+    benefits: [
+      "Libération des énergies négatives accumulées",
+      "Réduction du stress et des tensions émotionnelles",
+      "Amélioration de la clarté mentale",
+      "Sensation de légèreté et de sérénité",
+      "Renforce l'équilibre global du corps et de l'esprit",
+    ],
+    duration: "≈ 1h (30 à 45 min de soin)",
+    price: "70 €",
+    modality: "En présentiel ou à distance",
   },
   {
-    id: "guidance",
-    name: "Guidance",
+    id: "lahochi",
+    name: "Soin LaHoChi",
+    icon: "◈",
+    image: "/images/20260425_202245.jpg",
+    color: "#8B5CF6",
+    description:
+      "Le LaHoChi est une haute fréquence de lumière de guérison, transmise par l'apposition des mains. Un soin profond qui invite au lâcher-prise et à la reconnexion à soi.",
+    benefits: [
+      "Dissout les blocages énergétiques",
+      "Relaxe et élimine le stress",
+      "Rétablit la bonne circulation de l'énergie",
+      "Accélère le processus de guérison",
+      "Renforce le système immunitaire",
+      "Accroît le bien-être et l'énergie",
+    ],
+    duration: "≈ 1h (30 à 45 min de soin)",
+    price: "70 €",
+    modality: "En présentiel ou à distance",
+  },
+  {
+    id: "magnetisme",
+    name: "Séance de magnétisme",
+    icon: "✦",
+    image: "/images/20251202_105819.jpg",
+    color: "#F59E0B",
+    description:
+      "Une séance ciblée pour les soucis localisés ou les déséquilibres profonds. Par l'imposition des mains, le corps retrouve sa capacité naturelle à s'apaiser et à se rééquilibrer.",
+    benefits: [
+      "Douleurs physiques et tensions localisées",
+      "Problèmes de peau",
+      "Troubles du sommeil",
+      "Accompagnement de la dépression et du burn-out",
+    ],
+    duration: "≈ 1h (30 à 45 min de soin)",
+    price: "60 €",
+    modality: "En présentiel ou à distance",
+  },
+  {
+    id: "abhyanga",
+    name: "Massage Abhyanga",
     icon: "⟡",
+    image: "/images/1000015270.png",
+    color: "#FB7185",
     description:
-      "Un espace d'écoute intuitive pour éclairer votre chemin, identifier les blocages et accueillir les messages de votre âme. Une séance de dialogue subtil avec vos propres ressources intérieures.",
-    benefit: "Clarté, direction, confiance en soi",
-    duration: "45 min",
-  },
-  {
-    id: "guidance-deblocage",
-    name: "Guidance & Déblocage",
-    icon: "◇",
-    description:
-      "Un accompagnement complet alliant guidance intuitive et soin énergétique ciblé. Ensemble, ces deux approches permettent de nommer ce qui bloque, puis de le libérer en profondeur pour avancer avec plus de fluidité.",
-    benefit: "Libération, fluidité, renouveau",
-    duration: "90 min",
-  },
-  {
-    id: "desenvoûtement",
-    name: "Désenvoûtement",
-    icon: "✧",
-    description:
-      "Un travail énergétique spécialisé pour libérer les influences extérieures indésirables et restaurer votre intégrité vibratoire. Un soin profond mené avec discernement, éthique et bienveillance absolue.",
-    benefit: "Intégrité, protection, ancrage",
-    duration: "90 min",
+      "Le massage ayurvédique Abhyanga est un soin issu de la tradition indienne, visant à rééquilibrer le corps et l'esprit. À travers des mouvements enveloppants, fluides et rythmés, il favorise la détente profonde, relance la circulation de l'énergie et libère les tensions physiques et émotionnelles.",
+    benefits: [
+      "Détente profonde et lâcher-prise",
+      "Relance de la circulation énergétique",
+      "Libération des tensions du corps",
+      "Harmonie globale corps & esprit",
+      "Recentrage et apaisement",
+    ],
+    duration: "2h (dont 1h30 de massage)",
+    price: "90 €",
+    modality: "En présentiel — table de massage, dans le respect de votre pudeur",
   },
 ]

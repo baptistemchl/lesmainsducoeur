@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF2F8"/>
+      <stop offset="50%" stop-color="#FEF7ED"/>
+      <stop offset="100%" stop-color="#FAE8FF"/>
+    </linearGradient>
+    <radialGradient id="halo1" cx="15%" cy="25%" r="45%">
+      <stop offset="0%" stop-color="#EFB8B8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#EFB8B8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo2" cx="90%" cy="85%" r="40%">
+      <stop offset="0%" stop-color="#C4B5FD" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#C4B5FD" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo3" cx="80%" cy="15%" r="28%">
+      <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FDE68A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fond -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#halo1)"/>
+  <rect width="1200" height="630" fill="url(#halo2)"/>
+  <rect width="1200" height="630" fill="url(#halo3)"/>
+
+  <!-- Cercles décoratifs en haut à gauche (mandala simplifié) -->
+  <g transform="translate(160, 165)" opacity="0.85">
+    <!-- Halo de fond -->
+    <circle cx="0" cy="0" r="105" fill="rgba(255, 255, 255, 0.6)"/>
+    <!-- Pétales lotus -->
+    <g fill="#D36969" opacity="0.35">
+      <ellipse cx="0" cy="-70" rx="14" ry="42"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(135)"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(225)"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-70" rx="14" ry="42" transform="rotate(315)"/>
+    </g>
+    <g fill="#8B5CF6" opacity="0.3">
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(22.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(67.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(112.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(157.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(202.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(247.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(292.5)"/>
+      <ellipse cx="0" cy="-50" rx="11" ry="30" transform="rotate(337.5)"/>
+    </g>
+    <!-- Centre -->
+    <circle cx="0" cy="0" r="22" fill="#D36969" opacity="0.25"/>
+    <circle cx="0" cy="0" r="11" fill="#D36969" opacity="0.5"/>
+    <!-- Anneau pointillé -->
+    <circle cx="0" cy="0" r="92" fill="none" stroke="#D36969" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+  </g>
+
+  <!-- Texte principal -->
+  <g transform="translate(330, 165)">
+    <!-- Petit label -->
+    <text x="0" y="0" font-family="'Quicksand', 'Helvetica Neue', sans-serif" font-size="20" font-weight="600" fill="#D36969" letter-spacing="4">
+      SOINS ÉNERGÉTIQUES · AYURVÉDA
+    </text>
+
+    <!-- Titre principal -->
+    <text x="0" y="100" font-family="'Crimson Pro', 'Cormorant Garamond', Georgia, serif" font-size="100" font-weight="300" fill="#3F2918">
+      Les Mains
+    </text>
+    <text x="0" y="190" font-family="'Crimson Pro', 'Cormorant Garamond', Georgia, serif" font-size="100" font-style="italic" font-weight="500" fill="#D36969">
+      du Cœur
+    </text>
+
+    <!-- Sous-titre -->
+    <text x="0" y="248" font-family="'Crimson Pro', 'Cormorant Garamond', Georgia, serif" font-size="28" font-style="italic" font-weight="300" fill="#6B4F3D">
+      Là où la lumière rencontre l'âme
+    </text>
+
+    <!-- Signature -->
+    <text x="0" y="305" font-family="'Quicksand', 'Helvetica Neue', sans-serif" font-size="22" font-weight="500" fill="#8B6F5C" letter-spacing="2">
+      avec Sarah · Praticienne
+    </text>
+  </g>
+
+  <!-- Bande décorative en bas avec les soins -->
+  <g transform="translate(80, 530)">
+    <rect width="1040" height="64" rx="32" ry="32" fill="rgba(255, 255, 255, 0.7)" stroke="rgba(211, 105, 105, 0.2)" stroke-width="1"/>
+    <text x="520" y="42" text-anchor="middle" font-family="'Quicksand', 'Helvetica Neue', sans-serif" font-size="20" font-weight="500" fill="#6B4F3D" letter-spacing="2">
+      Magnétisme  ·  LaHoChi  ·  Nettoyage énergétique  ·  Massage Abhyanga
+    </text>
+  </g>
+
+  <!-- Petit symbole décoratif en haut à droite -->
+  <g transform="translate(1080, 110)" opacity="0.4">
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#D36969" stroke-width="1" stroke-dasharray="2 4"/>
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#8B5CF6" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="0" cy="0" r="7" fill="#D36969" opacity="0.6"/>
+  </g>
+</svg>
