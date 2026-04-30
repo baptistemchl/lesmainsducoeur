@@ -26,11 +26,11 @@ export function HeroSection() {
         animate={{ scale: [1, 1.3, 1], x: [0, 30, 0], y: [0, -20, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
-      {/* Halo doré subtil */}
+      {/* Halo marron-rosé subtil (cohérence avec les boutons) */}
       <motion.div
         className="absolute bottom-1/4 left-1/4 w-[250px] h-[250px] rounded-full pointer-events-none blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
+        style={{ background: "radial-gradient(circle, rgba(158,46,46,0.18) 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.35, 0.2] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 4 }}
       />
 

@@ -44,6 +44,14 @@ const config: Config = {
           pale: '#FEF3C7',
           warm: '#F97316',
         },
+        /* ── Sauge / Nature (LaHoChi, énergie de cœur) ── */
+        nature: {
+          DEFAULT: '#84A98C',
+          deep: '#588157',
+          soft: '#A3B18A',
+          pale: '#DAD7CD',
+          mist: '#E9EFE6',
+        },
         /* ── Coral Accent ── */
         coral: {
           DEFAULT: '#FB7185',
