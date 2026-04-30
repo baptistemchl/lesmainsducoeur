@@ -52,27 +52,27 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <p className="font-sans text-xs tracking-widest uppercase mb-2" style={{ color: "rgba(168,139,250,0.5)" }}>Contact</p>
             <a
-              href="mailto:contact@lesmainsdocoeur.fr"
+              href="mailto:lesmainsducoeur22@gmail.com"
               className="flex items-center gap-2 font-sans text-sm transition-colors duration-200"
               style={{ color: "rgba(196,181,253,0.6)" }}
               onMouseEnter={(e) => e.currentTarget.style.color = "rgba(237,233,254,0.9)"}
               onMouseLeave={(e) => e.currentTarget.style.color = "rgba(196,181,253,0.6)"}
             >
               <Mail size={14} />
-              contact@lesmainsdocoeur.fr
+              lesmainsducoeur22@gmail.com
             </a>
             <a
-              href="tel:+33600000000"
+              href="tel:+33673426895"
               className="flex items-center gap-2 font-sans text-sm transition-colors duration-200"
               style={{ color: "rgba(196,181,253,0.6)" }}
               onMouseEnter={(e) => e.currentTarget.style.color = "rgba(237,233,254,0.9)"}
               onMouseLeave={(e) => e.currentTarget.style.color = "rgba(196,181,253,0.6)"}
             >
               <Phone size={14} />
-              +33 6 00 00 00 00
+              06 73 42 68 95
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/les_mainsducoeur"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-sans text-sm transition-colors duration-200 mt-1"
@@ -81,7 +81,7 @@ export function Footer() {
               onMouseLeave={(e) => e.currentTarget.style.color = "rgba(196,181,253,0.6)"}
             >
               <Instagram size={14} />
-              @lesmainsdocoeur
+              @les_mainsducoeur
             </a>
           </div>
         </div>

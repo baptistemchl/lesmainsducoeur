@@ -72,7 +72,7 @@ export function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
             >
-              Rendez-vous
+              Me contacter
             </motion.a>
             <button
               onClick={() => setMobileOpen(true)}

@@ -73,9 +73,9 @@ export function HeroSection() {
 
             {/* Corps */}
             <motion.p variants={fadeInUp} className="section-subtitle max-w-md">
-              Portée par l'héritage de son père magnétiseur, Sarah accompagne chaque
-              personne avec une présence douce et une intuition sincère — pour retrouver
-              équilibre, légèreté et ancrage intérieur.
+              Magnétisme, LaHoChi, nettoyage énergétique et massage Abhyanga —
+              un accompagnement intuitif et bienveillant à Saint-Alban (Côtes-d'Armor)
+              ou à distance.
             </motion.p>
 
             {/* CTAs */}
@@ -86,7 +86,7 @@ export function HeroSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
               >
-                Prendre rendez-vous
+                Premier échange
               </motion.a>
               <motion.a
                 href="#soins"

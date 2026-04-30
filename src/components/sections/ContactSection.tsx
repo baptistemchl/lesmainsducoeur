@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Mail, Phone, Instagram, CheckCircle, Loader } from "lucide-react"
+import { Mail, Phone, Instagram, CheckCircle, Loader, MapPin } from "lucide-react"
 import { SectionHeading } from "../ui/SectionHeading"
 import { useContactForm } from "../../hooks/useContactForm"
 import { services } from "../../data/services"
@@ -26,9 +26,9 @@ export function ContactSection() {
 
       <div className="section-container relative">
         <SectionHeading
-          label="Contact"
+          label="Premier échange"
           title="Commençons par nous parler"
-          subtitle="La première étape est souvent la plus belle. Envoyez un message, posez vos questions, ou réservez directement — sans pression, à votre rythme."
+          subtitle="Avant tout rendez-vous, j'aime prendre le temps d'un premier échange. Envoyez-moi un message, posez vos questions, partagez ce qui vous amène — on se rencontre, et on voit ensemble si je peux vous accompagner."
           centered
           className="mb-14"
         />
@@ -52,23 +52,30 @@ export function ContactSection() {
                 {
                   Icon: Mail,
                   label: "Email",
-                  value: "contact@lesmainsdocoeur.fr",
-                  href: "mailto:contact@lesmainsdocoeur.fr",
+                  value: "lesmainsducoeur22@gmail.com",
+                  href: "mailto:lesmainsducoeur22@gmail.com",
                   color: "#D36969",
                 },
                 {
                   Icon: Phone,
                   label: "Téléphone",
-                  value: "+33 6 00 00 00 00",
-                  href: "tel:+33600000000",
+                  value: "06 73 42 68 95",
+                  href: "tel:+33673426895",
                   color: "#8B5CF6",
                 },
                 {
                   Icon: Instagram,
                   label: "Instagram",
-                  value: "@lesmainsdocoeur",
-                  href: "https://instagram.com",
+                  value: "@les_mainsducoeur",
+                  href: "https://www.instagram.com/les_mainsducoeur",
                   color: "#F59E0B",
+                },
+                {
+                  Icon: MapPin,
+                  label: "Cabinet",
+                  value: "17 rue du Pré d'Aublé, 22400 Saint-Alban",
+                  href: "https://www.google.com/maps/search/?api=1&query=17+rue+du+Pr%C3%A9+d%27Aubl%C3%A9+22400+Saint-Alban",
+                  color: "#FB7185",
                 },
               ].map(({ Icon, label, value, href, color }) => (
                 <a

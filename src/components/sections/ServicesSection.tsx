@@ -63,7 +63,7 @@ export function ServicesSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
           >
-            Réserver une séance
+            Premier échange
           </motion.a>
         </motion.div>
       </div>
