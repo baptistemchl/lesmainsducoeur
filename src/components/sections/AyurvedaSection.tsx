@@ -35,8 +35,11 @@ export function AyurvedaSection() {
               whileHover={{ scale: 1.03, transition: { duration: 0.4 } }}
             >
               <img
-                src="/images/1000015277.png"
+                src="/images/1000015277.webp"
                 alt="Massage ayurvédique Abhyanga — soin du visage et de la tête"
+                loading="lazy"
+                width="1280"
+                height="1280"
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -48,8 +51,11 @@ export function AyurvedaSection() {
               whileHover={{ scale: 1.03, transition: { duration: 0.4 } }}
             >
               <img
-                src="/images/1000015278.png"
+                src="/images/1000015278.webp"
                 alt="Massage ayurvédique Abhyanga — détente profonde du corps"
+                loading="lazy"
+                width="1280"
+                height="1280"
                 className="w-full h-full object-cover"
               />
             </motion.div>

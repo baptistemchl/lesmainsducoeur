@@ -6,7 +6,7 @@ import { dirname, join, extname, basename } from 'node:path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 const imagesDir = join(root, 'public', 'images')
-const backupDir = join(root, 'public', 'images', '_originals')
+const backupDir = join(root, 'originals')
 
 if (!existsSync(backupDir)) mkdirSync(backupDir, { recursive: true })
 
@@ -43,4 +43,4 @@ for (const file of targets) {
   console.log(`${file}: ${beforeSize} → ${afterSize}${reduction}`)
 }
 
-console.log('\n✓ All images processed. Originals saved in /public/images/_originals/')
+console.log('\n✓ All images processed. Originals saved in /originals/')

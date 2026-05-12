@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/fetch-google-reviews.mjs && node scripts/generate-sitemap.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "sync:reviews": "node scripts/fetch-google-reviews.mjs",
     "generate:og": "node scripts/generate-og-image.mjs",
     "generate:icons": "node scripts/generate-icons.mjs",
     "generate:logo-variants": "node scripts/create-logo-variants.mjs",
@@ -14,6 +16,9 @@
     "trim:images": "node scripts/trim-images.mjs"
   },
   "dependencies": {
+    "@fontsource/caveat": "^5.2.8",
+    "@fontsource/crimson-pro": "^5.2.8",
+    "@fontsource/quicksand": "^5.2.10",
     "framer-motion": "^11.1.0",
     "lucide-react": "^0.383.0",
     "react": "^18.3.1",

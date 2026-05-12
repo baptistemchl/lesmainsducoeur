@@ -83,6 +83,10 @@ export function Footer() {
               <Instagram size={14} />
               @les_mainsducoeur
             </a>
+            <p className="font-sans text-xs mt-3 leading-relaxed" style={{ color: "rgba(168,139,250,0.5)" }}>
+              Du lundi au samedi · 9h – 18h<br />
+              Séances sur rendez-vous
+            </p>
           </div>
         </div>
 
@@ -95,11 +99,70 @@ export function Footer() {
             ni psychiatrique, ni psychologique. En cas de problème de santé, consultez toujours
             un professionnel de santé qualifié.
           </p>
-          <p className="font-sans text-xs flex items-center gap-1.5" style={{ color: "rgba(168,139,250,0.4)" }}>
-            © {year} Les Mains du Coeur — Sarah.{" "}
+
+          <details className="font-sans text-xs leading-relaxed max-w-3xl group">
+            <summary
+              className="cursor-pointer select-none transition-colors duration-200 hover:text-warm-300"
+              style={{ color: "rgba(196,181,253,0.5)", outline: "none" }}
+            >
+              Mentions légales & politique de confidentialité
+            </summary>
+            <div className="mt-3 flex flex-col gap-2.5 pl-1" style={{ color: "rgba(168,139,250,0.45)" }}>
+              <div>
+                <p style={{ color: "rgba(196,181,253,0.6)" }} className="font-semibold mb-0.5">Éditeur du site</p>
+                <p>
+                  Sarah · Les Mains du Cœur — micro-entrepreneur, SIRET 992&nbsp;732&nbsp;537&nbsp;00012<br />
+                  17 rue du Pré d'Aublé, 22400 Saint-Alban, France<br />
+                  Directrice de la publication : Sarah
+                </p>
+              </div>
+              <div>
+                <p style={{ color: "rgba(196,181,253,0.6)" }} className="font-semibold mb-0.5">Hébergeur</p>
+                <p>
+                  o2switch (SAS) — 222 boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France<br />
+                  Tél. : 04 44 44 60 40 — <a href="https://www.o2switch.fr" target="_blank" rel="noopener noreferrer" className="underline hover:text-warm-300">www.o2switch.fr</a>
+                </p>
+              </div>
+              <div>
+                <p style={{ color: "rgba(196,181,253,0.6)" }} className="font-semibold mb-0.5">Données personnelles (RGPD)</p>
+                <p>
+                  Les informations saisies dans le formulaire de contact sont utilisées
+                  <strong> uniquement</strong> pour répondre à votre demande. Aucune donnée n'est
+                  partagée à un tiers, aucune newsletter automatique, aucun cookie de suivi ou
+                  d'analyse n'est déposé sur ce site. Conformément au RGPD, vous disposez d'un
+                  droit d'accès, de rectification et de suppression de vos données — adressez votre
+                  demande à <a href="mailto:lesmainsducoeur22@gmail.com" className="underline hover:text-warm-300">lesmainsducoeur22@gmail.com</a>.
+                </p>
+              </div>
+              <div>
+                <p style={{ color: "rgba(196,181,253,0.6)" }} className="font-semibold mb-0.5">Propriété intellectuelle</p>
+                <p>
+                  Les textes, photographies et éléments graphiques de ce site sont la propriété
+                  de Sarah · Les Mains du Cœur. Toute reproduction sans autorisation est interdite.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <p className="font-sans text-xs flex items-center gap-1.5 flex-wrap" style={{ color: "rgba(168,139,250,0.4)" }}>
+            © {year} Les Mains du Coeur — Sarah · SIRET 992&nbsp;732&nbsp;537&nbsp;00012{" "}
             <span className="font-hand text-sm" style={{ color: "rgba(211, 105, 105, 0.6)" }}>
               Fait avec <Heart size={11} className="inline" /> en France
             </span>
+          </p>
+          <p className="font-sans text-xs" style={{ color: "rgba(168,139,250,0.35)" }}>
+            Conçu par{" "}
+            <a
+              href="https://www.instagram.com/agenceixp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors duration-200 underline decoration-dotted underline-offset-2"
+              style={{ color: "rgba(196,181,253,0.55)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#EFB8B8")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(196,181,253,0.55)")}
+            >
+              Agence IXP
+            </a>
           </p>
         </div>
       </div>

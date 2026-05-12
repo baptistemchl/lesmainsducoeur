@@ -26,7 +26,10 @@ export function ServiceCard({ service }: ServiceCardProps) {
       <div className="relative aspect-[4/3] overflow-hidden">
         <motion.img
           src={service.image}
-          alt={service.name}
+          alt={`${service.name} — ${service.description.slice(0, 60)}…`}
+          loading="lazy"
+          width="1280"
+          height="960"
           className="w-full h-full object-cover"
           whileHover={{ scale: 1.06 }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}

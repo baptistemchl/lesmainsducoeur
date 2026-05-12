@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Image originals (backups locaux du script trim-images)
+originals/
+
 # Environment files
 .env
 .env.local

@@ -1,8 +1,6 @@
 # robots.txt — Les Mains du Cœur
-# 🚨 TODO : remplace TODO_DOMAIN par le vrai domaine après mise en ligne
 
 User-agent: *
 Allow: /
-Disallow: /api/
 
-Sitemap: https://TODO_DOMAIN/sitemap.xml
+Sitemap: https://lesmainsducoeur.com/sitemap.xml

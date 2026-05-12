@@ -1,15 +1,6 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr-FR">
   <head>
-    <!--
-      ════════════════════════════════════════════════════════════════════
-      🚨 RESTE À FAIRE : remplacer TODO_DOMAIN par le vrai domaine
-         (à la mise en ligne : sitemap.xml, robots.txt, JSON-LD, OG…)
-         Toutes les autres infos (Saint-Alban 22400, tél, email, etc.)
-         ont été injectées le 2026-04-30.
-      ════════════════════════════════════════════════════════════════════
-    -->
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -20,7 +11,10 @@
     <meta name="author" content="Sarah · Les Mains du Cœur" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="language" content="French" />
-    <link rel="canonical" href="https://TODO_DOMAIN/" />
+    <link rel="canonical" href="https://lesmainsducoeur.com/" />
+
+    <!-- ═══ Google Search Console — vérification de propriété ═══ -->
+    <meta name="google-site-verification" content="8M-KLy_dzHo6y7r7MQnSqNiPzsr6r8_4I8zPuA4Vhkg" />
 
     <!-- ═══ Identité visuelle / favicon ═══ -->
     <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
@@ -37,9 +31,9 @@
     <meta property="og:site_name" content="Les Mains du Cœur" />
     <meta property="og:title" content="Les Mains du Cœur · Sarah — Magnétisme & Massage Ayurvédique à Saint-Alban" />
     <meta property="og:description" content="Là où la lumière rencontre l'âme. Soins énergétiques et massage Abhyanga avec Sarah, à Saint-Alban (Côtes-d'Armor). Une bulle de douceur pour se reconnecter à soi." />
-    <meta property="og:url" content="https://TODO_DOMAIN/" />
-    <meta property="og:image" content="https://TODO_DOMAIN/og-image.png" />
-    <meta property="og:image:secure_url" content="https://TODO_DOMAIN/og-image.png" />
+    <meta property="og:url" content="https://lesmainsducoeur.com/" />
+    <meta property="og:image" content="https://lesmainsducoeur.com/og-image.png" />
+    <meta property="og:image:secure_url" content="https://lesmainsducoeur.com/og-image.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -49,32 +43,36 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Les Mains du Cœur · Sarah — Magnétisme & Ayurvéda" />
     <meta name="twitter:description" content="Soins énergétiques et massage Abhyanga avec Sarah, à Saint-Alban (22). Approche douce, intuitive et bienveillante." />
-    <meta name="twitter:image" content="https://TODO_DOMAIN/og-image.png" />
+    <meta name="twitter:image" content="https://lesmainsducoeur.com/og-image.png" />
     <meta name="twitter:image:alt" content="Les Mains du Cœur — Logo et présentation" />
 
     <!-- ═══ Géo-localisation (SEO local) ═══ -->
     <meta name="geo.region" content="FR-22" />
     <meta name="geo.placename" content="Saint-Alban, Côtes-d'Armor" />
-    <meta name="geo.position" content="48.5664;-2.4514" />
-    <meta name="ICBM" content="48.5664, -2.4514" />
+    <meta name="geo.position" content="48.56636;-2.45142" />
+    <meta name="ICBM" content="48.56636, -2.45142" />
 
-    <!-- ═══ Polices Google ═══ -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Polices auto-hébergées via @fontsource (RGPD-compliant) — chargées par main.tsx -->
 
     <!-- ═══ JSON-LD : Schema.org LocalBusiness ═══ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HealthAndBeautyBusiness",
-      "@id": "https://TODO_DOMAIN/#business",
+      "@id": "https://lesmainsducoeur.com/#business",
       "name": "Les Mains du Cœur",
-      "alternateName": "Sarah · Les Mains du Cœur",
+      "alternateName": [
+        "Sarah · Les Mains du Cœur",
+        "Magnétiseur et soins énergétiques - Les Mains du Coeur"
+      ],
+      "identifier": [
+        { "@type": "PropertyValue", "propertyID": "SIRET", "value": "99273253700012" },
+        { "@type": "PropertyValue", "propertyID": "SIREN", "value": "992732537" }
+      ],
       "description": "Soins énergétiques et massage ayurvédique avec Sarah à Saint-Alban (Côtes-d'Armor). Magnétisme, LaHoChi, nettoyage énergétique et massage Abhyanga. Soins en cabinet ou à distance.",
-      "url": "https://TODO_DOMAIN/",
-      "logo": "https://TODO_DOMAIN/images/logo.svg",
-      "image": "https://TODO_DOMAIN/og-image.png",
+      "url": "https://lesmainsducoeur.com/",
+      "logo": "https://lesmainsducoeur.com/images/logo.svg",
+      "image": "https://lesmainsducoeur.com/og-image.png",
       "telephone": "+33673426895",
       "email": "lesmainsducoeur22@gmail.com",
       "priceRange": "60€ – 90€",
@@ -89,8 +87,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "48.5664",
-        "longitude": "-2.4514"
+        "latitude": "48.56636",
+        "longitude": "-2.45142"
       },
       "openingHoursSpecification": [
         {
@@ -121,43 +119,90 @@
         "itemListElement": [
           {
             "@type": "Offer",
+            "price": "70",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
             "itemOffered": {
               "@type": "Service",
               "name": "Nettoyage énergétique",
-              "description": "Nettoyage et rééquilibrage des corps énergétiques. Libération des énergies stagnantes. En cabinet ou à distance."
-            },
-            "price": "70",
-            "priceCurrency": "EUR"
+              "serviceType": "Soin énergétique",
+              "category": "Bien-être",
+              "description": "Nettoyage et rééquilibrage des corps énergétiques. Libération des énergies stagnantes. En cabinet ou à distance.",
+              "provider": { "@id": "https://lesmainsducoeur.com/#business" },
+              "areaServed": [
+                { "@type": "City", "name": "Saint-Alban" },
+                { "@type": "AdministrativeArea", "name": "Côtes-d'Armor" }
+              ],
+              "availableChannel": [
+                { "@type": "ServiceChannel", "serviceLocation": { "@id": "https://lesmainsducoeur.com/#business" }, "name": "En cabinet" },
+                { "@type": "ServiceChannel", "serviceUrl": "https://lesmainsducoeur.com/#contact", "name": "À distance" }
+              ]
+            }
           },
           {
             "@type": "Offer",
+            "price": "70",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
             "itemOffered": {
               "@type": "Service",
               "name": "Soin LaHoChi",
-              "description": "Haute fréquence de lumière de guérison transmise par l'apposition des mains. En cabinet ou à distance."
-            },
-            "price": "70",
-            "priceCurrency": "EUR"
+              "serviceType": "Soin énergétique",
+              "category": "Bien-être",
+              "description": "Haute fréquence de lumière de guérison transmise par l'apposition des mains. En cabinet ou à distance.",
+              "provider": { "@id": "https://lesmainsducoeur.com/#business" },
+              "areaServed": [
+                { "@type": "City", "name": "Saint-Alban" },
+                { "@type": "AdministrativeArea", "name": "Côtes-d'Armor" }
+              ],
+              "availableChannel": [
+                { "@type": "ServiceChannel", "serviceLocation": { "@id": "https://lesmainsducoeur.com/#business" }, "name": "En cabinet" },
+                { "@type": "ServiceChannel", "serviceUrl": "https://lesmainsducoeur.com/#contact", "name": "À distance" }
+              ]
+            }
           },
           {
             "@type": "Offer",
+            "price": "60",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
             "itemOffered": {
               "@type": "Service",
               "name": "Séance de magnétisme",
-              "description": "Soin énergétique pour douleurs localisées, troubles du sommeil, accompagnement burn-out. En cabinet ou à distance."
-            },
-            "price": "60",
-            "priceCurrency": "EUR"
+              "serviceType": "Magnétisme",
+              "category": "Bien-être",
+              "description": "Soin énergétique pour douleurs localisées, troubles du sommeil, accompagnement burn-out. En cabinet ou à distance.",
+              "provider": { "@id": "https://lesmainsducoeur.com/#business" },
+              "areaServed": [
+                { "@type": "City", "name": "Saint-Alban" },
+                { "@type": "AdministrativeArea", "name": "Côtes-d'Armor" }
+              ],
+              "availableChannel": [
+                { "@type": "ServiceChannel", "serviceLocation": { "@id": "https://lesmainsducoeur.com/#business" }, "name": "En cabinet" },
+                { "@type": "ServiceChannel", "serviceUrl": "https://lesmainsducoeur.com/#contact", "name": "À distance" }
+              ]
+            }
           },
           {
             "@type": "Offer",
+            "price": "90",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
             "itemOffered": {
               "@type": "Service",
               "name": "Massage Abhyanga",
-              "description": "Massage ayurvédique traditionnel indien — détente profonde, libération des tensions, harmonie corps-esprit. En cabinet uniquement."
-            },
-            "price": "90",
-            "priceCurrency": "EUR"
+              "serviceType": "Massage ayurvédique",
+              "category": "Bien-être",
+              "description": "Massage ayurvédique traditionnel indien — détente profonde, libération des tensions, harmonie corps-esprit. En cabinet uniquement.",
+              "provider": { "@id": "https://lesmainsducoeur.com/#business" },
+              "areaServed": [
+                { "@type": "City", "name": "Saint-Alban" },
+                { "@type": "AdministrativeArea", "name": "Côtes-d'Armor" }
+              ],
+              "availableChannel": [
+                { "@type": "ServiceChannel", "serviceLocation": { "@id": "https://lesmainsducoeur.com/#business" }, "name": "En cabinet uniquement" }
+              ]
+            }
           }
         ]
       }
@@ -172,10 +217,10 @@
       "name": "Sarah",
       "jobTitle": "Praticienne en soins énergétiques et massage ayurvédique",
       "description": "Sarah est praticienne en magnétisme, LaHoChi et massage Abhyanga à Saint-Alban (Côtes-d'Armor). Elle accompagne avec douceur, intuition et bienveillance.",
-      "url": "https://TODO_DOMAIN/",
-      "image": "https://TODO_DOMAIN/images/Screenshot_20260210_213325_Gallery.jpg",
+      "url": "https://lesmainsducoeur.com/",
+      "image": "https://lesmainsducoeur.com/images/Screenshot_20260210_213325_Gallery.jpg",
       "worksFor": {
-        "@id": "https://TODO_DOMAIN/#business"
+        "@id": "https://lesmainsducoeur.com/#business"
       },
       "knowsAbout": [
         "Magnétisme",
@@ -194,16 +239,61 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Les Mains du Cœur",
-      "url": "https://TODO_DOMAIN/",
+      "url": "https://lesmainsducoeur.com/",
       "inLanguage": "fr-FR",
       "publisher": {
-        "@id": "https://TODO_DOMAIN/#business"
+        "@id": "https://lesmainsducoeur.com/#business"
       }
     }
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback SEO/noscript : contenu indexable immédiatement, écrasé par React au mount -->
+      <noscript>
+        <header>
+          <h1>Les Mains du Cœur — Sarah, Magnétiseuse & Praticienne ayurvédique à Saint-Alban</h1>
+          <p>
+            Cabinet de soins énergétiques et de massage ayurvédique à Saint-Alban (Côtes-d'Armor, 22400),
+            tenu par Sarah. Magnétisme, LaHoChi, nettoyage énergétique, massage Abhyanga. Approche douce,
+            intuitive et bienveillante. Soins en cabinet ou à distance.
+          </p>
+        </header>
+
+        <section>
+          <h2>Prestations</h2>
+          <ul>
+            <li><strong>Nettoyage énergétique</strong> — 70 € — Libération des énergies stagnantes, sensation de légèreté et clarté. En cabinet ou à distance.</li>
+            <li><strong>Soin LaHoChi</strong> — 70 € — Haute fréquence de lumière de guérison transmise par l'apposition des mains. En cabinet ou à distance.</li>
+            <li><strong>Séance de magnétisme</strong> — 60 € — Soin ciblé pour douleurs localisées, troubles du sommeil, accompagnement burn-out. En cabinet ou à distance.</li>
+            <li><strong>Massage Abhyanga</strong> — 90 € — Massage ayurvédique traditionnel indien. Détente profonde, libération des tensions, harmonie corps-esprit. En cabinet uniquement.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Coordonnées</h2>
+          <address>
+            Sarah · Les Mains du Cœur<br>
+            17 rue du Pré d'Aublé, 22400 Saint-Alban, Bretagne, France<br>
+            Téléphone : <a href="tel:+33673426895">06 73 42 68 95</a><br>
+            Email : <a href="mailto:lesmainsducoeur22@gmail.com">lesmainsducoeur22@gmail.com</a><br>
+            Instagram : <a href="https://www.instagram.com/les_mainsducoeur">@les_mainsducoeur</a><br>
+            SIRET&nbsp;: 992&nbsp;732&nbsp;537&nbsp;00012
+          </address>
+          <p>Horaires : du lundi au samedi, 9 h – 18 h. Séances sur rendez-vous.</p>
+        </section>
+
+        <section>
+          <h2>Avis</h2>
+          <p>5/5 sur 8 avis Google.</p>
+        </section>
+
+        <p>
+          Ce site nécessite JavaScript pour afficher l'expérience complète.
+          Pour prendre rendez-vous : <a href="tel:+33673426895">06 73 42 68 95</a>.
+        </p>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

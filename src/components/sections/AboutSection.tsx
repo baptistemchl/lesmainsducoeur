@@ -37,8 +37,11 @@ export function AboutSection() {
                 }}
               >
                 <img
-                  src="/images/Screenshot_20260210_213325_Gallery.jpg"
+                  src="/images/Screenshot_20260210_213325_Gallery.webp"
                   alt="Sarah, praticienne en soins énergétiques"
+                  loading="lazy"
+                  width="800"
+                  height="1067"
                   className="w-full h-full object-cover"
                 />
                 {/* Voile doux pour ancrer le texte */}

@@ -16,7 +16,7 @@ export const services: Service[] = [
     id: "nettoyage-energetique",
     name: "Nettoyage énergétique",
     icon: "❋",
-    image: "/images/Screenshot_20251129_182735_Gallery.jpg",
+    image: "/images/Screenshot_20251129_182735_Gallery.webp",
     color: "#D36969",
     description:
       "Le nettoyage énergétique consiste à nettoyer les corps énergétiques et à les rééquilibrer. Il vous délivre des énergies stagnantes dont vous n'avez plus l'utilité, pour retrouver une sensation de légèreté et de clarté.",
@@ -35,7 +35,7 @@ export const services: Service[] = [
     id: "lahochi",
     name: "Soin LaHoChi",
     icon: "◈",
-    image: "/images/20260425_202245.jpg",
+    image: "/images/20260425_202245.webp",
     color: "#8B5CF6",
     description:
       "Le LaHoChi est une haute fréquence de lumière de guérison, transmise par l'apposition des mains. Un soin profond qui invite au lâcher-prise et à la reconnexion à soi.",
@@ -55,7 +55,7 @@ export const services: Service[] = [
     id: "magnetisme",
     name: "Séance de magnétisme",
     icon: "✦",
-    image: "/images/20251202_105819.jpg",
+    image: "/images/20251202_105819.webp",
     color: "#F59E0B",
     description:
       "Une séance ciblée pour les soucis localisés ou les déséquilibres profonds. Par l'imposition des mains, le corps retrouve sa capacité naturelle à s'apaiser et à se rééquilibrer.",
@@ -73,7 +73,7 @@ export const services: Service[] = [
     id: "abhyanga",
     name: "Massage Abhyanga",
     icon: "⟡",
-    image: "/images/1000015270.png",
+    image: "/images/1000015270.webp",
     color: "#FB7185",
     description:
       "Le massage ayurvédique Abhyanga est un soin issu de la tradition indienne, visant à rééquilibrer le corps et l'esprit. À travers des mouvements enveloppants, fluides et rythmés, il favorise la détente profonde, relance la circulation de l'énergie et libère les tensions physiques et émotionnelles.",

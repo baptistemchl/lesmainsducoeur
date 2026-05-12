@@ -1,12 +1,22 @@
+import { useCallback, useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Phone, Instagram, CheckCircle, Loader, MapPin } from "lucide-react"
+import { Mail, Phone, Instagram, Loader, MapPin, Send, Clock } from "lucide-react"
 import { SectionHeading } from "../ui/SectionHeading"
+import { Toast, type ToastData } from "../ui/Toast"
 import { useContactForm } from "../../hooks/useContactForm"
 import { services } from "../../data/services"
 import { staggerContainer, fadeInUp, slideInLeft, glowReveal } from "../../lib/animations"
 
 export function ContactSection() {
-  const { values, errors, status, handleChange, handleSubmit } = useContactForm()
+  const [toast, setToast] = useState<ToastData | null>(null)
+
+  const pushToast = useCallback((t: Omit<ToastData, 'id'>) => {
+    setToast({ ...t, id: Date.now() })
+  }, [])
+
+  const { values, errors, status, handleChange, handleSubmit } = useContactForm({
+    onToast: pushToast,
+  })
 
   return (
     <section id="contact" className="section-padding bg-ivory relative overflow-hidden">
@@ -92,9 +102,7 @@ export function ContactSection() {
                 >
                   <div
                     className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: `${color}18`,
-                    }}
+                    style={{ background: `${color}18` }}
                   >
                     <Icon size={15} style={{ color }} />
                   </div>
@@ -104,6 +112,55 @@ export function ContactSection() {
                   </div>
                 </a>
               ))}
+            </motion.div>
+
+            {/* Horaires d'accueil — visibles pour visiteurs ET crawlers (SEO local) */}
+            <motion.div
+              variants={fadeInUp}
+              className="p-4 rounded-xl border border-blush/40"
+              style={{
+                background: "rgba(255, 255, 255, 0.5)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="flex items-start gap-3">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: "#C9A96118" }}
+                >
+                  <Clock size={15} style={{ color: "#C9A961" }} />
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <p className="font-sans text-xs text-warm-500">Horaires d'accueil</p>
+                  <p className="font-sans text-sm text-warm-900 font-medium">
+                    Du lundi au samedi · 9h – 18h
+                  </p>
+                  <p className="font-sans text-xs text-warm-600">
+                    Séances uniquement sur rendez-vous
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Carte Google Maps — embed gratuit, lazy-load pour pas plomber le LCP */}
+            <motion.div
+              variants={fadeInUp}
+              className="rounded-2xl overflow-hidden border border-blush/40"
+              style={{
+                background: "rgba(255, 255, 255, 0.5)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <iframe
+                src="https://maps.google.com/maps?q=17%20rue%20du%20Pr%C3%A9%20d%27Aubl%C3%A9%2022400%20Saint-Alban&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="Cabinet Les Mains du Cœur — 17 rue du Pré d'Aublé, 22400 Saint-Alban"
+                width="100%"
+                height="240"
+                loading="lazy"
+                style={{ border: 0, display: "block" }}
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </motion.div>
 
             <motion.div
@@ -120,133 +177,148 @@ export function ContactSection() {
             </motion.div>
           </motion.div>
 
-          {/* Formulaire — glow reveal */}
+          {/* Formulaire */}
           <motion.div
             variants={glowReveal}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
           >
-            {status === "success" ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="card p-10 lg:p-12 flex flex-col items-center gap-4 text-center"
-              >
-                <motion.div
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <CheckCircle size={40} className="text-sage-deep" />
-                </motion.div>
-                <h3 className="font-cormorant text-3xl font-medium text-warm-900">
-                  Message envoyé !
-                </h3>
-                <p className="font-sans text-warm-600 text-sm leading-relaxed max-w-sm">
-                  Merci pour votre message. Sarah vous répondra avec soin dans les 48 heures.
-                </p>
-              </motion.div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="card p-7 lg:p-10 flex flex-col gap-5"
-              >
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="name">
-                      Prénom & Nom *
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Marie Dupont"
-                      value={values.name}
-                      onChange={handleChange}
-                      className={`font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 ${errors.name ? "border-red-300" : "border-blush/50"}`}
-                      style={{ background: "rgba(250,245,255,0.6)" }}
-                    />
-                    {errors.name && <p className="font-sans text-xs text-red-400">{errors.name}</p>}
-                  </div>
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              className="card p-7 lg:p-10 flex flex-col gap-5"
+            >
+              {/* Honeypot — invisible, rempli uniquement par les bots */}
+              <input
+                type="text"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                value={values.botcheck}
+                onChange={handleChange}
+                style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}
+                aria-hidden="true"
+              />
 
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="email">
-                      Email *
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="marie@exemple.fr"
-                      value={values.email}
-                      onChange={handleChange}
-                      className={`font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 ${errors.email ? "border-red-300" : "border-blush/50"}`}
-                      style={{ background: "rgba(250,245,255,0.6)" }}
-                    />
-                    {errors.email && <p className="font-sans text-xs text-red-400">{errors.email}</p>}
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="phone">
-                      Téléphone (optionnel)
-                    </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="+33 6 00 00 00 00"
-                      value={values.phone}
-                      onChange={handleChange}
-                      className="font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border border-blush/50 outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40"
-                      style={{ background: "rgba(250,245,255,0.6)" }}
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="service">
-                      Soin souhaité
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={values.service}
-                      onChange={handleChange}
-                      className="font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border border-blush/50 outline-none transition-all duration-200 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 appearance-none cursor-pointer"
-                      style={{ background: "rgba(250,245,255,0.6)" }}
-                    >
-                      <option value="">Soin souhaité...</option>
-                      {services.map((s) => (
-                        <option key={s.id} value={s.id}>{s.name}</option>
-                      ))}
-                      <option value="autre">Je ne sais pas encore</option>
-                    </select>
-                  </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="name">
+                    Prénom & Nom *
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Marie Dupont"
+                    value={values.name}
+                    onChange={handleChange}
+                    autoComplete="name"
+                    className={`font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 ${errors.name ? "border-red-300" : "border-blush/50"}`}
+                    style={{ background: "rgba(250,245,255,0.6)" }}
+                  />
+                  {errors.name && <p className="font-sans text-xs text-red-400">{errors.name}</p>}
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="message">
-                    Votre message *
+                  <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="email">
+                    Email *
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Partagez ce qui vous amène, vos questions, vos disponibilités..."
-                    value={values.message}
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="marie@exemple.fr"
+                    value={values.email}
                     onChange={handleChange}
-                    className={`font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 resize-none ${errors.message ? "border-red-300" : "border-blush/50"}`}
+                    autoComplete="email"
+                    className={`font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 ${errors.email ? "border-red-300" : "border-blush/50"}`}
                     style={{ background: "rgba(250,245,255,0.6)" }}
                   />
-                  {errors.message && <p className="font-sans text-xs text-red-400">{errors.message}</p>}
+                  {errors.email && <p className="font-sans text-xs text-red-400">{errors.email}</p>}
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="phone">
+                    Téléphone (optionnel)
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+33 6 00 00 00 00"
+                    value={values.phone}
+                    onChange={handleChange}
+                    autoComplete="tel"
+                    className="font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border border-blush/50 outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40"
+                    style={{ background: "rgba(250,245,255,0.6)" }}
+                  />
                 </div>
 
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="service">
+                    Soin souhaité
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={values.service}
+                    onChange={handleChange}
+                    className="font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border border-blush/50 outline-none transition-all duration-200 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 appearance-none cursor-pointer"
+                    style={{ background: "rgba(250,245,255,0.6)" }}
+                  >
+                    <option value="">Soin souhaité...</option>
+                    {services.map((s) => (
+                      <option key={s.id} value={s.id}>{s.name}</option>
+                    ))}
+                    <option value="autre">Je ne sais pas encore</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="font-sans text-xs text-warm-600 font-semibold" htmlFor="message">
+                  Votre message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  placeholder="Partagez ce qui vous amène, vos questions, vos disponibilités..."
+                  value={values.message}
+                  onChange={handleChange}
+                  className={`font-sans text-sm text-warm-900 rounded-xl px-4 py-3 border outline-none transition-all duration-200 placeholder:text-warm-400 focus:ring-2 focus:ring-rose/25 focus:border-rose/40 resize-none ${errors.message ? "border-red-300" : "border-blush/50"}`}
+                  style={{ background: "rgba(250,245,255,0.6)" }}
+                />
+                {errors.message && <p className="font-sans text-xs text-red-400">{errors.message}</p>}
+              </div>
+
+              {/* RGPD inline */}
+              <div className="flex flex-col gap-1.5">
+                <label className="flex items-start gap-2.5 cursor-pointer group" htmlFor="rgpd">
+                  <input
+                    id="rgpd"
+                    name="rgpd"
+                    type="checkbox"
+                    checked={values.rgpd}
+                    onChange={handleChange}
+                    className="mt-0.5 w-4 h-4 rounded border-blush/60 text-rose-vibrant focus:ring-2 focus:ring-rose/25 cursor-pointer accent-rose-vibrant"
+                  />
+                  <span className="font-sans text-xs text-warm-600 leading-relaxed group-hover:text-warm-800 transition-colors">
+                    J'accepte que mes informations soient utilisées uniquement pour me recontacter dans le cadre de ma demande.
+                    Aucune donnée n'est partagée à un tiers, aucune newsletter, aucun cookie de suivi.
+                  </span>
+                </label>
+                {errors.rgpd && <p className="font-sans text-xs text-red-400 ml-7">{errors.rgpd}</p>}
+              </div>
+
+              <div className="flex items-center gap-4 flex-wrap mt-1">
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="btn-primary justify-center w-full sm:w-auto sm:self-start mt-1"
+                  className="btn-primary justify-center w-full sm:w-auto"
                 >
                   {status === "sending" ? (
                     <>
@@ -254,18 +326,24 @@ export function ContactSection() {
                       Envoi en cours...
                     </>
                   ) : (
-                    "Envoyer le message"
+                    <>
+                      <Send size={15} />
+                      Envoyer le message
+                    </>
                   )}
                 </button>
 
                 <p className="font-sans text-xs text-warm-400">
-                  * Champs requis. Vos données restent confidentielles.
+                  * Champs requis · Vos données restent confidentielles.
                 </p>
-              </form>
-            )}
+              </div>
+            </form>
           </motion.div>
         </div>
       </div>
+
+      {/* Toast global pour cette section */}
+      <Toast toast={toast} onClose={() => setToast(null)} />
     </section>
   )
 }
