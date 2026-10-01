@@ -39,6 +39,6 @@ export const faqEntries: FaqEntry[] = [
     id: "6",
     question: "Comment prendre rendez-vous ?",
     answer:
-      "Vous pouvez me contacter directement par le formulaire de cette page, par email ou via Instagram. Je vous répondrai dans les meilleurs délais pour convenir ensemble d'un créneau et d'un lieu qui vous conviennent. Pour les ateliers collectifs, la réservation se fait directement en ligne, dans la section Ateliers.",
+      "Vous pouvez me contacter directement par le formulaire de cette page, par email ou via Instagram. Je vous répondrai dans les meilleurs délais pour convenir ensemble d'un créneau et d'un lieu qui vous conviennent. Pour les ateliers collectifs, retrouvez les prochaines dates et les places restantes dans la section Ateliers, puis contactez-moi pour réserver.",
   },
 ]

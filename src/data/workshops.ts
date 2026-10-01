@@ -1,60 +1,42 @@
 /**
  * Ateliers collectifs.
  *
- * Bêta : `calLink` vaut null → la section affiche les dates ci-dessous et
- * simule la réservation côté front. Une fois le compte Cal.com de Sarah prêt,
- * renseigner `calLink` (ex. "sarah-gueune/atelier") pour brancher le vrai agenda.
+ * Les dates et les places restantes sont gérées par Sarah dans un Google Sheet
+ * publié au format CSV (Fichier → Partager → Publier sur le web → CSV).
+ * Colonnes attendues : Date | Horaire | Atelier | Places totales | Places restantes
+ *
+ * Tant que `sheetCsvUrl` vaut null, la section affiche `demoWorkshops`.
  */
-export const calLink: string | null = null
+export const sheetCsvUrl: string | null = null
+
+export const contact = {
+  phone: "+33673426895",
+  phoneLabel: "06 73 42 68 95",
+  email: "lesmainsducoeur22@gmail.com",
+}
 
 export interface Workshop {
   id: string
+  /** Minuit (heure locale) du jour de l'atelier */
+  date: Date
+  time: string
   title: string
-  /** ISO 8601, heure de Paris */
-  start: string
-  end: string
-  seats: number
-  seatsTaken: number
-  location: string
+  seatsTotal: number
+  seatsLeft: number
 }
 
-const cabinet = "Cabinet · Saint-Alban"
+const demo = (iso: string, time: string, title: string, seatsLeft: number): Workshop => ({
+  id: `${iso}-${time}`,
+  date: new Date(`${iso}T00:00:00`),
+  time,
+  title,
+  seatsTotal: 8,
+  seatsLeft,
+})
 
-export const workshops: Workshop[] = [
-  {
-    id: "2026-10-13",
-    title: "Cercle de reconnexion au cœur",
-    start: "2026-10-13T14:00:00+02:00",
-    end: "2026-10-13T16:00:00+02:00",
-    seats: 8,
-    seatsTaken: 5,
-    location: cabinet,
-  },
-  {
-    id: "2026-10-27",
-    title: "Méditation & soin énergétique en groupe",
-    start: "2026-10-27T18:30:00+01:00",
-    end: "2026-10-27T20:30:00+01:00",
-    seats: 8,
-    seatsTaken: 8,
-    location: cabinet,
-  },
-  {
-    id: "2026-11-10",
-    title: "Atelier Ayurvéda : accueillir l'hiver",
-    start: "2026-11-10T14:00:00+01:00",
-    end: "2026-11-10T16:00:00+01:00",
-    seats: 8,
-    seatsTaken: 2,
-    location: cabinet,
-  },
-  {
-    id: "2026-11-24",
-    title: "Cercle de reconnexion au cœur",
-    start: "2026-11-24T18:30:00+01:00",
-    end: "2026-11-24T20:30:00+01:00",
-    seats: 8,
-    seatsTaken: 0,
-    location: cabinet,
-  },
+export const demoWorkshops: Workshop[] = [
+  demo("2026-10-08", "14h – 16h", "Cercle de reconnexion au cœur", 3),
+  demo("2026-10-22", "18h30 – 20h30", "Méditation & soin énergétique en groupe", 0),
+  demo("2026-11-05", "14h – 16h", "Atelier Ayurvéda : accueillir l'hiver", 6),
+  demo("2026-11-19", "18h30 – 20h30", "Cercle de reconnexion au cœur", 8),
 ]
