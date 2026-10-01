@@ -30,7 +30,7 @@ export function Header() {
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group flex-shrink-0 whitespace-nowrap"
             onClick={(e) => {
               e.preventDefault()
               window.scrollTo({ top: 0, behavior: "smooth" })
@@ -52,7 +52,7 @@ export function Header() {
           </a>
 
           {/* Navigation desktop */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-7 whitespace-nowrap">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -68,7 +68,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <motion.a
               href="#contact"
-              className="hidden lg:inline-flex btn-primary text-sm"
+              className="hidden lg:inline-flex btn-primary text-sm whitespace-nowrap lg:!px-5 xl:!px-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
             >

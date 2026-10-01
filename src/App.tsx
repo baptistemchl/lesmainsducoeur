@@ -6,6 +6,7 @@ import { ServicesSection } from './components/sections/ServicesSection'
 import { PhilosophySection } from './components/sections/PhilosophySection'
 import { AyurvedaSection } from './components/sections/AyurvedaSection'
 import { SessionSection } from './components/sections/SessionSection'
+import { WorkshopsSection } from './components/sections/WorkshopsSection'
 import { WhyUsSection } from './components/sections/WhyUsSection'
 import { TestimonialsSection } from './components/sections/TestimonialsSection'
 import { FaqSection } from './components/sections/FaqSection'
@@ -22,6 +23,7 @@ export default function App() {
         <PhilosophySection />
         <AyurvedaSection />
         <SessionSection />
+        <WorkshopsSection />
         <WhyUsSection />
         <TestimonialsSection />
         <FaqSection />
