@@ -1,0 +1,27 @@
+# Mise en ligne automatique sur o2switch (lesmainsducoeur.com) à chaque push sur V2.
+# Réglages du dépôt GitHub : variables FTP_USER, FTP_DIR ; secret FTP_PASSWORD.
+name: Mise en ligne o2switch
+
+on:
+  push:
+    branches: [V2]
+  workflow_dispatch:
+
+concurrency: deploy-o2switch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run deploy
+        env:
+          FTP_HOST: orme.o2switch.net
+          FTP_USER: ${{ vars.FTP_USER }}
+          FTP_DIR: ${{ vars.FTP_DIR }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
