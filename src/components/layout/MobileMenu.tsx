@@ -11,9 +11,15 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
   const handleNavClick = (href: string) => {
     onClose()
-    setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
-    }, 200)
+    const [path, hash] = href.split("#")
+    // Ancre sur la page affichée : défilement doux ; sinon on change de page
+    if (hash && path === window.location.pathname) {
+      setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" })
+      }, 200)
+    } else {
+      window.location.href = href
+    }
   }
 
   return (
@@ -73,7 +79,7 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
 
             <div className="p-6" style={{ borderTop: "1px solid rgba(239, 184, 184, 0.45)" }}>
               <button
-                onClick={() => handleNavClick("#contact")}
+                onClick={() => handleNavClick("/#contact")}
                 className="btn-primary w-full justify-center"
               >
                 Prendre rendez-vous

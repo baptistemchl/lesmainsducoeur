@@ -88,4 +88,22 @@ export const services: Service[] = [
     price: "90 €",
     modality: "En présentiel — table de massage, dans le respect de votre pudeur",
   },
+  {
+    id: "accompagnement",
+    name: "Accompagnement",
+    icon: "❀",
+    image: "/images/espace-massage.webp",
+    color: "#588157",
+    description:
+      "Un parcours de plusieurs soins pour avancer en profondeur, à votre rythme. Après un premier échange pour faire le point sur ce que vous traversez, Sarah compose avec vous un enchaînement de séances et l'ajuste au fil de votre évolution.",
+    benefits: [
+      "Un premier échange pour poser vos intentions",
+      "Plusieurs soins combinés selon vos besoins",
+      "Un suivi attentif entre les séances",
+      "Un cheminement durable, en douceur",
+    ],
+    duration: "Plusieurs séances, sur quelques semaines",
+    price: "350 €",
+    modality: "En présentiel ou à distance, selon les soins",
+  },
 ]

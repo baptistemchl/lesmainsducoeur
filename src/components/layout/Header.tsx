@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { Menu } from "lucide-react"
 import { useScrolled } from "../../hooks/useScrolled"
 import { MobileMenu } from "./MobileMenu"
-import { navItems } from "../../data/navigation"
+import { isCurrentPage, navItems } from "../../data/navigation"
 
 export function Header() {
   const scrolled = useScrolled(30)
@@ -29,9 +29,10 @@ export function Header() {
         <div className="section-container flex items-center justify-between">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-3 group flex-shrink-0 whitespace-nowrap"
             onClick={(e) => {
+              if (window.location.pathname !== "/") return
               e.preventDefault()
               window.scrollTo({ top: 0, behavior: "smooth" })
             }}
@@ -57,7 +58,8 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="font-sans text-sm text-warm-700 hover:text-rose transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rose hover:after:w-full after:transition-all after:duration-300"
+                aria-current={isCurrentPage(item.href) ? "page" : undefined}
+                className="font-sans text-sm text-warm-700 aria-[current=page]:text-rose-500 aria-[current=page]:font-semibold hover:text-rose transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rose hover:after:w-full after:transition-all after:duration-300"
               >
                 {item.label}
               </a>
@@ -67,7 +69,7 @@ export function Header() {
           {/* CTA + burger */}
           <div className="flex items-center gap-3">
             <motion.a
-              href="#contact"
+              href="/#contact"
               className="hidden lg:inline-flex btn-primary text-sm whitespace-nowrap lg:!px-5 xl:!px-8"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}

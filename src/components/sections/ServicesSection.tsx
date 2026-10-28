@@ -38,7 +38,7 @@ export function ServicesSection() {
         />
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto md:[&>*:last-child:nth-child(odd)]:col-span-2 md:[&>*:last-child:nth-child(odd)]:justify-self-center md:[&>*:last-child:nth-child(odd)]:w-[calc(50%-0.75rem)] lg:[&>*:last-child:nth-child(odd)]:w-[calc(50%-1rem)]"
           variants={waveStagger}
           initial="hidden"
           whileInView="visible"
