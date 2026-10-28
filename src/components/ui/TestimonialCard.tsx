@@ -99,7 +99,7 @@ export function TestimonialCard({ testimonial, index = 0, placeLink }: Testimoni
       </header>
 
       {/* Étoiles */}
-      <div className="flex gap-1" aria-label={`${stars} étoiles sur 5`}>
+      <div className="flex gap-1" role="img" aria-label={`${stars} étoiles sur 5`}>
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}

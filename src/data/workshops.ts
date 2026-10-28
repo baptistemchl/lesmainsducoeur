@@ -7,7 +7,8 @@
  *
  * Tant que `sheetCsvUrl` vaut null, la section affiche `demoWorkshops`.
  */
-export const sheetCsvUrl: string | null = null
+export const sheetCsvUrl: string | null =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpcgVgy_CrFzsW7D-yABnxqPZjC879rvlHTfnLD2oYhANw0ieTVfe-3OHf7dFpwDL5Ke6c8qdf8y7W/pub?gid=0&single=true&output=csv"
 
 export const contact = {
   phone: "+33673426895",

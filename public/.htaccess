@@ -16,9 +16,13 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
 # --- 2. SPA fallback : toute route inconnue → index.html -------------
 # (utile si tu ajoutes plus tard react-router ; sans effet aujourd'hui)
+# Seulement pour les adresses de pages (sans extension, hors /.well-known/) :
+# un fichier absent (ex. /.well-known/ard.json) répond 404 et non la page
+# d'accueil, sinon les robots et Lighthouse le lisent comme un fichier invalide.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/(api|assets|images)/
+RewriteCond %{REQUEST_URI} !^/(api|assets|images|\.well-known)/
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
 RewriteRule ^ index.html [L]
 
 # --- 3. Compression (gzip / brotli si dispo) -------------------------
@@ -60,5 +64,5 @@ RewriteRule ^ index.html [L]
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
 </IfModule>
 
-# --- 6. Page d'erreur 404 → index.html (déjà géré par fallback SPA) --
+# --- 6. Page d'erreur 404 → index.html (statut 404 conservé) ----------
 ErrorDocument 404 /index.html
