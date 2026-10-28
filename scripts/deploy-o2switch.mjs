@@ -5,6 +5,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join, posix } from 'node:path'
+import { rootCertificates } from 'node:tls'
 import { Client } from 'basic-ftp'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -52,7 +53,16 @@ const files = walk(dist).sort((a, b) => (a === 'index.html') - (b === 'index.htm
 
 const client = new Client(30_000)
 try {
-  await client.access({ host: HOST, user: USER, password: PASSWORD, secure: true })
+  // Le serveur n'envoie que son propre certificat : on fournit les intermédiaires
+  // manquants pour garder une vérification TLS complète.
+  const chain = readFileSync(join(__dirname, 'certs', 'o2switch-ftp-chain.pem'), 'utf8')
+  await client.access({
+    host: HOST,
+    user: USER,
+    password: PASSWORD,
+    secure: true,
+    secureOptions: { ca: [...rootCertificates, chain] },
+  })
   console.log(`→ Connecté à ${HOST}, envoi de ${files.length} fichiers dans ${DIR}`)
 
   let currentDir = null
