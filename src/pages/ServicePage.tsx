@@ -1,6 +1,6 @@
 import { useRef, useState, type ReactNode } from "react"
 import { AnimatePresence, motion, useInView, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "framer-motion"
-import { ArrowDown, ArrowRight, Clock, Euro, Info, Mail, MapPin, MessageCircle, Phone, Plus, Star } from "lucide-react"
+import { ArrowDown, ArrowRight, Clock, Info, Mail, MapPin, MessageCircle, Phone, Plus, Star } from "lucide-react"
 import { Header } from "../components/layout/Header"
 import { Footer } from "../components/layout/Footer"
 import { services, type Service } from "../data/services"
@@ -36,11 +36,11 @@ function contactLinks(service: Service) {
 }
 
 /** Étiquette visible uniquement sur la version de test : signale un texte à remplacer par Sarah. */
-function Draft() {
+function Draft({ className = "ml-3" }: { className?: string }) {
   if (!showDemoWorkshops) return null
   return (
-    <span className="ml-3 align-middle inline-flex items-center rounded-full border border-dashed border-warm-400 px-2.5 py-0.5 font-sans text-[11px] font-semibold text-warm-600 whitespace-nowrap">
-      texte d'exemple
+    <span className={`${className} align-middle inline-flex items-center rounded-full border border-dashed border-warm-400 px-2.5 py-0.5 font-sans text-[11px] font-semibold text-warm-700 whitespace-nowrap`}>
+      texte d’exemple
     </span>
   )
 }
@@ -58,22 +58,17 @@ function H2({ id, children, draft }: { id?: string; children: ReactNode; draft?:
 
 function Hero({ service, detail, tone }: { service: Service; detail: ServiceDetail; tone: Tone }) {
   const photo = detail.photos[0]
-  const facts = [
-    { Icon: Euro, label: "Tarif", value: service.price, big: true },
-    { Icon: Clock, label: "Durée", value: service.duration },
-    { Icon: MapPin, label: "Où", value: service.modality },
-  ]
 
   return (
-    <section className="relative overflow-hidden bg-ivory pt-28 pb-14 lg:pt-36 lg:pb-24">
+    <section className="relative overflow-hidden bg-ivory pt-24 pb-14 lg:pt-36 lg:pb-24">
       <div
         className="absolute -top-40 -left-40 w-[620px] h-[620px] rounded-full pointer-events-none blur-3xl"
         style={{ background: `radial-gradient(circle, ${tone.wash} 0%, transparent 68%)` }}
         aria-hidden="true"
       />
-      <div className="section-container relative grid lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] gap-12 lg:gap-16 items-center">
+      <div className="section-container relative grid lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] gap-8 lg:gap-16 items-center">
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease }}>
-          <nav aria-label="Fil d'Ariane" className="mb-8 font-sans text-xs text-warm-600">
+          <nav aria-label="Fil d'Ariane" className="mb-4 lg:mb-8 font-sans text-xs text-warm-700">
             <a href="/" className="hover:text-rose-600 transition-colors">Accueil</a>
             <span className="mx-2 text-warm-400" aria-hidden="true">/</span>
             <a href="/#soins" className="hover:text-rose-600 transition-colors">Soins</a>
@@ -81,36 +76,35 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
             <span aria-current="page">{service.name}</span>
           </nav>
 
-          <h1 className="font-cormorant font-light text-warm-900 leading-[1.02] tracking-[-0.01em] text-[2.9rem] sm:text-6xl lg:text-[4.6rem] text-balance">
+          <h1 className="font-cormorant font-light text-warm-900 leading-[1.02] tracking-[-0.01em] text-[2.45rem] sm:text-6xl lg:text-[4.6rem] text-balance">
             {service.name}
           </h1>
-          <p className="font-hand text-[1.75rem] sm:text-3xl leading-snug mt-4 max-w-md" style={{ color: tone.ink }}>
+          <p className="font-hand text-[1.6rem] sm:text-3xl leading-snug mt-3 lg:mt-4 max-w-md" style={{ color: tone.ink }}>
             {detail.tagline}
-            <Draft />
           </p>
+          <Draft className="mt-2" />
 
-          <dl className="mt-9 grid grid-cols-[auto_1fr] sm:grid-cols-3 gap-x-5 gap-y-4 sm:gap-0 sm:divide-x divide-rose-200/80 border-y border-rose-200/80 py-5">
-            {facts.map(({ Icon, label, value, big }) => (
-              <div key={label} className="contents sm:flex sm:flex-col sm:gap-1 sm:px-5 first:sm:pl-0">
-                <dt className="flex items-center gap-2 font-sans text-[11px] font-bold uppercase tracking-[0.14em] text-warm-600">
-                  <Icon size={14} style={{ color: tone.accent }} aria-hidden="true" />
-                  {label}
-                </dt>
-                <dd
-                  className={
-                    big
-                      ? "font-cormorant text-3xl font-medium leading-none tabular-nums"
-                      : "font-sans text-sm text-warm-800 leading-snug"
-                  }
-                  style={big ? { color: tone.ink } : undefined}
-                >
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <p className="sr-only">
+            Tarif {service.price}, durée {service.duration}, {service.modality}.
+          </p>
+          <ul
+            className="mt-7 lg:mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-rose-200/80 py-4 font-sans text-[15px] text-warm-800"
+            aria-hidden="true"
+          >
+            <li className="font-cormorant text-[2.1rem] font-medium leading-none tabular-nums" style={{ color: tone.ink }}>
+              {service.price}
+            </li>
+            <li className="flex items-center gap-2">
+              <Clock size={16} style={{ color: tone.accent }} />
+              {detail.shortDuration}
+            </li>
+            <li className="flex items-center gap-2">
+              <MapPin size={16} style={{ color: tone.accent }} />
+              {detail.shortModality}
+            </li>
+          </ul>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-4 mt-9">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4 mt-7 lg:mt-9">
             <a href="#contact-soin" className="btn-primary">
               Prendre contact
             </a>
@@ -123,7 +117,7 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
           </div>
         </motion.div>
 
-        <figure className="relative mx-auto w-full max-w-[25rem] lg:max-w-none">
+        <figure className="relative mx-auto w-full max-w-[25rem] lg:max-w-none order-first lg:order-none">
           <div
             className="absolute -inset-6 rounded-[999px_999px_40px_40px] blur-2xl pointer-events-none"
             style={{ background: tone.wash }}
@@ -141,7 +135,7 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
               width={1086}
               height={1448}
               fetchPriority="high"
-              className="w-full aspect-[4/5] object-cover rounded-[999px_999px_28px_28px] shadow-card"
+              className="w-full aspect-[5/4] max-h-[28svh] lg:aspect-[4/5] lg:max-h-none object-cover rounded-[999px_999px_28px_28px] shadow-card"
             />
           </motion.div>
           <figcaption className="absolute -bottom-4 left-6 sm:left-8 rounded-full bg-white/90 backdrop-blur-md px-4 py-1.5 shadow-card font-hand text-xl text-warm-800">
@@ -161,7 +155,7 @@ function Benefits({ service, tone }: { service: Service; tone: Tone }) {
       <H2 draft={service.id === "accompagnement"}>En quelques mots</H2>
       <p className="font-sans text-lg text-warm-800 leading-relaxed max-w-[38rem]">{service.description}</p>
 
-      <h3 className="font-cormorant text-2xl font-medium text-warm-900 mt-12 mb-5">Ce que ce soin peut vous apporter</h3>
+      <h3 className="font-cormorant text-[1.6rem] font-light text-warm-900 mt-12 mb-5">Ce que ce soin peut vous apporter</h3>
       <ul className="grid sm:grid-cols-2 gap-x-10 border-t border-rose-200/70">
         {service.benefits.map((b) => (
           <li key={b} className="flex items-start gap-3 py-4 border-b border-rose-200/70 font-sans text-[15px] text-warm-800 leading-snug">
@@ -172,6 +166,7 @@ function Benefits({ service, tone }: { service: Service; tone: Tone }) {
           </li>
         ))}
       </ul>
+      <Disclaimer />
     </div>
   )
 }
@@ -202,7 +197,7 @@ function Timeline({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
 
   return (
     <div>
-      <H2 id="deroule" draft>Le déroulé d'une séance</H2>
+      <H2 id="deroule" draft>Le déroulé d’une séance</H2>
       <ol ref={ref} className="relative mt-10 max-w-[38rem]">
         <span className="absolute left-[11px] top-2 bottom-2 w-px bg-rose-200" aria-hidden="true" />
         <motion.span
@@ -364,7 +359,7 @@ function Faq({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
 
 function Disclaimer() {
   return (
-    <p className="flex gap-3 max-w-[38rem] font-sans text-[13px] text-warm-600 leading-relaxed">
+    <p className="flex gap-3 max-w-[38rem] mt-6 font-sans text-sm text-warm-700 leading-relaxed">
       <Info size={16} className="flex-shrink-0 mt-0.5" aria-hidden="true" />
       Les soins proposés sont un accompagnement complémentaire au bien-être. Ils ne remplacent pas un avis, un diagnostic ou un
       traitement médical ou psychologique.
@@ -383,7 +378,7 @@ function ContactButtons({ service, dark = false }: { service: Service; dark?: bo
           href={href}
           className={
             i === 0
-              ? "group flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 bg-[#D36969] hover:bg-[#9E2E2E]"
+              ? "group flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 bg-[#B94A4F] hover:bg-[#9E2E2E]"
               : dark
                 ? "group flex items-center gap-3 rounded-2xl px-4 py-3 text-white border border-white/25 hover:bg-white/10 transition-colors"
                 : "group flex items-center gap-3 rounded-2xl px-4 py-3 text-warm-900 bg-white/70 border border-rose-200 hover:border-rose-300 hover:bg-white transition-colors"
@@ -392,7 +387,7 @@ function ContactButtons({ service, dark = false }: { service: Service; dark?: bo
           <Icon size={18} className="flex-shrink-0" aria-hidden="true" />
           <span className="flex flex-col leading-tight min-w-0">
             <span className="font-sans text-sm font-semibold">{label}</span>
-            <span className={`font-sans text-xs truncate ${i === 0 || dark ? "text-white/80" : "text-warm-600"}`}>{sub}</span>
+            <span className={`font-sans text-xs truncate ${i === 0 ? "text-white" : dark ? "text-white/80" : "text-warm-700"}`}>{sub}</span>
           </span>
         </a>
       ))}
@@ -424,7 +419,7 @@ function PracticalPanel({ service, tone }: { service: Service; tone: Tone }) {
         <div className="h-px bg-rose-200/80 my-6" />
         <p className="font-hand text-2xl text-warm-800 mb-3">prendre rendez-vous</p>
         <ContactButtons service={service} />
-        <p className="mt-4 font-sans text-xs text-warm-600">
+        <p className="mt-4 font-sans text-xs text-warm-700">
           Règlement sur place.{" "}
           <a href="/#contact" className="underline underline-offset-2 hover:text-rose-700">
             Ou passez par le formulaire
@@ -437,7 +432,7 @@ function PracticalPanel({ service, tone }: { service: Service; tone: Tone }) {
 }
 
 /** Barre de contact sur téléphone : apparaît après l'en-tête, s'efface au bloc contact. */
-function MobileBar({ service, show }: { service: Service; show: boolean }) {
+function MobileBar({ service, detail, show }: { service: Service; detail: ServiceDetail; show: boolean }) {
   return (
     <AnimatePresence>
       {show && (
@@ -455,9 +450,9 @@ function MobileBar({ service, show }: { service: Service; show: boolean }) {
           transition={{ duration: 0.45, ease }}
         >
           <span className="min-w-0 font-sans text-sm text-warm-800 truncate">
-            <span className="font-semibold text-warm-900">{service.price}</span> · {service.name}
+            <span className="font-semibold text-warm-900">{service.price}</span> · {detail.shortName}
           </span>
-          <a href="#contact-soin" className="flex-shrink-0 rounded-full bg-[#D36969] px-5 py-2.5 font-sans text-sm font-semibold text-white">
+          <a href="#contact-soin" className="flex-shrink-0 rounded-full bg-[#B94A4F] px-5 py-2.5 font-sans text-sm font-semibold text-white">
             Prendre contact
           </a>
         </motion.div>
@@ -582,7 +577,6 @@ export default function ServicePage({ id }: { id: string }) {
               <Remote detail={detail} tone={tone} />
               <Reviews detail={detail} tone={tone} />
               <Faq detail={detail} tone={tone} />
-              <Disclaimer />
             </article>
             <PracticalPanel service={service} tone={tone} />
           </div>
@@ -594,7 +588,7 @@ export default function ServicePage({ id }: { id: string }) {
         <OtherServices current={service.id} />
       </main>
       <Footer />
-      <MobileBar service={service} show={pastHero && !atContact} />
+      <MobileBar service={service} detail={detail} show={pastHero && !atContact} />
     </>
   )
 }

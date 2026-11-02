@@ -20,6 +20,10 @@ export interface ServiceFaq {
 }
 
 export interface ServiceDetail {
+  /** Formes courtes pour l'en-tête et la barre de contact du téléphone */
+  shortName: string
+  shortDuration: string
+  shortModality: string
   /** Une phrase d'accroche sous le nom du soin */
   tagline: string
   forWhom: string[]
@@ -35,7 +39,7 @@ export interface ServiceDetail {
 }
 
 const welcomeStep: ServiceStep = {
-  title: "L'échange",
+  title: "L’échange",
   time: "≈ 10 min",
   text: "Vous dites ce qui vous amène et ce que vous ressentez en ce moment. Rien n'est obligatoire : vous partagez ce que vous souhaitez.",
 }
@@ -49,6 +53,9 @@ const remoteSteps = [
 
 export const serviceDetails: Record<string, ServiceDetail> = {
   "nettoyage-energetique": {
+    shortName: "Nettoyage énergétique",
+    shortDuration: "≈ 1 h",
+    shortModality: "Au cabinet ou à distance",
     tagline: "Se délester de ce qui pèse, pour repartir plus léger.",
     forWhom: [
       "Vous vous sentez lourd(e), fatigué(e), sans vraiment savoir pourquoi.",
@@ -58,7 +65,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     steps: [
       welcomeStep,
       {
-        title: "L'installation",
+        title: "L’installation",
         time: "≈ 5 min",
         text: "Vous vous allongez habillé(e) sur la table, une couverture sur vous si vous le souhaitez. Il n'y a rien à faire, rien à réussir.",
       },
@@ -100,6 +107,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
 
   lahochi: {
+    shortName: "LaHoChi",
+    shortDuration: "≈ 1 h",
+    shortModality: "Au cabinet ou à distance",
     tagline: "Une lumière douce transmise par les mains, pour lâcher prise.",
     forWhom: [
       "Le stress et les pensées tournent en boucle et vous n'arrivez plus à décrocher.",
@@ -109,7 +119,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     steps: [
       welcomeStep,
       {
-        title: "L'installation",
+        title: "L’installation",
         time: "≈ 5 min",
         text: "Vous vous allongez habillé(e), les yeux fermés si vous le souhaitez. Une musique douce peut accompagner le soin.",
       },
@@ -151,6 +161,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
 
   magnetisme: {
+    shortName: "Magnétisme",
+    shortDuration: "≈ 1 h",
+    shortModality: "Au cabinet ou à distance",
     tagline: "Un soin ciblé, là où ça coince.",
     forWhom: [
       "Une tension ou une douleur revient toujours au même endroit.",
@@ -163,7 +176,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         text: "Vous parlez de ce qui vous gêne : où, depuis quand, dans quelles situations. Ensemble, vous définissez ce sur quoi Sarah va travailler.",
       },
       {
-        title: "L'installation",
+        title: "L’installation",
         time: "≈ 5 min",
         text: "Vous vous allongez ou vous vous asseyez, habillé(e), dans la position la plus confortable pour vous.",
       },
@@ -204,6 +217,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
 
   abhyanga: {
+    shortName: "Abhyanga",
+    shortDuration: "2 h",
+    shortModality: "Au cabinet",
     tagline: "Un massage enveloppant à l'huile tiède, pour se déposer.",
     forWhom: [
       "Votre corps est noué, tendu, et vous avez besoin de relâcher.",
@@ -216,7 +232,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         text: "Vous parlez de vos besoins, des zones sensibles et de vos préférences, pour que le massage vous ressemble.",
       },
       {
-        title: "L'installation",
+        title: "L’installation",
         time: "≈ 5 min",
         text: "Vous vous installez seul(e) sur la table, sous une serviette. Seule la zone massée est découverte, dans le respect de votre pudeur.",
       },
@@ -257,6 +273,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
 
   accompagnement: {
+    shortName: "Accompagnement",
+    shortDuration: "Sur quelques semaines",
+    shortModality: "Au cabinet ou à distance",
     tagline: "Plusieurs soins, un même fil, pour avancer en profondeur.",
     forWhom: [
       "Vous traversez une période longue ou difficile, et une séance ponctuelle ne suffit pas.",
