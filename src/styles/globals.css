@@ -43,6 +43,12 @@
     @apply font-cormorant;
   }
 
+  :focus-visible {
+    outline: 2px solid #D36969;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
   ::selection {
     @apply bg-rose-vibrant/30 text-warm-900;
   }

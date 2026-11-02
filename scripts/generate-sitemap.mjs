@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs'
+import { readdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -7,6 +7,18 @@ const root = join(__dirname, '..')
 
 const today = new Date().toISOString().slice(0, 10)
 const baseUrl = 'https://lesmainsducoeur.com'
+
+const soins = readdirSync(join(root, 'soins'))
+  .map(
+    (id) => `
+  <url>
+    <loc>${baseUrl}/soins/${id}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`,
+  )
+  .join('')
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -21,7 +33,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url>${soins}
 </urlset>
 `
 

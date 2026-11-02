@@ -14,6 +14,9 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
+# /soins/ n'a pas de page propre : renvoie vers la liste des soins de l'accueil
+RewriteRule ^soins/?$ /#soins [R=302,NE,L]
+
 # --- 2. SPA fallback : toute route inconnue → index.html -------------
 # (utile si tu ajoutes plus tard react-router ; sans effet aujourd'hui)
 # Seulement pour les adresses de pages (sans extension, hors /.well-known/) :

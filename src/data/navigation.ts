@@ -16,5 +16,10 @@ export const navItems: NavItem[] = [
 ]
 
 /** Lien de menu correspondant à la page affichée */
-export const isCurrentPage = (href: string) =>
-  typeof window !== "undefined" && !href.includes("#") && window.location.pathname.startsWith(href.replace(/\/$/, ""))
+export const isCurrentPage = (href: string) => {
+  if (typeof window === "undefined") return false
+  const path = window.location.pathname
+  // Les pages /soins/<id>/ relèvent du menu « Soins »
+  if (href === "/#soins") return path.startsWith("/soins/")
+  return !href.includes("#") && path.startsWith(href.replace(/\/$/, ""))
+}

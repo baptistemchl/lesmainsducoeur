@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 import type { Service } from "../../data/services"
 import { floatUpRotate } from "../../lib/animations"
 
@@ -14,7 +15,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
       variants={floatUpRotate}
       whileHover={{ y: -8, transition: { duration: 0.25, type: "spring", stiffness: 300 } }}
       whileTap={{ scale: 0.98 }}
-      className="flex flex-col group cursor-default relative overflow-hidden rounded-3xl transition-all duration-500"
+      className="flex flex-col group relative overflow-hidden rounded-3xl transition-all duration-500"
       style={{
         background: "rgba(255, 255, 255, 0.65)",
         backdropFilter: "blur(20px)",
@@ -79,7 +80,13 @@ export function ServiceCard({ service }: ServiceCardProps) {
           className="font-cormorant text-2xl font-medium text-warm-900 leading-tight transition-colors duration-300"
           style={{ ["--hover-color" as string]: color }}
         >
-          {service.name}
+          {/* Le lien couvre toute la carte (after:inset-0) */}
+          <a
+            href={`/soins/${service.id}/`}
+            className="after:absolute after:inset-0 after:rounded-3xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-rose-500"
+          >
+            {service.name}
+          </a>
         </h3>
 
         <p className="font-sans text-warm-700 text-sm leading-relaxed">
@@ -112,6 +119,13 @@ export function ServiceCard({ service }: ServiceCardProps) {
           </p>
           <p className="font-sans text-xs text-warm-500 leading-snug">
             {service.modality}
+          </p>
+          <p
+            className="mt-2 inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-warm-800 group-hover:text-rose-700 transition-colors"
+            aria-hidden="true"
+          >
+            Découvrir le soin
+            <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
           </p>
         </div>
       </div>
