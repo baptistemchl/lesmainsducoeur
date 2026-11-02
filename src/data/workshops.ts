@@ -37,16 +37,16 @@ function buildDemoWorkshops(today = new Date()): Workshop[] {
   const slots = [
     { inDays: 6, time: "18h30 – 20h30", title: "Cercle de reconnexion au cœur", seatsLeft: 2 },
     { inDays: 17, time: "14h – 16h", title: "Méditation & soin énergétique en groupe", seatsLeft: 0 },
-    { inDays: 29, time: "18h30 – 20h30", title: "Ayurvéda : accueillir l'hiver", seatsLeft: 5 },
-    { inDays: 43, time: "14h – 16h", title: "Cocon intérieur", seatsLeft: 8 },
-    { inDays: 57, time: "18h30 – 20h30", title: "Cercle de reconnexion au cœur", seatsLeft: 7 },
+    { inDays: 29, time: "18h30 – 20h30", title: "Ayurvéda : accueillir l'hiver", seatsLeft: 4 },
+    { inDays: 43, time: "14h – 16h", title: "Cocon intérieur", seatsLeft: 5 },
+    { inDays: 57, time: "18h30 – 20h30", title: "Cercle de reconnexion au cœur", seatsLeft: 3 },
   ]
   return slots.map((s, i) => ({
     id: `demo-${i}`,
     date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + s.inDays),
     time: s.time,
     title: s.title,
-    seatsTotal: 8,
+    seatsTotal: 5,
     seatsLeft: s.seatsLeft,
     demo: true,
   }))
@@ -55,13 +55,15 @@ function buildDemoWorkshops(today = new Date()): Workshop[] {
 export const demoWorkshops: Workshop[] = buildDemoWorkshops()
 
 /**
- * Présentation de la page Ateliers. Textes génériques en attendant ceux de Sarah.
+ * Présentation de la page Ateliers : texte de Sarah (02/11/2026). Le déroulé reste générique.
  */
 export const workshopIntro = {
-  title: "Un moment pour soi, vécu à plusieurs",
+  title: "Un moment pour soi, à partager ensemble",
   paragraphs: [
-    "Chaque mois, Sarah ouvre les portes du cabinet à un petit groupe, le temps d'une parenthèse autour d'un thème : se poser, écouter son corps, apaiser les émotions, se reconnecter à l'énergie du cœur.",
-    "Pas besoin d'expérience ni de « savoir faire » : vous venez comme vous êtes. Le groupe reste volontairement petit pour que chacun trouve sa place, dans la douceur et le respect du rythme de tous.",
+    "Je vous propose régulièrement des ateliers en petit groupe, autour de différentes thématiques. Chaque atelier est une invitation à prendre un peu de temps pour soi, à découvrir de nouvelles choses, à expérimenter et à partager un moment dans la bienveillance.",
+    "Au fil des rencontres, nous abordons différents sujets : l'intuition, les énergies, le développement personnel, les pratiques spirituelles, l'Ayurvéda. Chaque atelier a son propre thème et son ambiance.",
+    "Aucune connaissance particulière n'est nécessaire. Que vous soyez déjà initié(e) ou simplement curieux(se) de découvrir mon univers, vous êtes les bienvenus.",
+    "J'aime que ces moments se déroulent en petit comité, pour que chacun puisse trouver sa place, échanger librement et vivre l'expérience à son rythme, sans jugement ni attente particulière.",
   ],
 }
 
@@ -76,7 +78,7 @@ export const workshopSteps = [
   },
   {
     title: "La pratique guidée",
-    text: "Le cœur de l'atelier : méditation, respiration, soin énergétique partagé ou rituel ayurvédique, selon le thème du mois.",
+    text: "Le cœur de l'atelier : méditation, respiration, soin énergétique partagé ou rituel ayurvédique, selon le thème de l'atelier.",
   },
   {
     title: "Le temps d'intégration",
@@ -86,9 +88,9 @@ export const workshopSteps = [
 
 export const workshopPractical = [
   { label: "Durée", value: "Environ 2 h" },
-  { label: "Lieu", value: "Au cabinet, 17 rue du Pré d'Aublé, Saint-Alban" },
-  { label: "Groupe", value: "5 à 8 personnes" },
-  { label: "Participation", value: "35 € par personne (tarif d'exemple)" },
-  { label: "À prévoir", value: "Une tenue confortable, un plaid et une bouteille d'eau" },
-  { label: "Réservation", value: "Par téléphone, SMS ou e-mail · règlement sur place" },
+  { label: "Lieu", value: "Selon la saison, dans une salle dédiée ou en extérieur · précisé à la réservation" },
+  { label: "Groupe", value: "5 personnes maximum" },
+  { label: "Participation", value: "20 à 25 € par personne" },
+  { label: "À prévoir", value: "Une tenue confortable" },
+  { label: "Réservation", value: "Par téléphone, e-mail ou directement sur le site · règlement sur place" },
 ]

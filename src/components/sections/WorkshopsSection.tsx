@@ -23,7 +23,7 @@ export function WorkshopsSection() {
           <SectionHeading
             label="Ateliers collectifs"
             title="Se retrouver, en petit groupe"
-            subtitle="Chaque mois, Sarah réunit un petit cercle autour d'un thème : méditation, soin énergétique partagé, Ayurvéda. Découvrez le déroulé et le calendrier des prochaines dates."
+            subtitle="Régulièrement, Sarah réunit un petit groupe autour d'un thème : l'intuition, les énergies, le développement personnel, l'Ayurvéda. Découvrez le déroulé et le calendrier des prochaines dates."
           />
           <a href="/ateliers/" className="btn-primary self-start lg:self-auto flex-shrink-0">
             Découvrir les ateliers <ArrowRight size={16} />

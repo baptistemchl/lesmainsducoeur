@@ -4,11 +4,31 @@
 
 /* ─── Base styles ─── */
 @layer base {
-  :root {
+  /*
+   * Le site est toujours clair. Certains téléphones (Chrome « assombrir les sites »,
+   * Samsung Internet en mode sombre, navigateurs intégrés à WhatsApp/Instagram)
+   * inversent sinon les couleurs d'eux-mêmes. « only light » leur interdit de le faire ;
+   * le bloc prefers-color-scheme ci-dessous signale à Samsung Internet que le site
+   * gère déjà le mode sombre (en restant clair), ce qui coupe son inversion automatique.
+   */
+  :root,
+  html,
+  body {
     color-scheme: only light;
   }
 
+  @media (prefers-color-scheme: dark) {
+    :root,
+    html,
+    body {
+      color-scheme: only light;
+      background-color: #FDF2F8;
+      color: #2D1B4E;
+    }
+  }
+
   html {
+    background-color: #FDF2F8;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

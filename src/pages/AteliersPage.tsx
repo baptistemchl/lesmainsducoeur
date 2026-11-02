@@ -88,7 +88,7 @@ function Steps() {
         <SectionHeading
           label="Déroulé"
           title="Comment se passe un atelier ?"
-          subtitle="Le thème change chaque mois, le fil reste le même : on arrive, on partage, on pratique, on repart plus léger."
+          subtitle="Le thème change d'un atelier à l'autre, le fil reste le même : on arrive, on partage, on pratique, on repart plus léger."
           centered
           className="mb-14"
         />
