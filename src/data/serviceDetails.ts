@@ -35,7 +35,7 @@ export interface ServiceDetail {
   /** Auteurs des avis Google à afficher (dans l'ordre) */
   reviews: string[]
   /** Photos de la page : la première sert de visuel principal */
-  photos: { src: string; alt: string }[]
+  photos: { src: string; alt: string; /** cadrage (object-position) */ position?: string }[]
 }
 
 const welcomeStep: ServiceStep = {
@@ -211,7 +211,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     reviews: ["hln psq", "gadette gadette"],
     photos: [
-      { src: "/images/20251202_105819.webp", alt: "La table de soin préparée au cabinet" },
+      { src: "/images/20251202_105819.webp", alt: "La table de soin préparée au cabinet", position: "50% 20%" },
       { src: "/images/espace-massage.webp", alt: "Le cabinet : table de soin, tapis et attrape-rêves au mur" },
     ],
   },
