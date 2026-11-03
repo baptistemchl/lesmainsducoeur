@@ -17,7 +17,7 @@ export function FaqItem({ entry }: FaqItemProps) {
         className="w-full flex items-center justify-between gap-4 py-5 text-left group"
         aria-expanded={open}
       >
-        <span className="font-cormorant text-xl font-medium text-warm-900 group-hover:text-rose transition-colors duration-200 leading-snug">
+        <span className="font-cormorant text-xl font-medium text-warm-900 group-hover:text-rose-ink transition-colors duration-200 leading-snug">
           {entry.question}
         </span>
         <span

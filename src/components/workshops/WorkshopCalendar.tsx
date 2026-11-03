@@ -117,7 +117,7 @@ export function WorkshopCalendar({ workshops }: { workshops: Workshop[] }) {
                   active
                     ? full
                       ? "bg-warm-500 text-white shadow-card"
-                      : "bg-rose-500 text-white shadow-soft scale-105"
+                      : "bg-rose-ink text-white shadow-soft scale-105"
                     : full
                       ? "bg-warm-200/70 text-warm-600 hover:bg-warm-300/70"
                       : "bg-rose-100 text-rose-600 hover:bg-rose-200"

@@ -58,7 +58,7 @@ export function HeroSection() {
             <motion.div variants={slideInLeft}>
               <h1 className="font-cormorant text-5xl sm:text-6xl lg:text-7xl font-light text-warm-900 leading-[1.08] tracking-tight">
                 Les Mains<br />
-                <em className="not-italic text-rose font-medium">du Coeur</em>
+                <em className="not-italic text-rose-500 font-medium">du Coeur</em>
               </h1>
             </motion.div>
 

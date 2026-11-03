@@ -92,13 +92,13 @@ export function AyurvedaSection() {
 
             <motion.h2 variants={fadeInUp} className="section-title">
               Le magnétisme et<br />
-              <em className="not-italic text-rose font-medium">l'Ayurvéda</em>
+              <em className="not-italic text-rose-500 font-medium">l'Ayurvéda</em>
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="section-subtitle">
               L'Ayurvéda est pratiquée en Inde depuis plus de 5 000 ans. Son nom, composé
-              des mots <em className="text-rose font-medium not-italic">« ayur »</em> et
-              <em className="text-rose font-medium not-italic"> « veda »</em>, signifie
+              des mots <em className="text-rose-ink font-medium not-italic">« ayur »</em> et
+              <em className="text-rose-ink font-medium not-italic"> « veda »</em>, signifie
               <strong className="text-warm-900"> science de la vie</strong>. Une approche
               du soin qui prend en compte l'être dans son entièreté : corps, cœur, esprit.
             </motion.p>

@@ -69,7 +69,7 @@ export function TestimonialsSection() {
                 href={aggregate.writeReviewLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-vibrant text-white font-sans text-sm font-medium hover:bg-rose-deep transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-ink text-white font-sans text-sm font-semibold hover:bg-rose-deep transition-colors"
               >
                 <Star size={14} fill="white" stroke="none" />
                 Laisser un avis sur Google
@@ -97,7 +97,7 @@ export function TestimonialsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="font-hand text-xl text-rose/60">merci pour votre confiance ✦</p>
+          <p className="font-hand text-xl text-rose-500/80">merci pour votre confiance ✦</p>
         </motion.div>
       </div>
     </section>

@@ -43,7 +43,7 @@ export function Header() {
               className="h-11 w-auto flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
             />
             <div className="flex flex-col leading-none">
-              <span className="font-cormorant text-xl font-medium text-warm-900 group-hover:text-rose transition-colors duration-200">
+              <span className="font-cormorant text-xl font-medium text-warm-900 group-hover:text-rose-ink transition-colors duration-200">
                 Les Mains du Coeur
               </span>
               <span className="font-sans text-[10px] tracking-widest text-warm-500 uppercase mt-0.5">
@@ -59,7 +59,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={isCurrentPage(item.href) ? "page" : undefined}
-                className="font-sans text-sm text-warm-700 aria-[current=page]:text-rose-500 aria-[current=page]:font-semibold hover:text-rose transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rose hover:after:w-full after:transition-all after:duration-300"
+                className="font-sans text-sm text-warm-700 aria-[current=page]:text-rose-ink aria-[current=page]:font-semibold hover:text-rose-ink transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rose-ink hover:after:w-full after:transition-all after:duration-300"
               >
                 {item.label}
               </a>

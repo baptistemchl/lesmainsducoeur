@@ -28,6 +28,8 @@ const config: Config = {
           light: '#F4D2D2',
           vibrant: '#D36969',
           deep: '#9E2E2E',
+          /* Rose des boutons et petits textes d'accent (contraste ≥ 4,5:1 sur ivoire) */
+          ink: '#B94A4F',
         },
         /* ── Meditation Purples ── */
         sage: {
@@ -92,7 +94,7 @@ const config: Config = {
         soft: '0 8px 40px rgba(211, 105, 105, 0.20)',
         halo: '0 0 80px rgba(239, 184, 184, 0.55)',
         header: '0 1px 24px rgba(124, 58, 237, 0.08)',
-        glow: '0 0 40px rgba(211, 105, 105, 0.35)',
+        glow: '0 0 40px rgba(185, 74, 79, 0.3)',
         'glow-sage': '0 0 40px rgba(139, 92, 246, 0.25)',
         'glow-gold': '0 0 30px rgba(245, 158, 11, 0.25)',
         neon: '0 0 15px rgba(194, 61, 61, 0.4), 0 0 45px rgba(139, 92, 246, 0.2)',

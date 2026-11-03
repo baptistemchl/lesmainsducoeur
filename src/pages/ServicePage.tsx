@@ -105,7 +105,7 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
           </ul>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4 mt-5 lg:mt-9">
-            <a href="#contact-soin" className="btn-primary !bg-[#B94A4F] hover:!bg-[#9E2E2E]">
+            <a href="#contact-soin" className="btn-primary">
               Prendre contact
             </a>
             <a
@@ -379,7 +379,7 @@ function ContactButtons({ service, dark = false }: { service: Service; dark?: bo
           href={href}
           className={
             i === 0
-              ? "group flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 bg-[#B94A4F] hover:bg-[#9E2E2E]"
+              ? "group flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 bg-rose-ink hover:bg-rose-deep"
               : dark
                 ? "group flex items-center gap-3 rounded-2xl px-4 py-3 text-white border border-white/25 hover:bg-white/10 transition-colors"
                 : "group flex items-center gap-3 rounded-2xl px-4 py-3 text-warm-900 bg-white/70 border border-rose-200 hover:border-rose-300 hover:bg-white transition-colors"
@@ -453,7 +453,7 @@ function MobileBar({ service, detail, show }: { service: Service; detail: Servic
           <span className="min-w-0 font-sans text-sm text-warm-800 truncate">
             <span className="font-semibold text-warm-900">{service.price}</span> · {detail.shortName}
           </span>
-          <a href="#contact-soin" className="flex-shrink-0 rounded-full bg-[#B94A4F] px-5 py-2.5 font-sans text-sm font-semibold text-white">
+          <a href="#contact-soin" className="flex-shrink-0 rounded-full bg-rose-ink px-5 py-2.5 font-sans text-sm font-semibold text-white">
             Prendre contact
           </a>
         </motion.div>

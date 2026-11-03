@@ -44,7 +44,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid #D36969;
+    outline: 2px solid #B94A4F;
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -70,7 +70,7 @@
     @apply py-20 lg:py-32;
   }
 
-  /* Bouton primaire — rose Camille (Valspar 2002-4B) */
+  /* Bouton primaire — rose Camille foncé, même teinte sur tout le site */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
            text-white font-sans font-semibold text-sm
@@ -78,7 +78,7 @@
            active:scale-[0.96]
            transition-all duration-300 ease-out
            shadow-soft;
-    background-color: #D36969;
+    background-color: #B94A4F;
   }
 
   .btn-primary:hover {
@@ -90,7 +90,7 @@
   /* Bouton fantôme */
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2
-           border-2 border-rose text-rose font-sans font-semibold text-sm
+           border-2 border-rose-300 text-rose-ink font-sans font-semibold text-sm
            px-8 py-3.5 rounded-full
            active:scale-[0.96]
            transition-all duration-300 ease-out;
@@ -98,7 +98,7 @@
 
   .btn-ghost:hover {
     transform: translateY(-2px);
-    @apply bg-rose text-white shadow-glow;
+    @apply bg-rose-ink border-rose-ink text-white shadow-glow;
   }
 
   /* Bouton discret */
@@ -118,7 +118,7 @@
 
   /* Label de section */
   .section-label {
-    @apply font-sans text-xs font-bold tracking-widest uppercase text-rose;
+    @apply font-sans text-xs font-bold tracking-widest uppercase text-rose-ink;
   }
 
   /* Titre de section */

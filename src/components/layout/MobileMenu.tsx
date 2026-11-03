@@ -70,7 +70,7 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 + 0.1 }}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-left font-cormorant text-2xl font-light text-warm-800 hover:text-rose py-2 transition-colors duration-200"
+                  className="text-left font-cormorant text-2xl font-light text-warm-800 hover:text-rose-ink py-2 transition-colors duration-200"
                 >
                   {item.label}
                 </motion.button>

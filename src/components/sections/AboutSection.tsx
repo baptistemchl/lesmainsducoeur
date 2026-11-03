@@ -59,7 +59,7 @@ export function AboutSection() {
                   <h3 className="font-cormorant text-2xl font-light text-warm-900 leading-none">
                     Sarah
                   </h3>
-                  <p className="font-sans text-[10px] text-rose font-semibold tracking-widest uppercase">
+                  <p className="font-sans text-[10px] text-rose-ink font-semibold tracking-widest uppercase">
                     Praticienne en soins énergétiques
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export function AboutSection() {
 
             <motion.h2 variants={fadeInUp} className="section-title">
               Bercée par le magnétisme,<br />
-              <em className="not-italic text-rose font-medium">guidée par le cœur</em>
+              <em className="not-italic text-rose-500 font-medium">guidée par le cœur</em>
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="section-subtitle">
@@ -121,7 +121,7 @@ export function AboutSection() {
               <p className="font-cormorant text-xl italic font-light text-warm-800 leading-relaxed">
                 "Une parenthèse de sérénité dans votre quotidien."
               </p>
-              <footer className="font-hand text-base mt-2 text-rose">— Sarah</footer>
+              <footer className="font-hand text-base mt-2 text-rose-500">— Sarah</footer>
             </motion.blockquote>
           </motion.div>
         </div>

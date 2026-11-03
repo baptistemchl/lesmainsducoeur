@@ -59,7 +59,7 @@ export function PhilosophySection() {
         >
           {/* Grande citation centrale — zen reveal */}
           <motion.div variants={zenReveal} className="text-center max-w-3xl mx-auto">
-            <p className="section-label mb-6" style={{ opacity: 0.8 }}>Mon approche</p>
+            <p className="section-label !text-rose-300 mb-6">Mon approche</p>
             <blockquote
               className="rounded-3xl px-8 py-6 lg:px-12 lg:py-8"
               style={{

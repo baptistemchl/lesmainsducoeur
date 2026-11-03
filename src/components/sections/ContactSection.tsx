@@ -54,7 +54,7 @@ export function ContactSection() {
           >
             <motion.div variants={slideInLeft} className="flex flex-col gap-1">
               <p className="font-cormorant text-2xl font-medium text-warm-900">Sarah</p>
-              <p className="font-sans text-sm text-rose font-semibold">Praticienne en soins énergétiques</p>
+              <p className="font-sans text-sm text-rose-ink font-semibold">Praticienne en soins énergétiques</p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex flex-col gap-3">
