@@ -311,12 +311,15 @@ function Remote({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
   )
 }
 
-type Review = (typeof googleData.reviews)[number]
+type Review = { id: string; author: string; content: string; rating?: number; source: "google" | "sarah"; date?: string }
 
 function Reviews({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
-  const reviews = detail.reviews
-    .map((name) => googleData.reviews.find((r) => r.author === name))
-    .filter((r): r is Review => Boolean(r))
+  const reviews: Review[] =
+    detail.ownReviews?.map((r) => ({ ...r, id: r.author })) ??
+    detail.reviews.flatMap((name) => {
+      const r = googleData.reviews.find((g) => g.author === name)
+      return r ? [{ id: r.id, author: r.author, content: r.content, rating: r.rating, source: "google" as const }] : []
+    })
   if (reviews.length === 0) return null
 
   return (
@@ -337,12 +340,17 @@ function Reviews({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
             </blockquote>
             <figcaption className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-sans text-sm text-warm-700">
               <span className="font-semibold text-warm-900">{r.author}</span>
-              <span className="inline-flex gap-0.5" role="img" aria-label={`${r.rating} étoiles sur 5`}>
-                {Array.from({ length: r.rating }, (_, i) => (
-                  <Star key={i} size={13} className="fill-gold text-gold" aria-hidden="true" />
-                ))}
+              {r.source === "google" && r.rating && (
+                <span className="inline-flex gap-0.5" role="img" aria-label={`${r.rating} étoiles sur 5`}>
+                  {Array.from({ length: r.rating }, (_, i) => (
+                    <Star key={i} size={13} className="fill-gold text-gold" aria-hidden="true" />
+                  ))}
+                </span>
+              )}
+              <span>
+                {r.source === "google" ? "Avis Google" : "Avis transmis à Sarah"}
+                {r.date && `, ${r.date}`}
               </span>
-              <span>Avis Google</span>
             </figcaption>
           </figure>
         ))}

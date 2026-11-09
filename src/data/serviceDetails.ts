@@ -44,8 +44,17 @@ export interface ServiceDetail {
   /** Parties écrites par Sarah : la pastille « texte d'exemple » n'y apparaît pas */
   fromSarah?: ("tagline" | "steps" | "forWhom" | "faq" | "remote")[]
   faq: ServiceFaq[]
-  /** Auteurs des avis Google à afficher (dans l'ordre) */
+  /** Auteurs des avis Google à afficher (dans l'ordre), pris dans google-reviews.json */
   reviews: string[]
+  /** Avis transmis par Sarah pour ce soin précis ; affichés à la place de `reviews` */
+  ownReviews?: {
+    author: string
+    content: string
+    /** « google » : avis publié sur sa fiche Google ; « sarah » : reçu directement par Sarah */
+    source: "google" | "sarah"
+    rating?: number
+    date?: string
+  }[]
   /** Photos de la page : la première sert de visuel principal */
   photos: {
     src: string
@@ -353,7 +362,23 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         answer: "Le plus simple est d'en parler avec Sarah : un premier échange permet de voir ensemble si cet accompagnement vous correspond.",
       },
     ],
-    reviews: ["OCÉANNE De la Pallière", "Margot Dennielou"],
+    reviews: [],
+    ownReviews: [
+      {
+        author: "Amélie GALAND",
+        source: "google",
+        rating: 5,
+        date: "novembre 2026",
+        content:
+          "J'ai eu le plaisir d'effectuer un suivi avec Sarah et je ne peux que recommander son accompagnement ! Sa bienveillance, la précision des messages qu'elle perçoit, le regain d'énergie, les compréhensions, les libérations, les voies de réflexion, et aussi et surtout, les ressentis au cours des soins qui étaient dingues !! Alors que l'on a tout fait à distance ! Ça m'étonnera toujours ! Merci encore Sarah pour tout et pour ta belle lumière.",
+      },
+      {
+        author: "Une personne accompagnée",
+        source: "sarah",
+        content:
+          "L'accompagnement Isis, 4 séances qui ne se ressemblaient pas. Entre soins énergétiques, massages et exercices, j'ai pu y trouver les clés afin de pouvoir avancer et évoluer dans ma vie. J'ai apprécié chaque séance.\n\nLe feeling est tout de suite passé avec Sarah. De nature douce et rassurante, elle a su trouver les mots à mettre sur mes maux, et m'éclairer sur le chemin que je devais prendre. Elle s'est toujours rendue disponible lorsque j'en avais besoin, j'ai apprécié le fait d'avoir un échange permanent. Je ne me suis jamais sentie seule entre nos séances. Les exercices qu'elle m'a donnés ont été d'une grande aide et très libérateurs.\n\nSarah a toujours su trouver les mots, les paroles et les gestes qu'il fallait. Si c'était à refaire, je le recommencerais encore et encore !\n\nMerci ✨",
+      },
+    ],
     photos: [
       {
         src: "/images/isis.webp",
