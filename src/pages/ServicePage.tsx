@@ -21,6 +21,8 @@ type Tone = (typeof tones)[string]
 
 const ease = [0.16, 1, 0.3, 1] as const
 
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
+
 function contactLinks(service: Service) {
   const message = `Bonjour Sarah, je suis intéressé(e) par : ${service.name}. Pouvez-vous me recontacter pour en parler ?`
   return [
@@ -44,6 +46,10 @@ function Draft({ className = "ml-3" }: { className?: string }) {
     </span>
   )
 }
+
+/** Une partie est « d'exemple » tant que Sarah n'a pas fourni son texte. */
+const isDraft = (detail: ServiceDetail, part: NonNullable<ServiceDetail["fromSarah"]>[number]) =>
+  !detail.fromSarah?.includes(part)
 
 function H2({ id, children, draft }: { id?: string; children: ReactNode; draft?: boolean }) {
   return (
@@ -82,7 +88,7 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
           <p className="font-hand text-[1.5rem] sm:text-3xl leading-snug mt-2 lg:mt-4 max-w-md" style={{ color: tone.ink }}>
             {detail.tagline}
           </p>
-          <Draft className="mt-2" />
+          {isDraft(detail, "tagline") && <Draft className="mt-2" />}
 
           <p className="sr-only">
             Tarif {service.price}, durée {service.duration}, {service.modality}.
@@ -112,7 +118,7 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
               href="#deroule"
               className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-warm-800 underline decoration-rose-300 decoration-2 underline-offset-[6px] hover:decoration-rose-500 transition-colors"
             >
-              Voir le déroulé <ArrowDown size={15} aria-hidden="true" />
+              {detail.stepsLink ?? "Voir le déroulé"} <ArrowDown size={15} aria-hidden="true" />
             </a>
           </div>
         </motion.div>
@@ -150,13 +156,13 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
 
 /* ───────────────────────── Contenu ───────────────────────── */
 
-function Benefits({ service, tone }: { service: Service; tone: Tone }) {
+function Benefits({ service, detail, tone }: { service: Service; detail: ServiceDetail; tone: Tone }) {
   return (
     <div>
-      <H2 draft={service.id === "accompagnement"}>En quelques mots</H2>
+      <H2>En quelques mots</H2>
       <p className="font-sans text-lg text-warm-800 leading-relaxed max-w-[38rem]">{service.description}</p>
 
-      <h3 className="font-cormorant text-[1.6rem] font-light text-warm-900 mt-12 mb-5">Ce que ce soin peut vous apporter</h3>
+      <h3 className="font-cormorant text-[1.6rem] font-light text-warm-900 mt-12 mb-5">Ce que {detail.noun ?? "ce soin"} peut vous apporter</h3>
       <ul className="grid sm:grid-cols-2 gap-x-10 border-t border-rose-200/70">
         {service.benefits.map((b) => (
           <li key={b} className="flex items-start gap-3 py-4 border-b border-rose-200/70 font-sans text-[15px] text-warm-800 leading-snug">
@@ -175,7 +181,7 @@ function Benefits({ service, tone }: { service: Service; tone: Tone }) {
 function ForWhom({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
   return (
     <div>
-      <H2 draft>Ce soin est pour vous si…</H2>
+      <H2 draft={isDraft(detail, "forWhom")}>{capitalize(detail.noun ?? "ce soin")} est pour vous si…</H2>
       <ul className="flex flex-col gap-5 max-w-[38rem]">
         {detail.forWhom.map((line) => (
           <li key={line} className="flex gap-4 font-sans text-[17px] text-warm-800 leading-relaxed">
@@ -194,11 +200,13 @@ function Timeline({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 70%", "end 55%"] })
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 })
-  const steps = [...detail.steps, { title: "Et après", text: detail.after }]
+  const steps = detail.after ? [...detail.steps, { title: "Et après", text: detail.after }] : detail.steps
 
   return (
     <div>
-      <H2 id="deroule" draft>Le déroulé d’une séance</H2>
+      <H2 id="deroule" draft={isDraft(detail, "steps")}>
+        {detail.stepsTitle ?? "Le déroulé d’une séance"}
+      </H2>
       <ol ref={ref} className="relative mt-10 max-w-[38rem]">
         <span className="absolute left-[11px] top-2 bottom-2 w-px bg-rose-200" aria-hidden="true" />
         <motion.span
@@ -256,6 +264,26 @@ function TimelineStep({
   )
 }
 
+/** Le mot de Sarah, à la première personne. */
+function Engagement({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
+  if (!detail.engagement) return null
+  return (
+    <figure className="relative max-w-[40rem] border-l-[3px] pl-6 sm:pl-9" style={{ borderColor: tone.accent }}>
+      <h2 className="font-cormorant text-3xl lg:text-[2.6rem] font-light text-warm-900 leading-tight mb-6 text-balance">
+        {detail.engagement.title}
+      </h2>
+      <blockquote className="flex flex-col gap-4 font-sans text-[16px] sm:text-[17px] text-warm-800 leading-relaxed">
+        {detail.engagement.paragraphs.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+      </blockquote>
+      <figcaption className="font-hand text-2xl mt-5" style={{ color: tone.ink }}>
+        — Sarah
+      </figcaption>
+    </figure>
+  )
+}
+
 function Remote({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
   if (!detail.remote) return null
   return (
@@ -263,7 +291,7 @@ function Remote({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
       className="rounded-[28px] p-7 sm:p-10 relative overflow-hidden"
       style={{ background: `linear-gradient(140deg, #FFFFFF 0%, ${tone.wash} 140%)` }}
     >
-      <H2 draft>Et à distance ?</H2>
+      <H2 draft={isDraft(detail, "remote")}>Et à distance ?</H2>
       <ol className="flex flex-col gap-4 max-w-[36rem]">
         {detail.remote.map((line, i) => (
           <li key={line} className="flex gap-4 font-sans text-[15px] text-warm-800 leading-relaxed">
@@ -331,7 +359,7 @@ function Reviews({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
 function Faq({ detail, tone }: { detail: ServiceDetail; tone: Tone }) {
   return (
     <div>
-      <H2 draft>Vos questions</H2>
+      <H2 draft={isDraft(detail, "faq")}>Vos questions</H2>
       <div className="border-t border-rose-200/80 max-w-[38rem]">
         {detail.faq.map((f) => (
           <details key={f.question} className="group border-b border-rose-200/80">
@@ -464,7 +492,7 @@ function MobileBar({ service, detail, show }: { service: Service; detail: Servic
 
 /* ───────────────────────── Fin de page ───────────────────────── */
 
-function ContactBlock({ service }: { service: Service }) {
+function ContactBlock({ service, detail }: { service: Service; detail: ServiceDetail }) {
   return (
     <section id="contact-soin" className="scroll-mt-24 pt-6 pb-16 lg:pb-24 bg-ivory">
       <div className="section-container">
@@ -479,11 +507,12 @@ function ContactBlock({ service }: { service: Service }) {
           />
           <div className="relative">
             <h2 className="font-cormorant text-[2.1rem] sm:text-5xl font-light text-white leading-tight text-balance">
-              Une question avant de vous lancer ?
+              {detail.contactLead?.title ?? "Une question avant de vous lancer ?"}
             </h2>
             <p className="font-sans text-[15px] sm:text-base mt-4 max-w-md leading-relaxed" style={{ color: "rgba(237,233,254,0.85)" }}>
-              Appelez Sarah, envoyez-lui un SMS ou un e-mail : elle prend le temps de vous répondre et de convenir avec vous d'un
-              moment, au cabinet ou à distance. Règlement sur place.
+              {detail.contactLead?.text ??
+                "Appelez Sarah, envoyez-lui un SMS ou un e-mail : elle prend le temps de vous répondre et de convenir avec vous d'un moment, au cabinet ou à distance."}{" "}
+              Règlement sur place.
             </p>
           </div>
           <div className="relative">
@@ -572,9 +601,10 @@ export default function ServicePage({ id }: { id: string }) {
         <div className="bg-ivory pb-20 lg:pb-28">
           <div className="section-container grid lg:grid-cols-[minmax(0,1fr)_340px] gap-16 xl:gap-24 pt-6 lg:pt-10">
             <article className="flex flex-col gap-20 lg:gap-24 min-w-0">
-              <Benefits service={service} tone={tone} />
+              <Benefits service={service} detail={detail} tone={tone} />
               <ForWhom detail={detail} tone={tone} />
               <Timeline detail={detail} tone={tone} />
+              <Engagement detail={detail} tone={tone} />
               <Remote detail={detail} tone={tone} />
               <Reviews detail={detail} tone={tone} />
               <Faq detail={detail} tone={tone} />
@@ -584,7 +614,7 @@ export default function ServicePage({ id }: { id: string }) {
         </div>
 
         <div ref={contactRef}>
-          <ContactBlock service={service} />
+          <ContactBlock service={service} detail={detail} />
         </div>
         <OtherServices current={service.id} />
       </main>

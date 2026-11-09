@@ -2,9 +2,9 @@
  * Contenu des pages de soin (/soins/<id>/).
  *
  * Les textes « métier » de Sarah (description, bienfaits, durée, prix, modalité)
- * restent dans `services.ts`. Tout ce qui est ici est provisoire : textes
- * génériques rédigés pour que Sarah voie ce que la page peut donner, à remplacer
- * par les siens.
+ * restent dans `services.ts`. Le reste est provisoire (textes génériques, à
+ * remplacer par les siens), sauf les parties listées dans `fromSarah` et le
+ * texte `engagement`, repris d'elle.
  */
 
 export interface ServiceStep {
@@ -24,13 +24,25 @@ export interface ServiceDetail {
   shortName: string
   shortDuration: string
   shortModality: string
+  /** Comment désigner la prestation dans les titres (par défaut « ce soin ») */
+  noun?: string
   /** Une phrase d'accroche sous le nom du soin */
   tagline: string
   forWhom: string[]
   steps: ServiceStep[]
   /** Déroulé d'une séance à distance (absent si le soin se fait uniquement au cabinet) */
   remote?: string[]
-  after: string
+  /** Dernière étape « Et après » du déroulé (facultative) */
+  after?: string
+  /** Titre du déroulé et libellé du lien de l'en-tête (par défaut : une séance) */
+  stepsTitle?: string
+  stepsLink?: string
+  /** Texte de Sarah, à la première personne, signé de son prénom */
+  engagement?: { title: string; paragraphs: string[] }
+  /** Titre et texte du bloc de contact en bas de page */
+  contactLead?: { title: string; text: string }
+  /** Parties écrites par Sarah : la pastille « texte d'exemple » n'y apparaît pas */
+  fromSarah?: ("tagline" | "steps" | "forWhom" | "faq" | "remote")[]
   faq: ServiceFaq[]
   /** Auteurs des avis Google à afficher (dans l'ordre) */
   reviews: string[]
@@ -273,53 +285,63 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
 
   accompagnement: {
-    shortName: "Accompagnement",
-    shortDuration: "Sur quelques semaines",
+    shortName: "Isis, 2 mois",
+    noun: "cet accompagnement",
+    shortDuration: "2 mois · 4 soins",
     shortModality: "Au cabinet ou à distance",
-    tagline: "Plusieurs soins, un même fil, pour avancer en profondeur.",
+    tagline: "Un voyage intérieur de deux mois.",
+    fromSarah: ["tagline", "steps"],
     forWhom: [
-      "Vous traversez une période longue ou difficile, et une séance ponctuelle ne suffit pas.",
-      "Vous voulez un changement durable, pas seulement un mieux-être passager.",
+      "Vous avez envie de prendre un vrai temps pour vous, sur la durée, plutôt qu'une séance ponctuelle.",
+      "Vous êtes prêt(e) à vous impliquer entre les séances, à votre rythme.",
       "Vous ne savez pas quel soin choisir et vous préférez être guidé(e).",
     ],
+    stepsTitle: "Ce que comprend votre parcours",
+    stepsLink: "Voir le parcours",
     steps: [
       {
-        title: "Le premier échange",
-        text: "Un temps pour faire le point sur ce que vous traversez et sur ce que vous aimeriez voir changer.",
+        title: "4 soins personnalisés",
+        text: "Quatre soins énergétiques, choisis ensemble selon vos besoins et votre évolution, pour vous accompagner en profondeur.",
       },
       {
-        title: "Le parcours",
-        text: "Sarah vous propose un enchaînement de soins (nettoyage énergétique, LaHoChi, magnétisme, Abhyanga) choisis selon vos besoins.",
+        title: "Des exercices entre les séances",
+        text: "Des invitations simples et bienveillantes pour poursuivre votre cheminement dans votre quotidien, à votre rythme.",
       },
       {
-        title: "Les séances",
-        text: "Elles s'étalent sur quelques semaines. Entre deux séances, Sarah reste disponible et ajuste la suite selon votre évolution.",
-      },
-      {
-        title: "Le bilan",
-        text: "Une dernière rencontre pour mesurer le chemin parcouru et voir ensemble ce qui peut vous aider ensuite.",
+        title: "Un soutien personnalisé",
+        text: "Un accompagnement à chaque étape, pour vous écouter, vous guider et vous encourager tout au long de ces deux mois.",
       },
     ],
+    engagement: {
+      title: "Un accompagnement qui demande un engagement",
+      paragraphs: [
+        "L'Accompagnement Isis est avant tout un travail qui se construit à deux. Au-delà des quatre soins proposés, il repose sur une véritable implication personnelle tout au long des deux mois.",
+        "Les exercices et les temps de réflexion entre les séances font pleinement partie du parcours. Ils permettent de prolonger le travail engagé pendant les soins et d'avancer progressivement dans son cheminement personnel.",
+        "Cet accompagnement demande donc de la disponibilité, de la régularité et une réelle volonté de s'investir. Mon rôle est d'accompagner, de guider et de soutenir chaque étape, mais le cheminement nécessite également un engagement personnel pour en tirer pleinement profit.",
+      ],
+    },
+    contactLead: {
+      title: "Vous souhaitez en savoir plus ?",
+      text: "Échangeons ensemble pour voir si cet accompagnement vous correspond. Appelez Sarah, envoyez-lui un SMS ou un e-mail : elle prend le temps de vous répondre.",
+    },
     remote: [
       "Selon les soins choisis, une partie du parcours peut se faire à distance.",
-      "Les échanges et le suivi entre les séances se font par téléphone ou par message.",
+      "Les échanges et le soutien entre les séances se font par téléphone ou par message.",
       "Le massage Abhyanga, lui, se fait uniquement au cabinet.",
     ],
-    after:
-      "Le parcours ne s'arrête pas à la dernière séance : vous repartez avec des repères simples pour continuer à prendre soin de vous au quotidien.",
     faq: [
       {
-        question: "Que comprend l'accompagnement ?",
+        question: "Que comprend l'Accompagnement Isis ?",
         answer:
-          "Le nombre de séances et les soins inclus sont choisis avec vous lors du premier échange, selon ce que vous traversez.",
+          "Quatre soins énergétiques choisis ensemble, des exercices entre les séances et un soutien personnalisé pendant deux mois, pour 350 €.",
       },
       {
         question: "Peut-on mélanger cabinet et distance ?",
         answer: "Oui, selon les soins. Seul le massage Abhyanga demande de venir au cabinet.",
       },
       {
-        question: "Et si je ne sais pas par où commencer ?",
-        answer: "C'est justement le principe : vous n'avez pas à choisir seul(e). Appelez Sarah, elle vous aidera à y voir clair.",
+        question: "Et si je ne sais pas si c'est fait pour moi ?",
+        answer: "Le plus simple est d'en parler avec Sarah : un premier échange permet de voir ensemble si cet accompagnement vous correspond.",
       },
     ],
     reviews: ["OCÉANNE De la Pallière", "Margot Dennielou"],
