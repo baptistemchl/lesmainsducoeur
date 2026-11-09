@@ -14,7 +14,8 @@ const tones: Record<string, { accent: string; ink: string; wash: string }> = {
   lahochi: { accent: "#8B5CF6", ink: "#6D28D9", wash: "rgba(196,181,253,0.5)" },
   magnetisme: { accent: "#F59E0B", ink: "#A15C07", wash: "rgba(253,230,138,0.55)" },
   abhyanga: { accent: "#FB7185", ink: "#BE123C", wash: "rgba(254,205,211,0.6)" },
-  accompagnement: { accent: "#588157", ink: "#3F6B45", wash: "rgba(163,177,138,0.45)" },
+  /* d'après l'affiche de Sarah : or rosé de l'illustration, titres bordeaux */
+  accompagnement: { accent: "#B07A55", ink: "#8C3B36", wash: "rgba(240,198,178,0.55)" },
 }
 
 type Tone = (typeof tones)[string]
@@ -141,13 +142,17 @@ function Hero({ service, detail, tone }: { service: Service; detail: ServiceDeta
               width={1086}
               height={1448}
               fetchPriority="high"
-              className="w-full aspect-[4/3] sm:aspect-[4/5] object-cover rounded-[999px_999px_24px_24px] lg:rounded-[999px_999px_28px_28px] shadow-card"
+              className={`w-full aspect-[4/3] sm:aspect-[4/5] rounded-[999px_999px_24px_24px] lg:rounded-[999px_999px_28px_28px] shadow-card ${
+                photo.illustration ? "object-contain bg-[#FAEFE5]" : "object-cover"
+              }`}
               style={{ objectPosition: photo.position ?? "50% 50%" }}
             />
           </motion.div>
-          <figcaption className="absolute -bottom-4 left-6 sm:left-8 rounded-full bg-white/90 backdrop-blur-md px-4 py-1.5 shadow-card font-hand text-xl text-warm-800">
-            au cabinet, à Saint-Alban
-          </figcaption>
+          {photo.caption !== null && (
+            <figcaption className="absolute -bottom-4 left-6 sm:left-8 rounded-full bg-white/90 backdrop-blur-md px-4 py-1.5 shadow-card font-hand text-xl text-warm-800">
+              {photo.caption ?? "au cabinet, à Saint-Alban"}
+            </figcaption>
+          )}
         </figure>
       </div>
     </section>

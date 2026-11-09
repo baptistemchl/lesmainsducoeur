@@ -92,8 +92,8 @@ export const services: Service[] = [
     id: "accompagnement",
     name: "Accompagnement Isis",
     icon: "❀",
-    image: "/images/espace-massage.webp",
-    color: "#588157",
+    image: "/images/isis-carte.webp",
+    color: "#B07A55",
     description:
       "Un voyage intérieur de deux mois, pour vous retrouver, vous reconnecter à vous-même et avancer à votre rythme, avec douceur et bienveillance. Sarah vous accompagne à travers quatre soins, des exercices entre les séances et un soutien personnalisé.",
     benefits: [

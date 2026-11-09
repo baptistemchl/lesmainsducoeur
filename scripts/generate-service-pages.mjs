@@ -86,11 +86,10 @@ for (const s of services) {
     <meta property="og:title" content="${esc(`${s.name} · Les Mains du Cœur`)}" />
     <meta property="og:description" content="${esc(description)}" />
     <meta property="og:url" content="${url}" />
-    <meta property="og:image" content="https://lesmainsducoeur.com/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="${baseUrl}${s.image}" />
+    <meta property="og:image:alt" content="${esc(s.name)}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://lesmainsducoeur.com/og-image.png" />
+    <meta name="twitter:image" content="${baseUrl}${s.image}" />
 
     <script type="application/ld+json">
 ${JSON.stringify(jsonLd, null, 2).replace(/^/gm, "    ")}

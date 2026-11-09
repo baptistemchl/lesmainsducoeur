@@ -47,7 +47,16 @@ export interface ServiceDetail {
   /** Auteurs des avis Google à afficher (dans l'ordre) */
   reviews: string[]
   /** Photos de la page : la première sert de visuel principal */
-  photos: { src: string; alt: string; /** cadrage (object-position) */ position?: string }[]
+  photos: {
+    src: string
+    alt: string
+    /** cadrage (object-position) */
+    position?: string
+    /** Légende manuscrite sous l'arche (par défaut « au cabinet, à Saint-Alban ») ; null = aucune */
+    caption?: string | null
+    /** Illustration sur fond papier : affichée en entier, sans être recadrée */
+    illustration?: boolean
+  }[]
 }
 
 const welcomeStep: ServiceStep = {
@@ -346,8 +355,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     reviews: ["OCÉANNE De la Pallière", "Margot Dennielou"],
     photos: [
+      {
+        src: "/images/isis.webp",
+        alt: "Illustration d'Isis, ailes déployées sous un disque solaire, une croix ankh à ses pieds",
+        caption: null,
+        illustration: true,
+      },
       { src: "/images/espace-massage.webp", alt: "Le cabinet : table de soin, tapis et attrape-rêves au mur" },
-      { src: "/images/20260425_202245.webp", alt: "Le coin bureau du cabinet, plantes et objets apaisants" },
     ],
   },
 }
